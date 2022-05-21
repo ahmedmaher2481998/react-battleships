@@ -1,15 +1,9 @@
-import Cell from "./components/Cell";
-import Grid from "./components/Grid";
-import Row from "./components/Row";
+import GridWrapper from "./components/GridWrapper";
 
 function App() {
 	return (
 		<>
-			<Grid>
-				<Row>
-					<Cell />
-				</Row>
-			</Grid>
+			<GridWrapper />
 		</>
 	);
 }

@@ -1,7 +1,11 @@
 import React from "react";
 
 const Grid = (props) => {
-	return <div>Grid {props.children} </div>;
+	return (
+		<>
+			<div>this is grid</div>
+		</>
+	);
 };
 
 export default Grid;

@@ -1,7 +1,7 @@
 import React from "react";
 
 const Row = (props) => {
-	return <div>Row {props.children} </div>;
+	return <div className='bg-pink-500'>Row {props.children} </div>;
 };
 
 export default Row;
