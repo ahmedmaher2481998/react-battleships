@@ -2,4 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 @layer components {
+	.grid-shadow {
+		box-shadow: 0px 4px 5px 8px rgba(97, 100, 181, 0.51);
+		-webkit-box-shadow: 0px 4px 5px 8px rgba(97, 100, 181, 0.51);
+		-moz-box-shadow: 0px 4px 5px 8px rgba(97, 100, 181, 0.51);
+	}
 }
