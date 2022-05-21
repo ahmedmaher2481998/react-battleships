@@ -1,6 +1,6 @@
 import React from "react";
-
-const Grid = (props) => {
+import Row from "./Row";
+const Grid = () => {
 	return (
 		<>
 			<div
@@ -8,7 +8,7 @@ const Grid = (props) => {
 			focus:grid-shadow hover:grid-shadow active:grid-shadow
 			outline-none  border-solid border- flex p-1 '
 			>
-				{props.children}
+				<Row />
 			</div>
 		</>
 	);

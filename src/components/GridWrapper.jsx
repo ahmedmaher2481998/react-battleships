@@ -1,7 +1,7 @@
 import React from "react";
-import Cell from "./Cell";
+
 import Grid from "./Grid";
-import Row from "./Row";
+
 const GridWrapper = () => {
 	return (
 		<div
@@ -11,11 +11,7 @@ const GridWrapper = () => {
 			<h1 className='text-4xl text-black bg-gray-500  rounded-lg p-3 bg-opacity-50 hover:bg-opacity-70 hover:shadow-2xl -mt-30  mb-4 '>
 				Welcome To BattleShip
 			</h1>
-			<Grid>
-				<Row>
-					<Cell />
-				</Row>
-			</Grid>
+			<Grid />
 		</div>
 	);
 };
