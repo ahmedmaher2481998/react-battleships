@@ -5,11 +5,18 @@ function Cell() {
 	return (
 		<>
 			<div
-				className={`rounded-sm hover:bg-gray-500 p-4 w-[${
-					CELL_WIDTH * 100 + "%"
-				}]`}
+				onClick={(e) => {
+					let classes = e.target.classList;
+					// console.log(classes);
+					e.target.classList.remove("bg-gray-500");
+					e.target.classList.add("bg-pink-600");
+					console.log(classes);
+				}}
+				className={`rounded-xl bg-gray-500 p-4  flex flex-1
+				text-xs break-all mx-1 hover:-mx-1  w-auto h-auto max-w-5
+				`}
 			>
-				Cell
+				cell
 			</div>
 		</>
 	);
