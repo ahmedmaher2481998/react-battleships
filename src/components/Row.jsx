@@ -1,13 +1,14 @@
-import { ROW_SIZE } from "../constants";
-import { createComponentArray } from "../helpers";
-import Cell from "./Cell";
+import React from "react";
 
-const Row = ({ size }) => {
-	let row = createComponentArray(ROW_SIZE, <Cell></Cell>);
+const Row = ({ row, cells }) => {
 	return (
 		<>
-			<div className=' flex h-max w-full rounded-lg justify-between '>
-				{row}
+			<div
+				key={`${row}`}
+				data-row={`${row}`}
+				className=' flex h-max w-full rounded-lg justify-between '
+			>
+				{cells}
 			</div>
 		</>
 	);

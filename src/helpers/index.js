@@ -1,2 +1,2 @@
-import { createMany } from "./helpers";
-export { createMany as createComponentArray };
+import { createGrid } from "./helpers";
+export { createGrid };

@@ -1,10 +1,11 @@
 import React from "react";
-// import { ROW_SIZE } from "../constants";
 
-function Cell({ content }) {
+const Cell = ({ cell, row }) => {
 	return (
 		<>
 			<div
+				key={cell}
+				data-col={`${cell}`}
 				onClick={(e) => {
 					console.log("clicked");
 				}}
@@ -12,9 +13,10 @@ function Cell({ content }) {
 				text-xs break-all mx-1 hover:-mx-1  w-auto h-auto max-w-5
 				`}
 			>
-				{content}
+				{row + " " + cell}
 			</div>
 		</>
 	);
-}
+};
+
 export default Cell;
