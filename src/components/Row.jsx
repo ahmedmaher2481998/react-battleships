@@ -1,13 +1,13 @@
-// import React, { useEffect } from "react";
-// import { useEffect } from "react";
-// import { ROW_SIZE } from "../constants";
+import { ROW_SIZE } from "../constants";
+import { createComponentArray } from "../helpers";
 import Cell from "./Cell";
-let id = 0;
-const Row = ({ cellNumber }) => {
+
+const Row = ({ size }) => {
+	let row = createComponentArray(ROW_SIZE, <Cell></Cell>);
 	return (
 		<>
 			<div className=' flex h-max w-full rounded-lg justify-between '>
-				<Cell />
+				{row}
 			</div>
 		</>
 	);
