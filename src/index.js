@@ -6,10 +6,8 @@ import { Provider } from "react-redux";
 //redux
 import { storeConfig } from "./store/";
 const root = ReactDOM.createRoot(document.getElementById("root"));
-const initState = {
-	headMessage: "Welcome To BattleShip",
-};
-const store = storeConfig(initState);
+
+const store = storeConfig();
 
 root.render(
 	<React.StrictMode>

@@ -1,3 +1,4 @@
 export const getHeadMessage = (state) => {
-	return state.headMessage;
+	const msg = state.headMessage || " ";
+	return msg;
 };

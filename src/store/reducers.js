@@ -8,7 +8,10 @@ export const ChangeHeadMessage = (msg) => {
 	};
 };
 //reducers
-export const mainReducer = (state, action) => {
+const initState = {
+	headMessage: "Welcome To BattleShip",
+};
+export const mainReducer = (state = initState, action) => {
 	switch (action.type) {
 		case CHANGE_HEAD_MESSAGE:
 			return { ...state, headMessage: action.payload };
