@@ -1,9 +1,11 @@
 import { createStore, combineReducers, compose, applyMiddleware } from "redux";
 import logger from "redux-logger";
 import { mainReducer } from "./reducers";
+import { cellReducer } from "./cellReducer";
 
 const RootReducer = combineReducers({
 	main: mainReducer,
+	cells: cellReducer,
 });
 let enhancer;
 if (process.env.NODE_ENV !== "production") {

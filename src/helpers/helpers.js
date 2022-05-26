@@ -1,5 +1,6 @@
 import Cell from "../components/Cell";
 import Row from "../components/Row";
+
 export const createGrid = (size) => {
 	let rows = [];
 	//creating rows
