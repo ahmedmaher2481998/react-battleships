@@ -9,29 +9,36 @@ let initState = {
 };
 
 //actions type
-const INIT_CELLS = "grid-generation/Create/Cell";
+export const INIT_CELLS = "start/Create/Cell";
+const CELL_HIT = "combat/change/CellHit";
 //hit cell , ocupy cell ,
 //action creartors
-export const initCell = (row, col) => {
+export const initCells = (cells) => {
 	return {
 		type: INIT_CELLS,
-		payload: {
-			...initState,
-			cellCol: col,
-			cellRow: row,
-		},
+		payload: { ...cells },
+	};
+};
+export const cellHit = (row, col) => {
+	return {
+		type: CELL_HIT,
+		payload: { row, col },
 	};
 };
 //reducers
 export const cellReducer = (state = {}, { type, payload }) => {
+	let newState;
 	switch (type) {
 		case INIT_CELLS:
-			console.log(payload);
-			let newState = { ...state };
-			newState[`cell-${payload.cellRow}-${payload.cellCol}`] = {
-				...payload,
-			};
+			newState = { ...payload };
 			return newState;
+
+		case CELL_HIT:
+			let { row, col } = payload;
+			newState = { ...state };
+			newState[`r${row}-c${col}`].hit = true;
+			return newState;
+
 		default:
 			return state;
 	}

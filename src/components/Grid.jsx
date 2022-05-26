@@ -1,10 +1,22 @@
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { ROW_SIZE } from "../constants";
 import { createGrid } from "../helpers/";
-
+import { initCells } from "../store";
 const Grid = () => {
 	//generating the grid array
-	let { grid, cellsState } = createGrid(ROW_SIZE);
+	const { rows, cellsState } = createGrid(ROW_SIZE);
+	const [grid, setGrid] = useState(rows);
+	const [cellState, setCellState] = useState(cellsState);
+	const dispatch = useDispatch();
 
+	//useEffect init grid and cells state
+	useEffect(() => {
+		dispatch(initCells(cellState));
+	}, []);
+	useEffect(() => {
+		setCellState(cellState);
+	}, [cellState]);
 	return (
 		<>
 			<div

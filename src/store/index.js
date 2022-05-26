@@ -1,10 +1,11 @@
 import { configStore } from "./store";
 import { ChangeHeadMessage } from "./mainReducer";
 import { getHeadMessage } from "./selectores";
-import { initCell } from "./cellReducer";
+import { initCells, cellHit } from "./cellReducer";
 export {
 	getHeadMessage,
-	initCell,
+	initCells,
+	cellHit,
 	configStore as storeConfig,
 	ChangeHeadMessage,
 };
