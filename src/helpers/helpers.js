@@ -1,6 +1,6 @@
 import Cell from "../components/Cell";
 import Row from "../components/Row";
-import { INIT_CELLS } from "../store/cellReducer";
+import { initState } from "../store/cellReducer";
 export const createGrid = (size) => {
 	let rows = [];
 	let cellsState = {};
@@ -12,15 +12,7 @@ export const createGrid = (size) => {
 			//creating grid
 			cells.push(<Cell key={row + "-" + col} row={row} col={col} />);
 			//creating cells state
-			cellsState[`r${row}-c${col}`] = {
-				col,
-				row,
-				ocupied: {
-					isOcupied: false,
-					ocuper: null,
-				},
-				hit: false,
-			};
+			cellsState[`r${row}-c${col}`] = initState(row, col);
 		}
 		rows.push(<Row key={row} cells={cells} row={row} />);
 	}
