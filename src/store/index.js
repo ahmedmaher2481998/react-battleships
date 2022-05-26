@@ -1,5 +1,5 @@
 import { configStore } from "./store";
-import { ChangeHeadMessage } from "./reducers";
+import { ChangeHeadMessage } from "./mainReducer";
 import { getHeadMessage } from "./selectores";
 import { initCell } from "./cellReducer";
 export {

@@ -3,7 +3,7 @@ import { createGrid } from "../helpers/";
 
 const Grid = () => {
 	//generating the grid array
-	let grid = createGrid(ROW_SIZE);
+	let { grid, cellsState } = createGrid(ROW_SIZE);
 
 	return (
 		<>

@@ -1,16 +1,16 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { initCell } from "../store";
-const Cell = ({ cell, row }) => {
+const Cell = ({ col, row }) => {
 	const dispatch = useDispatch();
 	useEffect(() => {
-		dispatch(initCell(row, cell));
-	}, [cell, row, dispatch]);
+		dispatch(initCell(row, col));
+	}, [col, row, dispatch]);
 	return (
 		<>
 			<div
-				key={row + "-" + cell}
-				data-col={`${cell}`}
+				key={row + "-" + col}
+				data-col={`${col}`}
 				onClick={(e) => {
 					console.log("clicked");
 				}}
@@ -20,7 +20,7 @@ const Cell = ({ cell, row }) => {
                    w-24 mx-1 max-w-5
 				`}
 			>
-				{row + " " + cell}
+				{row + " " + col}
 			</div>
 		</>
 	);

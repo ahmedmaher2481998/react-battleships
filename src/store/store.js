@@ -1,6 +1,6 @@
 import { createStore, combineReducers, compose, applyMiddleware } from "redux";
 import logger from "redux-logger";
-import { mainReducer } from "./reducers";
+import { mainReducer } from "./mainReducer";
 import { cellReducer } from "./cellReducer";
 
 const RootReducer = combineReducers({
