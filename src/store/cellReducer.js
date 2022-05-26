@@ -21,9 +21,11 @@ export const initCell = (row, col) => {
 export const cellReducer = (state = {}, { type, payload }) => {
 	switch (type) {
 		case INIT_CELL:
+			console.log(payload);
 			let newState = { ...state };
-			newState[`cell-${payload.row}-${payload.col}`] = { ...payload };
-			console.log(newState);
+			newState[`cell-${payload.cellRow}-${payload.cellCol}`] = {
+				...payload,
+			};
 			return newState;
 		default:
 			return state;
