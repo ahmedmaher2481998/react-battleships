@@ -16,13 +16,17 @@ const Grid = () => {
 	}, []);
 	useEffect(() => {
 		setCellState(cellState);
-	}, [cellState]);
+	}, [cellState, rows]);
 	return (
 		<>
 			<div
-				className='w-max  h-max   text-white bg-gray-300 bg-opacity-50 border-4 rounded-lg border-gray-900 border-opacity-70
-			focus:grid-shadow hover:grid-shadow active:grid-shadow
-			outline-none  border-solid border- flex flex-col space-y-4 p-1 '
+				className='
+				lg:w-max  lg:h-max w-screen h-4/6   text-white bg-gray-300
+				bg-opacity-50 border-2 rounded-lg border-gray-900
+				border-opacity-70 focus:grid-shadow 
+				hover:grid-shadow active:grid-shadow
+				outline-none  border-solid border- 
+				flex flex-col space-y-4 p-1 '
 			>
 				{grid}
 			</div>
