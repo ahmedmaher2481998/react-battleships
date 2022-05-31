@@ -1,3 +1,5 @@
+import { generateCellId } from "../helpers/helpers";
+
 export const initState = (row, col) => {
 	return {
 		col,
@@ -37,7 +39,7 @@ export const cellReducer = (state = {}, { type, payload }) => {
 			return newState;
 
 		case CELL_HIT:
-			newState[`r${payload.row}-c${payload.col}`].hit = true;
+			newState[generateCellId(payload.row, payload.col)].hit = true;
 			return newState;
 		case CELL_OCCUPY:
 			newState[
