@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { ROW_SIZE } from "../constants";
 import { createGrid } from "../helpers/";
 import { initCells } from "../store";
+import WelcomePage from "./WelcomePage";
 const Grid = () => {
 	//generating the grid array
 	const { rows, cellsState } = createGrid(ROW_SIZE);
@@ -18,7 +19,8 @@ const Grid = () => {
 	useEffect(() => {
 		setCellState(cellState);
 	}, [cellState, rows]);
-	return (
+	let start = false;
+	return start ? (
 		<>
 			<div
 				className='
@@ -32,6 +34,8 @@ const Grid = () => {
 				{grid}
 			</div>
 		</>
+	) : (
+		<WelcomePage />
 	);
 };
 

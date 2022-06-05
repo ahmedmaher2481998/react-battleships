@@ -1,3 +1,5 @@
+import { type } from "@testing-library/user-event/dist/type";
+
 //actions types
 const CHANGE_HEAD_MESSAGE = "grid-wrapper/change/head-message";
 
@@ -18,6 +20,20 @@ export const ChangeHeadMessage = (msg) => {
 		payload: msg,
 	};
 };
+export const changeGameState = (state) => {
+	switch (state) {
+		case "start":
+			return { type: GAME_START };
+		case "end":
+			return { type: GAME_END };
+		case "battle":
+			return { type: GAME_BATTLE };
+		case "place":
+			return { type: GAME_PLACING };
+		default:
+			return { type: "ERROR" };
+	}
+};
 //reducers
 const initState = {
 	headMessage: "Welcome To BattleShip",
@@ -30,9 +46,30 @@ const initState = {
 	},
 };
 export const mainReducer = (state = initState, action) => {
+	const newState = { ...state };
 	switch (action.type) {
 		case CHANGE_HEAD_MESSAGE:
-			return { ...state, headMessage: action.payload };
+			newState.headMessage = action.payload;
+			return newState;
+		case GAME_BATTLE:
+			newState.timeLine.battle = true;
+			newState.timeLine.end = false;
+			newState.timeLine.start = false;
+			newState.timeLine.placing = false;
+			return newState;
+		case GAME_END:
+			newState.timeLine.battle = false;
+			newState.timeLine.end = true;
+			newState.timeLine.start = false;
+			newState.timeLine.placing = false;
+			return newState;
+		case GAME_PLACING:
+			newState.timeLine.battle = false;
+			newState.timeLine.end = false;
+			newState.timeLine.start = false;
+			newState.timeLine.placing = true;
+			return newState;
+
 		default:
 			return state;
 	}
