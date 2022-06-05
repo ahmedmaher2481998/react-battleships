@@ -1,4 +1,7 @@
+import { useDispatch } from "react-redux";
+import {} from "../store";
 const WelcomePage = () => {
+	const startGame = () => {};
 	return (
 		<>
 			<div className='flex items-center justify-center flex-col gap-10'>
@@ -16,7 +19,10 @@ const WelcomePage = () => {
 					part (vertical during play) for recording the player's
 					guesses.
 				</p>
-				<button className=' text-white p-8 w-1/5 h-10 flex items-center justify-center hover:text-black hover:w-2/5 transition duration-500 ease-out hover:bg-slate-200  rounded-xl text-xl bg-slate-600 md:text-lg sm:text-sm'>
+				<button
+					onClick={startGame()}
+					className=' text-white p-8 w-1/5 h-10 flex items-center justify-center hover:text-black hover:w-2/5 transition duration-500 ease-out hover:bg-slate-200  rounded-xl text-xl bg-slate-600 md:text-lg sm:text-sm'
+				>
 					Start Game
 				</button>
 				<div className='bg-gray-800 w-4/5 p-6 text-gray-50 rounded border-4 flex items-center justify-center flex-col border-black r '>
@@ -36,4 +42,5 @@ const WelcomePage = () => {
 		</>
 	);
 };
+
 export default WelcomePage;

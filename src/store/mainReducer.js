@@ -69,6 +69,12 @@ export const mainReducer = (state = initState, action) => {
 			newState.timeLine.start = false;
 			newState.timeLine.placing = true;
 			return newState;
+		case GAME_START:
+			newState.timeLine.battle = false;
+			newState.timeLine.end = false;
+			newState.timeLine.start = true;
+			newState.timeLine.placing = false;
+			return newState;
 
 		default:
 			return state;
