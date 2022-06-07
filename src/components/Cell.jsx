@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 // import { cellHit, occupyCell } from "../store";
-// import { colors } from "../constants";
+
 import { generateCellId } from "../helpers";
 import { battlesShip, ship, submarine, boat, explosion } from "../assests";
 //end imports

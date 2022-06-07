@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { ROW_SIZE } from "../constants";
-import { createGrid } from "../helpers/";
+
+import { createGrid, ROW_SIZE } from "../helpers/";
 import { initCells } from "../store";
 
 const Grid = () => {

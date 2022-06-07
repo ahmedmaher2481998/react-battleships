@@ -1,7 +1,9 @@
 import Cell from "../components/Cell";
 import Row from "../components/Row";
-import { ROW_SIZE } from "../constants";
+
 import { initState } from "../store/cellReducer";
+
+export const ROW_SIZE = 10;
 export const createGrid = (size) => {
 	let rows = [];
 	let cellsState = {};
