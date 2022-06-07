@@ -23,6 +23,7 @@ function App() {
 				<Route path='/placing' element={<PlacingPage />} />
 				<Route path='/battle' element={<BattlePage />} />
 			</Routes>
+
 			<Footer />
 		</>
 	);

@@ -1,3 +1,5 @@
+//export list for Pages Folder
+//************************/
 //importing surounding files needed to export
 import WelcomePage from "./WelcomePage";
 import Rules from "./RulesPage";
