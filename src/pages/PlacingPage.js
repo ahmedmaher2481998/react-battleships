@@ -1,5 +1,5 @@
 import React from "react";
-import { GridWrapper } from "../components";
+import { GridBoard } from "../components";
 import { Fleet } from "../components";
 const PlacingPage = () => {
 	return (
@@ -7,8 +7,10 @@ const PlacingPage = () => {
 			<h1 className='text-2xl text-black mx-auto font-bold'>
 				Place Your Fleet{" "}
 			</h1>
-			<Fleet />
-			<GridWrapper />
+			<div>{/* <Fleet /> */}</div>
+			<div>
+				<GridBoard />
+			</div>
 		</div>
 	);
 };

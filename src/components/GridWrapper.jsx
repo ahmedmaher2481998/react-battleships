@@ -1,4 +1,4 @@
-import React from "react";
+/*import React from "react";
 
 import Grid from "./Grid";
 import { useDispatch, useSelector } from "react-redux";
@@ -23,3 +23,4 @@ const GridWrapper = () => {
 };
 
 export default GridWrapper;
+*/

@@ -3,10 +3,7 @@ import React from "react";
 const Row = ({ row, cells }) => {
 	return (
 		<>
-			<div
-				data-row={`${row}`}
-				className=' flex h-max w-full rounded-lg justify-between '
-			>
+			<div data-row={`${row}`} className='flex -flex-row m-0'>
 				{cells}
 			</div>
 		</>

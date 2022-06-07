@@ -1,2 +1,2 @@
-import { createGrid } from "./helpers";
-export { createGrid };
+import { createGrid, generateCellId } from "./helpers";
+export { createGrid, generateCellId };
