@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { cellHit, occupyCell } from "../store";
+import { cellHit, occupyCell } from "../store";
+import { colors } from "../constants";
+import { generateCellId } from "../helpers/helpers";
 
-import { generateCellId } from "../helpers";
 import { battlesShip, ship, submarine, boat, explosion } from "../assests";
 //end imports
 
 const Cell = ({ col, row }) => {
 	const dispatch = useDispatch();
 	let title = `${generateCellId(row, col)}`;
-	// const [cellContent, setCellContent] = useState(generateCellId(row, col));
+	const [cellContent, setCellContent] = useState(generateCellId(row, col));
 
 	const isHit = useSelector(({ cells }) => {
 		let hit = cells[title]?.hit || false;
@@ -23,10 +24,7 @@ const Cell = ({ col, row }) => {
 
 	return (
 		<>
-			<div className=' bg-mainlightblue w-6 h-6 md:w-12 text-black md:h-10 lg:w-28 lg:h-12 rounded-full text-center '>
-				{title}
-			</div>
-			{/* <div
+			<div
 				data-col={`${col}`}
 				onClick={(e) => {
 					dispatch(cellHit(row, col));
@@ -48,8 +46,8 @@ const Cell = ({ col, row }) => {
 					""
 				)}
 
-				{ {isOccupied ? "ocupyed" : " "}  }
-			</div> */}
+				{/* {isOccupied ? "ocupyed" : " "}  */}
+			</div>
 		</>
 	);
 };

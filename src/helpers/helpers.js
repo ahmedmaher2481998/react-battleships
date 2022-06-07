@@ -22,7 +22,7 @@ export const createGrid = (size) => {
 		rows.push(<Row key={row} cells={cells} row={row} />);
 	}
 	console.log(rows);
-	return { rows, cellsState };
+	return { cellsState, rows };
 };
 export const generateCellId = (row, col) => {
 	return row * ROW_SIZE + col - ROW_SIZE;
