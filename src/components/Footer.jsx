@@ -4,6 +4,7 @@ function Footer() {
 	return (
 		<>
 			<div
+				id='footer'
 				className=' bg-mainblue w-screen h-24 text-bage
             text-xl 
             flex-wrap mt-auto

@@ -24,3 +24,6 @@ body {
 	height: 100vh;
 	margin: 0;
 }
+#footer {
+	margin-top: auto;
+}
