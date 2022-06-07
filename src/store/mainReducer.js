@@ -7,6 +7,7 @@ const GAME_START = "game/start";
 const GAME_PLACING = "game/placing";
 const GAME_BATTLE = "game/battle";
 const GAME_END = "game/end";
+const SET_PLAYER_NAME = "welcome/setplayerName";
 export const TIMELINE = {
 	GAME_START,
 	GAME_PLACING,
@@ -19,6 +20,9 @@ export const ChangeHeadMessage = (msg) => {
 		type: CHANGE_HEAD_MESSAGE,
 		payload: msg,
 	};
+};
+export const setPlayerName = (name) => {
+	return { type: SET_PLAYER_NAME, payload: name };
 };
 export const changeGameState = (state) => {
 	switch (state) {
@@ -37,6 +41,9 @@ export const changeGameState = (state) => {
 //reducers
 const initState = {
 	headMessage: "Welcome To BattleShip",
+	player: {
+		name: "",
+	},
 	//there will be 3 time line events (start , placing , battle , end )
 	timeLine: {
 		start: false,
@@ -74,6 +81,9 @@ export const mainReducer = (state = initState, action) => {
 			newState.timeLine.end = false;
 			newState.timeLine.start = true;
 			newState.timeLine.placing = false;
+			return newState;
+		case SET_PLAYER_NAME:
+			newState.player.name = action.payload;
 			return newState;
 
 		default:

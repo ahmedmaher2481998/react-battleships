@@ -1,6 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { heroVideo } from "../assests";
+import { useDispatch } from "react-redux";
+import { setPlayerName } from "../store";
 const MainHero = () => {
+	const [name, changeName] = useState("");
+	const dispatch = useDispatch();
+	let setName = (e) => {
+		e.preventDefault();
+		dispatch(setPlayerName(name));
+	};
 	return (
 		<main
 			className=' 
@@ -24,12 +32,20 @@ const MainHero = () => {
 					className='inputtext'
 					type='text'
 					id='name'
+					value={name}
 					placeholder='Your Name ? '
+					onChange={(e) => {
+						changeName(e.target.value);
+					}}
 				/>
 			</div>
 			<span>
-				<button className='btn m-4'>Read Rules</button>
-				<button className='btn mt-4'>Start Game</button>
+				<button onClick={setName} className='btn m-4'>
+					Read Rules
+				</button>
+				<button onClick={setName} className='btn mt-4'>
+					Start Game
+				</button>
 			</span>
 		</main>
 	);
