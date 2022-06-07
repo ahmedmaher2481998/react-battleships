@@ -4,6 +4,7 @@
 :root {
 	--contentHeight: calc(100vh - 6rem);
 	@apply selection:text-black selection:bg-gray-300;
+	box-sizing: border-box;
 }
 @layer components {
 	.grid-shadow {
