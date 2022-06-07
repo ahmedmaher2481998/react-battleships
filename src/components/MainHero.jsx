@@ -2,12 +2,18 @@ import React, { useState } from "react";
 import { heroVideo } from "../assests";
 import { useDispatch } from "react-redux";
 import { setPlayerName } from "../store";
+import { useNavigate } from "react-router-dom";
 const MainHero = () => {
 	const [name, changeName] = useState("");
 	const dispatch = useDispatch();
-	let setName = (e) => {
+	let setName = (e, isStart) => {
 		e.preventDefault();
 		dispatch(setPlayerName(name));
+		if (isStart) {
+			useNavigate.push("/placing");
+		} else {
+			useNavigate.psuh("/rules");
+		}
 	};
 	return (
 		<main
@@ -40,10 +46,10 @@ const MainHero = () => {
 				/>
 			</div>
 			<span>
-				<button onClick={setName} className='btn m-4'>
+				<button onClick={(e) => setName(e, false)} className='btn m-4'>
 					Read Rules
 				</button>
-				<button onClick={setName} className='btn mt-4'>
+				<button onClick={(e) => setName(e, true)} className='btn mt-4'>
 					Start Game
 				</button>
 			</span>
