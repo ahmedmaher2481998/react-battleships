@@ -13,6 +13,7 @@ const initState = {
 		placing: false,
 	},
 	slected: "",
+	placingStatus: false,
 };
 
 //actions types
@@ -24,6 +25,7 @@ const GAME_BATTLE = "game/battle";
 const GAME_END = "game/end";
 const SET_PLAYER_NAME = "welcome/setplayerName";
 const SELECT_FLEET_SHIP = "placing/selectShip";
+const END_PLACING = "placing/endofplacing";
 export const TIMELINE = {
 	GAME_START,
 	GAME_PLACING,
@@ -42,6 +44,11 @@ export const setPlayerName = (name) => {
 };
 export const placeShip = (ship) => {
 	return { type: SELECT_FLEET_SHIP, payload: ship };
+};
+export const endPlacing = () => {
+	return {
+		type: END_PLACING,
+	};
 };
 export const changeGameState = (state) => {
 	switch (state) {
@@ -69,6 +76,9 @@ export const mainReducer = (state = initState, action) => {
 			return newState;
 		case SET_PLAYER_NAME:
 			newState.player.name = action.payload;
+			return newState;
+		case END_PLACING:
+			newState.placingStatus = true;
 			return newState;
 
 		default:

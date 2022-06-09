@@ -3,3 +3,4 @@ export const getHeadMessage = (state) => {
 	return msg;
 };
 export const getSelectedShip = (s) => s.main.slected;
+export const getPlacingStatus = (s) => s.main.placingStatus;
