@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { cellHit, occupyCell } from "../store";
-import { colors } from "../constants";
+// import { cellHit, occupyCell } from "../store";
+
 import { generateCellId } from "../helpers/helpers";
 
 import { battlesShip, ship, submarine, boat, explosion } from "../assests";
@@ -25,31 +25,21 @@ const Cell = ({ col, row }) => {
 	return (
 		<>
 			<div
-				data-col={`${col}`}
-				onClick={(e) => {
-					dispatch(cellHit(row, col));
-				}}
-				className={`rounded-full bg-gray-200 text-black p-2  flex flex-1
-				text-xs break-all  hover:transition-all
-                 hover:bg-pink-600 duration-500 ease-in-out text-center
-                   lg:w-24 mx-1 my-1 max-w-5 
-				   bg-[${colors.sub1}]
+				data-id={`${generateCellId(row, col)}`}
+				className={`
+				w-[9%] h-8 md:h-[100%]
+				 bg-indigo-400 m-[2px] rounded-full flex items-center justify-center hover:bg-yeelow  
 				`}
 			>
-				{isHit ? (
-					<img
-						className='w-16 h-16'
-						src={explosion}
-						alt='explosion'
-					/>
-				) : (
-					""
-				)}
-
-				{/* {isOccupied ? "ocupyed" : " "}  */}
+				{/* {generateCellId(row, col)} */}
 			</div>
 		</>
 	);
 };
 
 export default Cell;
+/* w-8 h-8 lg:w-12
+				md:h-12 md:w-12
+				lg:h-12
+				xl:w-16  xl:h-14 
+				*/

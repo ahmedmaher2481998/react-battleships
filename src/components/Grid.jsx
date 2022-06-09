@@ -1,40 +1,40 @@
-import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { ROW_SIZE } from "../constants";
-import { createGrid } from "../helpers/";
-import { initCells } from "../store";
+// import { useEffect, useState } from "react";
+// import { useDispatch } from "react-redux";
 
-const Grid = () => {
-	//generating the grid array
-	const { rows, cellsState } = createGrid(ROW_SIZE);
-	const [grid, setGrid] = useState(rows);
+// import {ROW_SIZE,createGrid } from "../helpers/";
+// import { initCells } from "../store";
 
-	const [cellState, setCellState] = useState(cellsState);
-	const dispatch = useDispatch();
+// const Grid = () => {
+// 	//generating the grid array
+// 	const { rows, cellsState } = createGrid(ROW_SIZE);
+// 	const [grid, setGrid] = useState(rows);
 
-	//useEffect init grid and cells state
-	useEffect(() => {
-		dispatch(initCells(cellState));
-	}, [cellState, dispatch]);
-	useEffect(() => {
-		setCellState(cellState);
-	}, [cellState, rows]);
-	let start = false;
-	return (
-		<>
-			<div
-				className='
-				lg:w-max  lg:h-max w-screen h-4/6   text-white bg-gray-300
-				bg-opacity-50 border-2 rounded-lg border-gray-900
-				border-opacity-70 focus:grid-shadow 
-				hover:grid-shadow active:grid-shadow
-				outline-none  border-solid border- 
-				flex flex-col space-y-4 p-1 '
-			>
-				{grid}
-			</div>
-		</>
-	);
-};
+// 	const [cellState, setCellState] = useState(cellsState);
+// 	const dispatch = useDispatch();
 
-export default Grid;
+// 	//useEffect init grid and cells state
+// 	useEffect(() => {
+// 		dispatch(initCells(cellState));
+// 	}, [cellState, dispatch]);
+// 	useEffect(() => {
+// 		setCellState(cellState);
+// 	}, [cellState, rows]);
+// 	let start = false;
+// 	return (
+// 		<>
+// 			<div
+// 				className='
+// 				lg:w-max  lg:h-max w-screen h-4/6   text-white bg-gray-300
+// 				bg-opacity-50 border-2 rounded-lg border-gray-900
+// 				border-opacity-70 focus:grid-shadow
+// 				hover:grid-shadow active:grid-shadow
+// 				outline-none  border-solid border-
+// 				flex flex-col space-y-4 p-1 '
+// 			>
+// 				{grid}
+// 			</div>
+// 		</>
+// 	);
+// };
+
+// export default Grid;

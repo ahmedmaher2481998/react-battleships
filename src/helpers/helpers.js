@@ -1,8 +1,8 @@
 import Cell from "../components/Cell";
 import Row from "../components/Row";
 
-import { initState } from "../store/cellReducer";
-
+import { initCellState } from "../store/cellReducer";
+//size of grid
 export const ROW_SIZE = 10;
 export const createGrid = (size) => {
 	let rows = [];
@@ -17,11 +17,11 @@ export const createGrid = (size) => {
 				<Cell key={generateCellId(row, col)} row={row} col={col} />
 			);
 			//creating cells state
-			cellsState[`${generateCellId(row, col)}`] = initState(row, col);
+			cellsState[`${generateCellId(row, col)}`] = initCellState(row, col);
 		}
 		rows.push(<Row key={row} cells={cells} row={row} />);
 	}
-	console.log(rows);
+
 	return { cellsState, rows };
 };
 export const generateCellId = (row, col) => {

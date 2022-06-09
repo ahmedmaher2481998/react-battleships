@@ -1,6 +1,6 @@
 import { generateCellId } from "../helpers/helpers";
 
-export const initState = (row, col) => {
+export const initCellState = (row, col) => {
 	return {
 		col,
 		row,

@@ -5,7 +5,9 @@ const Row = ({ row, cells }) => {
 		<>
 			<div
 				data-row={`${row}`}
-				className=' flex h-max w-full rounded-lg justify-between '
+				className='
+				h-[9%] w-[100%]
+				flex  rounded-lg justify-between '
 			>
 				{cells}
 			</div>
