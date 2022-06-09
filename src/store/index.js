@@ -1,8 +1,8 @@
 import { configStore } from "./store";
 import { ChangeHeadMessage } from "./mainReducer";
-import { getHeadMessage } from "./selectores";
+import { getHeadMessage, getSelectedShip } from "./selectores";
 import { initCells, cellHit, occupyCell } from "./cellReducer";
-import { TIMELINE, setPlayerName } from "./mainReducer";
+import { TIMELINE, setPlayerName, placeShip } from "./mainReducer";
 export {
 	getHeadMessage,
 	initCells,
@@ -12,4 +12,6 @@ export {
 	ChangeHeadMessage,
 	TIMELINE,
 	setPlayerName,
+	placeShip,
+	getSelectedShip,
 };

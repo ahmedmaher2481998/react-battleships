@@ -1,4 +1,19 @@
 import { type } from "@testing-library/user-event/dist/type";
+//inital state
+const initState = {
+	headMessage: "Welcome To BattleShip",
+	player: {
+		name: "",
+	},
+	//there will be 3 time line events (start , placing , battle , end )
+	timeLine: {
+		start: false,
+		end: false,
+		battle: false,
+		placing: false,
+	},
+	slected: "",
+};
 
 //actions types
 const CHANGE_HEAD_MESSAGE = "grid-wrapper/change/head-message";
@@ -8,6 +23,7 @@ const GAME_PLACING = "game/placing";
 const GAME_BATTLE = "game/battle";
 const GAME_END = "game/end";
 const SET_PLAYER_NAME = "welcome/setplayerName";
+const SELECT_FLEET_SHIP = "placing/selectShip";
 export const TIMELINE = {
 	GAME_START,
 	GAME_PLACING,
@@ -24,6 +40,9 @@ export const ChangeHeadMessage = (msg) => {
 export const setPlayerName = (name) => {
 	return { type: SET_PLAYER_NAME, payload: name };
 };
+export const placeShip = (ship) => {
+	return { type: SELECT_FLEET_SHIP, payload: ship };
+};
 export const changeGameState = (state) => {
 	switch (state) {
 		case "start":
@@ -39,48 +58,14 @@ export const changeGameState = (state) => {
 	}
 };
 //reducers
-const initState = {
-	headMessage: "Welcome To BattleShip",
-	player: {
-		name: "",
-	},
-	//there will be 3 time line events (start , placing , battle , end )
-	timeLine: {
-		start: false,
-		end: false,
-		battle: false,
-		placing: false,
-	},
-};
 export const mainReducer = (state = initState, action) => {
 	const newState = { ...state };
 	switch (action.type) {
 		case CHANGE_HEAD_MESSAGE:
 			newState.headMessage = action.payload;
 			return newState;
-		case GAME_BATTLE:
-			newState.timeLine.battle = true;
-			newState.timeLine.end = false;
-			newState.timeLine.start = false;
-			newState.timeLine.placing = false;
-			return newState;
-		case GAME_END:
-			newState.timeLine.battle = false;
-			newState.timeLine.end = true;
-			newState.timeLine.start = false;
-			newState.timeLine.placing = false;
-			return newState;
-		case GAME_PLACING:
-			newState.timeLine.battle = false;
-			newState.timeLine.end = false;
-			newState.timeLine.start = false;
-			newState.timeLine.placing = true;
-			return newState;
-		case GAME_START:
-			newState.timeLine.battle = false;
-			newState.timeLine.end = false;
-			newState.timeLine.start = true;
-			newState.timeLine.placing = false;
+		case SELECT_FLEET_SHIP:
+			newState.slected = action.payload;
 			return newState;
 		case SET_PLAYER_NAME:
 			newState.player.name = action.payload;
