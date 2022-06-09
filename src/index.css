@@ -33,6 +33,9 @@
 	.rule-content {
 		@apply text-lg font-thin;
 	}
+	.cursor-ship {
+		cursor: url(./assests/boat.png);
+	}
 }
 
 body {

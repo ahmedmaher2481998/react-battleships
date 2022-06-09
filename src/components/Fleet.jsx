@@ -103,10 +103,11 @@ const Fleet = () => {
 			</div>
 			{placingStatus ? (
 				<>
-					<div></div>
-					<button className='btn w-[100%]'>
-						<Link to='battle'>Start Battle</Link>
-					</button>{" "}
+					<div className=' absolute'>
+						<button className=' relative top-10 md:top-40 md:left-10 left-40 btn w-[100%] mx-auto my-auto'>
+							<Link to={"/battle"}>Start Battle</Link>
+						</button>{" "}
+					</div>
 				</>
 			) : null}
 		</>

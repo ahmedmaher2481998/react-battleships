@@ -12,7 +12,7 @@ const MainHero = () => {
 	const setName = (e, isStart) => {
 		e.preventDefault();
 		dispatch(setPlayerName(name));
-		console.log("clicked");
+
 		name === ""
 			? toast("Please Enter Your Name !!")
 			: isStart

@@ -27,3 +27,29 @@ export const createGrid = (size) => {
 export const generateCellId = (row, col) => {
 	return row * ROW_SIZE + col - ROW_SIZE;
 };
+export const validateShipLocation = (row, col, ship) => {
+	let shipSize;
+	switch (ship) {
+		case "boat":
+			shipSize = 1;
+			break;
+		case "ship":
+			shipSize = 2;
+			break;
+		case "submarine":
+			shipSize = 3;
+			break;
+		case "battlesShip":
+			shipSize = 4;
+			break;
+		case "carrier":
+			shipSize = 5;
+			break;
+		default:
+			return;
+			break;
+	}
+	if( 
+		row + shipSize 
+	)
+};
