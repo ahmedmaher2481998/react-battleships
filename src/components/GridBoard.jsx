@@ -1,7 +1,12 @@
 import React, { useEffect } from "react";
 
 import { ROW_SIZE, createGrid } from "../helpers";
-import { getSelectedShip, getPlacingStatus, initCells } from "../store";
+import {
+	getSelectedShip,
+	getPlacingStatus,
+	initCells,
+	changeGameState,
+} from "../store";
 import { useDispatch, useSelector } from "react-redux";
 const GridBoard = () => {
 	const dispatch = useDispatch();

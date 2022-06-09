@@ -58,7 +58,7 @@ export const changeGameState = (state) => {
 			return { type: GAME_END };
 		case "battle":
 			return { type: GAME_BATTLE };
-		case "place":
+		case "placing":
 			return { type: GAME_PLACING };
 		default:
 			return { type: "ERROR" };
@@ -79,6 +79,21 @@ export const mainReducer = (state = initState, action) => {
 			return newState;
 		case END_PLACING:
 			newState.placingStatus = true;
+			return newState;
+		case GAME_START:
+			newState.timeLine.start = true;
+			return newState;
+		case GAME_PLACING:
+			newState.timeLine.start = false;
+			newState.timeLine.placing = true;
+			return newState;
+		case GAME_BATTLE:
+			newState.timeLine.placing = false;
+			newState.timeLine.battle = true;
+			return newState;
+		case GAME_END:
+			newState.timeLine.battle = false;
+			newState.timeLine.end = true;
 			return newState;
 
 		default:

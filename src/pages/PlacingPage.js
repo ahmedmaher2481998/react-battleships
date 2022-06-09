@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { GridBoard } from "../components";
 import { Fleet } from "../components";
+import { changeGameState } from "../store";
 const PlacingPage = () => {
+	const dispatch = useDispatch();
+	useEffect(() => {
+		dispatch(changeGameState("placing"));
+	}, [dispatch]);
 	return (
 		<div
 			className=' 

@@ -27,8 +27,8 @@ export const initCells = (cells) => {
 export const cellHit = (row, col) => {
 	return { type: CELL_HIT, payload: { row, col } };
 };
-export const occupyCell = (row, col) => {
-	return { type: CELL_OCCUPY, payload: { row, col } };
+export const occupyCell = (row, col, ship) => {
+	return { type: CELL_OCCUPY, payload: { row, col, ship } };
 };
 //reducers
 export const cellReducer = (state = {}, { type, payload }) => {
@@ -43,8 +43,11 @@ export const cellReducer = (state = {}, { type, payload }) => {
 			return newState;
 		case CELL_OCCUPY:
 			newState[
-				`r${payload.row}-c${payload.col}`
+				generateCellId(payload.row, payload.col)
 			].occupy.isOccupied = true;
+			newState[generateCellId(payload.row, payload.col)].occupy.occupier =
+				payload.ship;
+
 			return newState;
 		default:
 			return state;

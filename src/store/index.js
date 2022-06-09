@@ -4,11 +4,24 @@ import {
 	getHeadMessage,
 	getSelectedShip,
 	getPlacingStatus,
+	getIsOccupuied,
+	getTimeline,
+	getIsHit,
 } from "./selectores";
 import { initCells, cellHit, occupyCell } from "./cellReducer";
-import { TIMELINE, setPlayerName, placeShip, endPlacing } from "./mainReducer";
+import {
+	TIMELINE,
+	setPlayerName,
+	placeShip,
+	endPlacing,
+	changeGameState,
+} from "./mainReducer";
 export {
 	getHeadMessage,
+	getPlacingStatus,
+	getIsOccupuied,
+	getTimeline,
+	getIsHit,
 	initCells,
 	cellHit,
 	occupyCell,
@@ -19,5 +32,5 @@ export {
 	placeShip,
 	getSelectedShip,
 	endPlacing,
-	getPlacingStatus,
+	changeGameState,
 };

@@ -1,27 +1,60 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { cellHit, occupyCell } from "../store";
+import { cellHit, occupyCell } from "../store";
 
-import { generateCellId } from "../helpers/helpers";
+import { generateCellId, validateShipLocation } from "../helpers";
 
-import { battlesShip, ship, submarine, boat, explosion } from "../assests";
+import {
+	battlesShip,
+	ship,
+	submarine,
+	boat,
+	carrier,
+	explosion,
+} from "../assests";
+import {
+	getIsHit,
+	getIsOccupuied,
+	getTimeline,
+	getSelectedShip,
+} from "../store/";
 //end imports
+const getOcuupierImageSrc = (ship) => {
+	switch (ship) {
+		case "boat":
+			return boat;
+		case "ship":
+			return ship;
+		case "submarine":
+			return submarine;
+		case "battlesShip":
+			return battlesShip;
+		case "carrier":
+			return carrier;
+		default:
+			return null;
+	}
+};
 
 const Cell = ({ col, row }) => {
 	const dispatch = useDispatch();
-	let title = `${generateCellId(row, col)}`;
+	let cellId = `${generateCellId(row, col)}`;
 	const [cellContent, setCellContent] = useState(generateCellId(row, col));
 
-	const isHit = useSelector(({ cells }) => {
-		let hit = cells[title]?.hit || false;
-		return hit;
-	});
-
-	const isOccupied = useSelector(({ cells }) => {
-		let isOccupied = cells[title]?.occupy.isOccupied;
-		return isOccupied;
-	});
-
+	const isHit = useSelector((s) => getIsHit(s, cellId));
+	const occupyObj = useSelector((s) => getIsOccupuied(s, cellId));
+	const selectedShipPlacing = useSelector(getSelectedShip);
+	const timeline = useSelector(getTimeline);
+	const handleCellClick = () => {
+		if (timeline.placing) {
+			let isVaildLocation =
+				selectedShipPlacing === ""
+					? null
+					: validateShipLocation(row, col, selectedShipPlacing);
+			if (isVaildLocation)
+				dispatch(occupyCell(row, col, selectedShipPlacing));
+		}
+	};
 	return (
 		<>
 			<div
@@ -30,16 +63,17 @@ const Cell = ({ col, row }) => {
 				w-[9%] h-8 md:h-[100%]
 				 bg-indigo-400 m-[2px] rounded-full flex items-center justify-center hover:bg-yeelow  
 				`}
+				onClick={handleCellClick}
 			>
-				{/* {generateCellId(row, col)} */}
+				{occupyObj.isOccupied ? (
+					<img
+						src={getOcuupierImageSrc(occupyObj.occupier)}
+						alt={occupyObj.occupier}
+					/>
+				) : null}
 			</div>
 		</>
 	);
 };
 
 export default Cell;
-/* w-8 h-8 lg:w-12
-				md:h-12 md:w-12
-				lg:h-12
-				xl:w-16  xl:h-14 
-				*/

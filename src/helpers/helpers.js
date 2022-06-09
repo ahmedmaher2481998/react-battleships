@@ -47,9 +47,9 @@ export const validateShipLocation = (row, col, ship) => {
 			break;
 		default:
 			return;
-			break;
 	}
-	if( 
-		row + shipSize 
-	)
+
+	if (col + shipSize <= 10) {
+		return true;
+	} else return false;
 };
