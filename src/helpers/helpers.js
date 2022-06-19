@@ -48,8 +48,10 @@ export const validateShipLocation = (row, col, ship) => {
 		default:
 			return;
 	}
+	const size = col + shipSize;
 
-	if (col + shipSize <= 10) {
+	if (size <= 10) {
+		console.log(shipSize, generateCellId(row, col));
 		return true;
 	} else return false;
 };
