@@ -1,7 +1,8 @@
 import {
+	ROW_SIZE,
 	generateCellId,
 	createGrid,
-	ROW_SIZE,
 	validateShipLocation,
 } from "./helpers";
-export { generateCellId, createGrid, ROW_SIZE, validateShipLocation };
+
+export { ROW_SIZE, generateCellId, createGrid, validateShipLocation };
