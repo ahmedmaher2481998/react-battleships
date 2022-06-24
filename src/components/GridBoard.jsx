@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 
-import { ROW_SIZE, createGrid } from "../helpers";
+// import { ROW_SIZE, createGrid } from "../helpers";
+import { createGrid, ROW_SIZE } from "../helpers";
 import {
 	getSelectedShip,
 	getPlacingStatus,
@@ -11,6 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 const GridBoard = () => {
 	const dispatch = useDispatch();
 	const { rows, cellsState } = createGrid(ROW_SIZE);
+	// const { rows, cellsState } = createGrid(10);
 	const selectedShip = useSelector((s) => getSelectedShip(s));
 	const placingStatus = useSelector((s) => getPlacingStatus(s));
 	useEffect(() => {

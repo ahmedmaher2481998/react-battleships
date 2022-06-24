@@ -26,6 +26,7 @@ export const createGrid = (size) => {
 };
 export const generateCellId = (row, col) => {
 	return row * ROW_SIZE + col - ROW_SIZE;
+	// return row * 10 + col - 10;
 };
 export const validateShipLocation = (row, col, ship) => {
 	let shipSize;
