@@ -35,7 +35,6 @@ const getOcuupierImageSrc = (ship) => {
 			return null;
 	}
 };
-
 const Cell = ({ col, row }) => {
 	const dispatch = useDispatch();
 	let cellId = `${generateCellId(row, col)}`;
