@@ -12,6 +12,26 @@ import {
 } from "../store";
 import { useDispatch, useSelector } from "react-redux";
 //end of imports
+const createGrid = (size) => {
+	let rows = [];
+	let cellsState = {};
+	//creating rows
+	for (let row = 1; row < size + 1; row++) {
+		let cells = [];
+		//creating cells
+		for (let col = 1; col < size + 1; col++) {
+			//creating grid
+			cells.push(
+				<Cell key={generateCellId(row, col)} row={row} col={col} />
+			);
+			//creating cells state
+			cellsState[`${generateCellId(row, col)}`] = initCellState(row, col);
+		}
+		rows.push(<Row key={row} cells={cells} row={row} />);
+	}
+
+	return { cellsState, rows };
+};
 
 const GridBoard = () => {
 	const dispatch = useDispatch();
@@ -19,29 +39,6 @@ const GridBoard = () => {
 	const selectedShip = useSelector((s) => getSelectedShip(s));
 	const placingStatus = useSelector((s) => getPlacingStatus(s));
 
-	const createGrid = (size) => {
-		let rows = [];
-		let cellsState = {};
-		//creating rows
-		for (let row = 1; row < size + 1; row++) {
-			let cells = [];
-			//creating cells
-			for (let col = 1; col < size + 1; col++) {
-				//creating grid
-				cells.push(
-					<Cell key={generateCellId(row, col)} row={row} col={col} />
-				);
-				//creating cells state
-				cellsState[`${generateCellId(row, col)}`] = initCellState(
-					row,
-					col
-				);
-			}
-			rows.push(<Row key={row} cells={cells} row={row} />);
-		}
-
-		return { cellsState, rows };
-	};
 	const { rows, cellsState } = createGrid(ROW_SIZE);
 
 	useEffect(() => {

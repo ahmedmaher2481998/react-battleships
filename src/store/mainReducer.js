@@ -13,7 +13,11 @@ const initState = {
 		placing: false,
 	},
 	slected: "",
-	placingStatus: false,
+	placing: {
+		placingStatus: false,
+		type: "V",
+		postion: "start",
+	},
 };
 
 //actions types
@@ -32,6 +36,8 @@ export const TIMELINE = {
 	GAME_BATTLE,
 	GAME_END,
 };
+const CHANGER_PLACING_TYPE = "placing/placingtype";
+const CHANGER_PLACING_POSTION = "placing/placingpostion";
 //actions
 export const ChangeHeadMessage = (msg) => {
 	return {
@@ -64,21 +70,38 @@ export const changeGameState = (state) => {
 			return { type: "ERROR" };
 	}
 };
+export const changePlacingType = (type) => {
+	return {
+		type: CHANGER_PLACING_TYPE,
+		payload: {
+			type,
+		},
+	};
+};
+export const changePlacingPostion = (postion) => {
+	return {
+		type: CHANGER_PLACING_POSTION,
+		payload: {
+			postion,
+		},
+	};
+};
 //reducers
 export const mainReducer = (state = initState, action) => {
 	const newState = { ...state };
-	switch (action.type) {
+	const { type, payload } = action;
+	switch (type) {
 		case CHANGE_HEAD_MESSAGE:
-			newState.headMessage = action.payload;
+			newState.headMessage = payload;
 			return newState;
 		case SELECT_FLEET_SHIP:
-			newState.slected = action.payload;
+			newState.slected = payload;
 			return newState;
 		case SET_PLAYER_NAME:
-			newState.player.name = action.payload;
+			newState.player.name = payload;
 			return newState;
 		case END_PLACING:
-			newState.placingStatus = true;
+			newState.placing.placingStatus = true;
 			return newState;
 		case GAME_START:
 			newState.timeLine.start = true;
@@ -94,6 +117,12 @@ export const mainReducer = (state = initState, action) => {
 		case GAME_END:
 			newState.timeLine.battle = false;
 			newState.timeLine.end = true;
+			return newState;
+		case CHANGER_PLACING_POSTION:
+			newState.placing.postion = payload.postion;
+			return newState;
+		case changePlacingType:
+			newState.placing.type = payload.type;
 			return newState;
 
 		default:

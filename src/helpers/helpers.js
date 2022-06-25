@@ -1,12 +1,13 @@
 //size of grid
 export const ROW_SIZE = 10;
-
 export const generateCellId = (row, col) => {
 	return row * ROW_SIZE + col - ROW_SIZE;
-	// return row * 10 + col - 10;
 };
-export const validateShipLocation = (row, col, ship) => {
+//takes the coordinates of the cell and returns an obj {}
+//the returned obj has array of cells ocupied in case the validity of the ocuupition is true
+export const validateShipLocation = (row, col, ship, type, postion) => {
 	let shipSize;
+	//getting the size of the ship
 	switch (ship) {
 		case "boat":
 			shipSize = 1;
@@ -26,10 +27,49 @@ export const validateShipLocation = (row, col, ship) => {
 		default:
 			return;
 	}
-	const size = col + shipSize;
+	//the id of the clicked cell
+	const id = +generateCellId(row, col);
+	let placingIsVaild, size;
+	// placment type from start ? end ? center ?
+	if (type === "H") {
+		//horizontal placing
+		if (postion === "start") {
+			// from start
+			size = id + shipSize - 1;
+			placingIsVaild = size <= row * 10;
+		} else if (postion === "center") {
+			// from center
+			size = id + Math.floor(shipSize / 2);
+			const placingIsVaild = size - 1 >= row * 10;
+		} else if (postion === "end") {
+			//from the end
+			size = id - shipSize + 1;
+			const placing = size > (row - 1) * 10;
+		}
+	} else if (type === "V") {
+		// from start
+		const size = id + (shipSize - 1) * 10;
+		const placing = size <= 9 * 10 * col;
+	}
 
-	if (size <= 10) {
-		// console.log(shipSize, generateCellId(row, col));
-		return true;
-	} else return false;
+	// vertical placing
+	// from center
+	// const size = id + Math.floor(shipSize / 2);
+	// const placing = size - 1 >= col * 10
+	//from the end
+	// const size = id - shipSize + 1;
+	// const placing = size > (col - 1) * 10;
+
+	console.log("**************");
+	console.log(
+		"size " + size,
+		"sipsize " + shipSize,
+		"placingIsVaild " + placingIsVaild,
+		" 9 * 10 * col",
+		9 * 10 * col,
+		"row,col " + row,
+		col,
+		"id " + generateCellId(row, col)
+	);
+	console.log("**************");
 };

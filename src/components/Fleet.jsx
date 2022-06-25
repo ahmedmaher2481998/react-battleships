@@ -5,6 +5,10 @@ import {
 	getSelectedShip,
 	endPlacing,
 	getPlacingStatus,
+	ChangeHeadMessage,
+	changeGameState,
+	changePlacingPostion,
+	changePlacingType,
 } from "../store";
 import { boat, battlesShip, submarine, ship, carrier } from "../assests";
 import { Link } from "react-router-dom";
@@ -17,13 +21,14 @@ const Fleet = () => {
 	const selected = (nameOfShip) => {
 		dispatch(placeShip(nameOfShip));
 	};
+
 	const isPlaced = (shipName) => {
 		if (fleet.includes(shipName)) {
+			dispatch(ChangeHeadMessage("Now Placing " + shipName));
 			return "hidden";
 		} else return null;
 	};
-	// console.log(selectedShip);
-	// console.log(fleet);
+
 	useEffect(() => {
 		if (selectedShip !== "") {
 			setFleet([...fleet, selectedShip]);
@@ -34,11 +39,36 @@ const Fleet = () => {
 			}
 		}
 	}, [selectedShip]);
+
 	return (
 		<>
 			<div className={placingStatus ? "hidden" : null}>
-				<div className=' absolute'>
+				<div className=' absolute   '>
 					<div className='relative   left-0 top-0' id='fleet'>
+						<div className='-mt-16 max-w-[8rem]  sm:max-w-none '>
+							<button
+								onClick={dispatch(
+									changePlacingPostion("start")
+								)}
+								className='btn mx-2'
+							>
+								Start
+							</button>
+							<button
+								onClick={dispatch(
+									changePlacingPostion("center")
+								)}
+								className='btn mx-2'
+							>
+								Center
+							</button>
+							<button
+								onClick={dispatch(changePlacingPostion("cnd"))}
+								className='btn mx-2'
+							>
+								End
+							</button>
+						</div>
 						<div className='flex md:flex-col text-center'>
 							<span
 								onClick={() => {
@@ -106,7 +136,7 @@ const Fleet = () => {
 					<div className=' absolute'>
 						<button className=' relative top-10 md:top-40 md:left-10 left-40 btn w-[100%] mx-auto my-auto'>
 							<Link to={"/battle"}>Start Battle</Link>
-						</button>{" "}
+						</button>
 					</div>
 				</>
 			) : null}

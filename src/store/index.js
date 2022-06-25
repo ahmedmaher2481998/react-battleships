@@ -1,5 +1,5 @@
 import { configStore } from "./store";
-import { ChangeHeadMessage } from "./mainReducer";
+
 import {
 	getHeadMessage,
 	getSelectedShip,
@@ -7,9 +7,14 @@ import {
 	getIsOccupuied,
 	getTimeline,
 	getIsHit,
+	getPlacingPostion,
+	getPlacingType,
 } from "./selectores";
 import { initCells, cellHit, occupyCell } from "./cellReducer";
 import {
+	ChangeHeadMessage,
+	changePlacingPostion,
+	changePlacingType,
 	TIMELINE,
 	setPlayerName,
 	placeShip,
@@ -33,4 +38,8 @@ export {
 	getSelectedShip,
 	endPlacing,
 	changeGameState,
+	changePlacingPostion,
+	changePlacingType,
+	getPlacingPostion,
+	getPlacingType,
 };
