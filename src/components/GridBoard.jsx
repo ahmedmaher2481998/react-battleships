@@ -1,11 +1,9 @@
 import React, { useEffect } from "react";
-
 import Cell from "./Cell";
 import Row from "./Row";
 import { generateCellId } from "../helpers";
 import { initCellState } from "../store/cellReducer";
 import { ROW_SIZE } from "../helpers";
-
 import {
 	getSelectedShip,
 	getPlacingStatus,
@@ -13,6 +11,8 @@ import {
 	changeGameState,
 } from "../store";
 import { useDispatch, useSelector } from "react-redux";
+//end of imports
+
 const GridBoard = () => {
 	const dispatch = useDispatch();
 	// const { rows, cellsState } = createGrid(10);

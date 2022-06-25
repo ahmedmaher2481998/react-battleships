@@ -29,7 +29,7 @@ export const validateShipLocation = (row, col, ship) => {
 	const size = col + shipSize;
 
 	if (size <= 10) {
-		console.log(shipSize, generateCellId(row, col));
+		// console.log(shipSize, generateCellId(row, col));
 		return true;
 	} else return false;
 };

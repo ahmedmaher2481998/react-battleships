@@ -1,5 +1,5 @@
 import { generateCellId } from "../helpers/helpers";
-
+export const getName = (state) => state.main.player.name;
 export const getHeadMessage = (state) => {
 	const msg = state.main.headMessage || " ";
 	return msg;
@@ -11,7 +11,7 @@ export const getIsHit = ({ cells }, cellId) => {
 	return hit;
 };
 export const getIsOccupuied = ({ cells }, cellId) => {
-	console.log("this is it " + Object.keys(cells));
+	// console.log("this is it " + Object.keys(cells));
 	let eccupyObj = cells[cellId]?.occupy || {};
 	return eccupyObj;
 };

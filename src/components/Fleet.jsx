@@ -27,9 +27,9 @@ const Fleet = () => {
 	useEffect(() => {
 		if (selectedShip !== "") {
 			setFleet([...fleet, selectedShip]);
-			console.log(fleet.length);
+			// console.log(fleet.length);
 			if (fleet.length === 4) {
-				console.log("done");
+				// console.log("done");
 				dispatch(endPlacing());
 			}
 		}
