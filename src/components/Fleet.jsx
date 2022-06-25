@@ -22,8 +22,8 @@ const Fleet = () => {
 			return "hidden";
 		} else return null;
 	};
-	console.log(selectedShip);
-	console.log(fleet);
+	// console.log(selectedShip);
+	// console.log(fleet);
 	useEffect(() => {
 		if (selectedShip !== "") {
 			setFleet([...fleet, selectedShip]);

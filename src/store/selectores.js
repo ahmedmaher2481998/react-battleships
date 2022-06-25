@@ -11,7 +11,8 @@ export const getIsHit = ({ cells }, cellId) => {
 	return hit;
 };
 export const getIsOccupuied = ({ cells }, cellId) => {
-	let eccupyObj = cells[cellId]?.occupy;
+	console.log("this is it " + Object.keys(cells));
+	let eccupyObj = cells[cellId]?.occupy || {};
 	return eccupyObj;
 };
 export const getTimeline = ({ main }) => {

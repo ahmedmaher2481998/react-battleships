@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { cellHit, occupyCell } from "../store";
 
-import { generateCellId, validateShipLocation } from "../helpers";
+import { generateCellId, validateShipLocation } from "../helpers/helpers";
 
 import {
 	battlesShip,
