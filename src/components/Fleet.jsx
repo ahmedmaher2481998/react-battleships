@@ -10,6 +10,7 @@ import {
 	changePlacingPostion,
 	changePlacingType,
 } from "../store";
+import { ToastContainer, toast } from "react-toastify";
 import { boat, battlesShip, submarine, ship, carrier } from "../assests";
 import { Link } from "react-router-dom";
 
@@ -47,23 +48,28 @@ const Fleet = () => {
 					<div className='relative   left-0 top-0' id='fleet'>
 						<div className='-mt-16 max-w-[8rem]  sm:max-w-none '>
 							<button
-								onClick={dispatch(
-									changePlacingPostion("start")
-								)}
+								onClick={() => {
+									dispatch(changePlacingPostion("start"));
+									toast("Ship postioin now Is start");
+								}}
 								className='btn mx-2'
 							>
 								Start
 							</button>
 							<button
-								onClick={dispatch(
-									changePlacingPostion("center")
-								)}
+								onClick={() => {
+									dispatch(changePlacingPostion("center"));
+									toast("Ship postioin now Is center");
+								}}
 								className='btn mx-2'
 							>
 								Center
 							</button>
 							<button
-								onClick={dispatch(changePlacingPostion("cnd"))}
+								onClick={() => {
+									dispatch(changePlacingPostion("end"));
+									toast("Ship postioin now Is end");
+								}}
 								className='btn mx-2'
 							>
 								End

@@ -4,6 +4,7 @@ import { GridBoard } from "../components";
 import { Fleet } from "../components";
 import { changeGameState, ChangeHeadMessage } from "../store";
 import { getHeadMessage, getName } from "../store/selectores";
+import { ToastContainer } from "react-toastify";
 const PlacingPage = () => {
 	const name = useSelector((s) => getName(s));
 	const dispatch = useDispatch();
@@ -15,6 +16,7 @@ const PlacingPage = () => {
 	}, [dispatch, name]);
 	return (
 		<div className=' grid grid-cols-6 grid-rows-9 gap-4 p-2 bg-mainblue text-bage h-[var(--contentHeight)]'>
+			<ToastContainer />
 			<h1 className='text-2xl md:col-span-9 md:row-start-1 md:my-auto col-span-3 row-start-1 row-end-2 text-black mx-auto font-bold'>
 				{headMsg}
 			</h1>

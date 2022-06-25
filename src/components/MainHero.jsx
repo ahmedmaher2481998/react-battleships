@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { setPlayerName } from "../store";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+
 const MainHero = () => {
 	const [name, changeName] = useState("");
 	const dispatch = useDispatch();
