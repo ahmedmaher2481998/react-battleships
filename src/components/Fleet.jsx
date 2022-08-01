@@ -19,6 +19,7 @@ const Fleet = () => {
 	const dispatch = useDispatch();
 	const selectedShip = useSelector((s) => getSelectedShip(s));
 	const placingStatus = useSelector((s) => getPlacingStatus(s));
+	const [holdPosition, setHoldPosition] = useState("start");
 	const selected = (nameOfShip) => {
 		dispatch(placeShip(nameOfShip));
 	};
@@ -33,9 +34,7 @@ const Fleet = () => {
 	useEffect(() => {
 		if (selectedShip !== "") {
 			setFleet([...fleet, selectedShip]);
-			// console.log(fleet.length);
 			if (fleet.length === 4) {
-				// console.log("done");
 				dispatch(endPlacing());
 			}
 		}
@@ -47,33 +46,22 @@ const Fleet = () => {
 				<div className=' absolute   '>
 					<div className='relative   left-0 top-0' id='fleet'>
 						<div className='-mt-16 max-w-[8rem]  sm:max-w-none '>
-							<button
-								onClick={() => {
-									dispatch(changePlacingPostion("start"));
-									toast("Ship postioin now Is start");
+							<select
+								id='holdingPosition'
+								name='holdingPosition'
+								value={holdPosition}
+								onChange={(e) => {
+									setHoldPosition((pre) => e.target.value);
+									console.log(holdPosition);
+									dispatch(changePlacingPostion(holdPosition));
+									toast.success(`Ship position now Is  ${holdPosition}`);
 								}}
-								className='btn mx-2'
+								class='mt-1 block w-full py-2 px-3 border text-3xl  text-white border-gray-300 bg-mainmeduimblue rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm'
 							>
-								Start
-							</button>
-							<button
-								onClick={() => {
-									dispatch(changePlacingPostion("center"));
-									toast("Ship postioin now Is center");
-								}}
-								className='btn mx-2'
-							>
-								Center
-							</button>
-							<button
-								onClick={() => {
-									dispatch(changePlacingPostion("end"));
-									toast("Ship postioin now Is end");
-								}}
-								className='btn mx-2'
-							>
-								End
-							</button>
+								<option value='start'>Start</option>
+								<option value='center'>Center</option>
+								<option value='end'>End</option>
+							</select>
 						</div>
 						<div className='flex md:flex-col text-center'>
 							<span
@@ -100,11 +88,7 @@ const Fleet = () => {
 								}}
 								className={isPlaced("submarine")}
 							>
-								<img
-									src={submarine}
-									alt='submarine'
-									className='item'
-								/>
+								<img src={submarine} alt='submarine' className='item' />
 								<p>submarine(3)</p>
 							</span>
 							<span
@@ -113,11 +97,7 @@ const Fleet = () => {
 								}}
 								className={isPlaced("battlesShip")}
 							>
-								<img
-									src={battlesShip}
-									alt='battlesShip'
-									className='item'
-								/>
+								<img src={battlesShip} alt='battlesShip' className='item' />
 								<p>battlesShip(4)</p>
 							</span>
 							<span
@@ -126,11 +106,7 @@ const Fleet = () => {
 								}}
 								className={isPlaced("carrier")}
 							>
-								<img
-									src={carrier}
-									alt='carrier'
-									className='item'
-								/>
+								<img src={carrier} alt='carrier' className='item' />
 								<p>Carrier(5) </p>
 							</span>
 						</div>
