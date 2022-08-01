@@ -38,18 +38,30 @@ export const validateShipLocation = (row, col, ship, type, postion) => {
 			size = id + shipSize - 1;
 			placingIsVaild = size <= row * 10;
 		} else if (postion === "center") {
-			// from center
+			// from center may not work
 			size = id + Math.floor(shipSize / 2);
-			const placingIsVaild = size - 1 >= row * 10;
+			let size2 = id - Math.floor(shipSize / 2);
+			placingIsVaild = size - 1 >= row * 10 || size2 - 1 <= row * 10;
 		} else if (postion === "end") {
 			//from the end
 			size = id - shipSize + 1;
-			const placing = size > (row - 1) * 10;
+			placingIsVaild = size > (row - 1) * 10;
 		}
 	} else if (type === "V") {
-		// from start
-		const size = id + (shipSize - 1) * 10;
-		const placing = size <= 9 * 10 * col;
+		if (postion === "start") {
+			// from start
+			size = id + (shipSize - 1) * 10;
+			placingIsVaild = size <= 9 * 10 + col;
+		} else if (postion === "center") {
+			size = id + (Math.floor(shipSize / 2) - 1) * 10;
+			let size2 = id - (Math.floor(shipSize / 2) - 1) * 10;
+			placingIsVaild = size <= 9 * 10 + col || size2 > col;
+			console.log(
+				`${size2}<= 9*10 + ${col} || ${size2} >${col}${
+					size <= 9 * 10 + col || size2 > col
+				}`
+			);
+		}
 	}
 
 	// vertical placing
@@ -72,4 +84,5 @@ export const validateShipLocation = (row, col, ship, type, postion) => {
 		"id " + generateCellId(row, col)
 	);
 	console.log("**************");
+	//when done send true if vaild or false if not valid and then send the array of cells that need to be occupied
 };
