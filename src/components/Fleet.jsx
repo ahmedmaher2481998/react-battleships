@@ -51,7 +51,7 @@ const Fleet = () => {
 								name='holdingPosition'
 								value={holdPosition}
 								onChange={(e) => {
-									setHoldPosition((pre) => e.target.value);
+									setHoldPosition(() => e.target.value);
 									console.log(holdPosition);
 									dispatch(changePlacingPostion(holdPosition));
 									toast.success(`Ship position now Is  ${holdPosition}`);
