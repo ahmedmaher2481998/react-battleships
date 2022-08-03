@@ -15,9 +15,9 @@ export const initCellState = (row, col) => {
 //actions type
 export const INIT_CELLS = "start/Create/Cell";
 const CELL_HIT = "combat/change/CellHit";
-const CELL_OCCUPY = "comabt/change/CellOcupy";
-//hit cell , ocupy cell ,
-//action creartors
+const CELL_OCCUPY = "combat/change/CellOccupy";
+//hit cell , occupy cell ,
+//action creators
 export const initCells = (cells) => {
 	return {
 		type: INIT_CELLS,

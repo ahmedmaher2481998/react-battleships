@@ -5,5 +5,15 @@ import explosion from "./explosion.png";
 import submarine from "./submarine.png";
 import heroVideo from "./herovideo.mp4";
 import carrier from "./Carrier.png";
+import image404 from "./404.jpg";
 //exporting assests for use
-export { heroVideo, battlesShip, ship, submarine, boat, explosion, carrier };
+export {
+	heroVideo,
+	image404,
+	battlesShip,
+	ship,
+	submarine,
+	boat,
+	explosion,
+	carrier,
+};

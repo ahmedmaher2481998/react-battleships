@@ -12,6 +12,7 @@ import {
 	PlacingPage,
 } from "./pages";
 import { Footer } from "./components";
+import NotFound from "./pages/404";
 function App() {
 	return (
 		<>
@@ -22,6 +23,7 @@ function App() {
 				<Route path='/result' element={<ResultsPage />} />
 				<Route path='/placing' element={<PlacingPage />} />
 				<Route path='/battle' element={<BattlePage />} />
+				<Route path='*' element={<NotFound />} />
 			</Routes>
 
 			<Footer />
