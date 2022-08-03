@@ -27,7 +27,7 @@ const MainHero = () => {
     '
 		>
 			<ToastContainer />
-			<h1 className='mb-auto hover:text-bage text-mainheavyblue font-bold tracking-wide text-4xl'>
+			<h1 className='mb-auto hover:text-mainheavyblue text-bage  font-bold tracking-wide text-4xl'>
 				Welcome to BattleShip{" "}
 			</h1>
 			<div className='w-screen  h-screen -z-10 absolute'>
@@ -47,7 +47,7 @@ const MainHero = () => {
 						Please enter Your name
 					</label>
 					<input
-						className='inputtext'
+						className='inputtext focus:outline-hidden '
 						type='text'
 						id='name'
 						value={name}
