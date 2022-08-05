@@ -19,3 +19,13 @@
 
 2. moving to battle page
 3. then results page
+
+- how should the game go
+
+* welcome page + get players name /protect other routes with name
+* rules if needed else placing page
+* place ship H/V and show hover effect and after placing a ship it disappears from the fleet
+* battle when your turn hit other player map and show hit or miss
+* when it's pc turn randomly hit an un hit cell and turn switch turns
+* use the main message to notify the player id it's his turn
+* show results and store then in local storage
