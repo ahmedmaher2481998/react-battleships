@@ -29,6 +29,7 @@ export const validateShipLocation = (row, col, ship, type, postion) => {
 	}
 	//the id of the clicked cell
 	const id = +generateCellId(row, col);
+
 	let placingIsVaild, size;
 	// placment type from start ? end ? center ?
 	if (type === "H") {
@@ -84,5 +85,5 @@ export const validateShipLocation = (row, col, ship, type, postion) => {
 		"id " + generateCellId(row, col)
 	);
 	console.log("**************");
-	//when done send true if vaild or false if not valid and then send the array of cells that need to be occupied
+	//when done send true if valid or false if not valid and then send the array of cells that need to be occupied
 };

@@ -2,6 +2,12 @@
 
 > ### this is a battleShip game made using react/redux/ tailwindCss and other helping libraries
 
+## todo today
+
+- can't select ship before place the selected ship
+- when select a ship on hover effects the cells that should be placed upon
+- upon click while a ship is selected place the ship and change the cells status to occupied by the ship
+
 ## todo
 
 1. placing
