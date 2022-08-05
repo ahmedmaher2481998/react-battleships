@@ -1,14 +1,19 @@
 import React from "react";
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Head } from "../components";
+import { getName } from "../store/selectors";
 const RulesPage = () => {
-	const Naviagte = useNavigate();
-	const name = useSelector((s) => s.main.player.name);
+	const Navigate = useNavigate();
+	const name = useSelector((s) => getName(s));
 	const startGame = (e) => {
 		e.preventDefault();
-		Naviagte("/placing", { replace: true });
+		Navigate("/placing", { replace: true });
 	};
+	useEffect(() => {
+		if (name === "") Navigate("/");
+	}, []);
 
 	const gameObjectives = `	The object of Battleship is to try and sink all of the
 						other player's before they sink all of your ships. All
@@ -47,7 +52,7 @@ const RulesPage = () => {
 			<Head title={"BattleShip | Rules"} />
 			<div className='p-4 felx h-full md:h-[var(--contentHeight)] flex-col items-center  justify-start flex bg-mainmeduimblue  w-screen '>
 				<div className=' mb-2 text-mainheavyblue text-6xl hover:text-bage '>
-					Welcome {name ? name : "player"}.
+					Welcome {name}.
 				</div>
 				<div className='text-3xl  text-bage'>
 					Please read the rules if you don't know it .

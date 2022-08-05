@@ -1,11 +1,13 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { Fleet, GridBoard, Head } from "../components";
 import { ChangeHeadMessage } from "../store";
 import { getHeadMessage, getName } from "../store/selectors";
 import { ToastContainer } from "react-toastify";
 
 const PlacingPage = () => {
+	const Navigate = useNavigate();
 	const name = useSelector((s) => getName(s));
 	const dispatch = useDispatch();
 	const headMsg = useSelector((s) => getHeadMessage(s));
@@ -14,7 +16,10 @@ const PlacingPage = () => {
 		//just taking the first name
 		dispatch(ChangeHeadMessage("Place Your Fleet " + name.split(" ")[0]));
 	}, [dispatch, name]);
-
+	useEffect(() => {
+		if (name === "") Navigate("/");
+		//eslint-disable-next-line
+	}, []);
 	return (
 		<>
 			<Head title={"BattleShip | Placing ships"} />

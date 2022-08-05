@@ -14,7 +14,7 @@ const NotFound = () => {
 			h-[var(--contentHeight)]'
 			>
 				<img
-					className='w-[60%] rounded-lg'
+					className='w-[60%] rounded-lg lg:max-w-xl'
 					src={image404}
 					alt='Not found img'
 				/>

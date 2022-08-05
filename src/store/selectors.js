@@ -1,6 +1,5 @@
 export const getName = (state) => {
-	let name =
-		state.main.player.name === "" ? "player 1" : state.main.player.name;
+	let name = state.main.player.name;
 	return name;
 };
 export const getHeadMessage = (state) => {
