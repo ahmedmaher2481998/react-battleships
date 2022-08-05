@@ -1,4 +1,4 @@
-import { generateCellId } from "../helpers/helpers";
+import { generateCellId } from "../../helpers/helpers";
 
 export const initCellState = (row, col) => {
 	return {

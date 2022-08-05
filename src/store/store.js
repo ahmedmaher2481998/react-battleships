@@ -1,6 +1,6 @@
 import { createStore, combineReducers, compose, applyMiddleware } from "redux";
-import { mainReducer } from "./mainReducer";
-import { cellReducer } from "./cellReducer";
+import { mainReducer } from "./main/mainReducer";
+import { cellReducer } from "./cells/cellReducer";
 
 const RootReducer = combineReducers({
 	main: mainReducer,

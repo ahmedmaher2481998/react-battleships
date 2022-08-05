@@ -9,16 +9,16 @@ export const getHeadMessage = (state) => {
 	const msg = state.main.headMessage || " ";
 	return msg;
 };
-export const getSelectedShip = (s) => s.main.slected;
+export const getSelectedShip = (s) => s.main.selectedShip;
 export const getPlacingStatus = (s) => s.main.placing.placingStatus;
 export const getIsHit = ({ cells }, cellId) => {
 	let hit = cells[cellId]?.hit || false;
 	return hit;
 };
-export const getIsOccupuied = ({ cells }, cellId) => {
+export const getIsOccupied = ({ cells }, cellId) => {
 	// console.log("this is it " + Object.keys(cells));
-	let eccupyObj = cells[cellId]?.occupy || {};
-	return eccupyObj;
+	let occupyObj = cells[cellId]?.occupy || {};
+	return occupyObj;
 };
 export const getTimeline = ({ main }) => {
 	return main.timeLine;
@@ -26,4 +26,4 @@ export const getTimeline = ({ main }) => {
 
 export const getCellById = (s, cellId) => s.main.cells[cellId];
 export const getPlacingType = (s) => s.main.placing.type;
-export const getPlacingPostion = (s) => s.main.placing.postion;
+export const getPlacingPosition = (s) => s.main.placing.position;

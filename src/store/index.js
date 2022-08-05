@@ -4,13 +4,13 @@ import {
 	getHeadMessage,
 	getSelectedShip,
 	getPlacingStatus,
-	getIsOccupuied,
+	getIsOccupied,
 	getTimeline,
 	getIsHit,
 	getPlacingPostion,
 	getPlacingType,
 } from "./selectors";
-import { initCells, cellHit, occupyCell } from "./cellReducer";
+import { initCells, cellHit, occupyCell } from "./cells/cellReducer";
 import {
 	ChangeHeadMessage,
 	changePlacingPostion,
@@ -20,11 +20,13 @@ import {
 	placeShip,
 	endPlacing,
 	changeGameState,
-} from "./mainReducer";
+} from "./main/mainReducer";
+
+//exports
 export {
 	getHeadMessage,
 	getPlacingStatus,
-	getIsOccupuied,
+	getIsOccupied as getIsOccupuied,
 	getTimeline,
 	getIsHit,
 	initCells,

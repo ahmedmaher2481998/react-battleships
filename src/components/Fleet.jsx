@@ -27,6 +27,7 @@ const Fleet = () => {
 	const isPlaced = (shipName) => {
 		if (fleet.includes(shipName)) {
 			dispatch(ChangeHeadMessage("Now Placing " + shipName));
+
 			return "hidden";
 		} else return null;
 	};

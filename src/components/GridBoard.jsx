@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import Cell from "./Cell";
 import Row from "./Row";
 import { generateCellId } from "../helpers";
-import { initCellState } from "../store/cellReducer";
+import { initCellState } from "../store/cells/cellReducer";
 import { ROW_SIZE } from "../helpers";
 import {
 	getSelectedShip,
@@ -21,9 +21,7 @@ const createGrid = (size) => {
 		//creating cells
 		for (let col = 1; col < size + 1; col++) {
 			//creating grid
-			cells.push(
-				<Cell key={generateCellId(row, col)} row={row} col={col} />
-			);
+			cells.push(<Cell key={generateCellId(row, col)} row={row} col={col} />);
 			//creating cells state
 			cellsState[`${generateCellId(row, col)}`] = initCellState(row, col);
 		}
