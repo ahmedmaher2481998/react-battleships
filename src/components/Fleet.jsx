@@ -5,14 +5,26 @@ import {
 	getSelectedShip,
 	getPlacingStatus,
 	ChangeHeadMessage,
-	changeGameState,
 	changePlacingPosition,
-	changePlacingType,
 } from "../store";
-import { ToastContainer, toast } from "react-toastify";
 import { boat, battlesShip, submarine, ship, carrier } from "../assets";
+import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
-
+const FleetShip = ({ img, name, selected, cells, isPlaced }) => {
+	return (
+		<>
+			<span
+				onClick={() => {
+					selected({ name });
+				}}
+				className={isPlaced({ name })}
+			>
+				<img src={img} alt={name} className='item' />
+				<p>{`${name} (${cells})`}</p>
+			</span>
+		</>
+	);
+};
 const Fleet = () => {
 	const [fleet, setFleet] = useState([]);
 	const dispatch = useDispatch();
@@ -63,51 +75,41 @@ const Fleet = () => {
 							</select>
 						</div>
 						<div className='flex md:flex-col text-center'>
-							<span
-								onClick={() => {
-									selected("boat");
-								}}
-								className={isPlaced("boat")}
-							>
-								<img src={boat} alt='boat' className='item' />
-								<p>boat(1)</p>
-							</span>
-							<span
-								onClick={() => {
-									selected("ship");
-								}}
-								className={isPlaced("ship")}
-							>
-								<img src={ship} alt='ship' className='item' />
-								<p>ship(2)</p>
-							</span>
-							<span
-								onClick={() => {
-									selected("submarine");
-								}}
-								className={isPlaced("submarine")}
-							>
-								<img src={submarine} alt='submarine' className='item' />
-								<p>submarine(3)</p>
-							</span>
-							<span
-								onClick={() => {
-									selected("battlesShip");
-								}}
-								className={isPlaced("battlesShip")}
-							>
-								<img src={battlesShip} alt='battlesShip' className='item' />
-								<p>battlesShip(4)</p>
-							</span>
-							<span
-								onClick={() => {
-									selected("carrier");
-								}}
-								className={isPlaced("carrier")}
-							>
-								<img src={carrier} alt='carrier' className='item' />
-								<p>Carrier(5) </p>
-							</span>
+							<FleetShip
+								cells={1}
+								img={boat}
+								isPlaced={isPlaced}
+								selected={selected}
+								name={"boat"}
+							/>
+							<FleetShip
+								cells={2}
+								img={ship}
+								isPlaced={isPlaced}
+								selected={selected}
+								name={"ship"}
+							/>
+							<FleetShip
+								cells={3}
+								img={submarine}
+								isPlaced={isPlaced}
+								selected={selected}
+								name={"submarine"}
+							/>
+							<FleetShip
+								cells={4}
+								img={battlesShip}
+								isPlaced={isPlaced}
+								selected={selected}
+								name={"battlesShip"}
+							/>
+							<FleetShip
+								cells={4}
+								img={carrier}
+								isPlaced={isPlaced}
+								selected={selected}
+								name={"carrier"}
+							/>
 						</div>
 					</div>
 				</div>
