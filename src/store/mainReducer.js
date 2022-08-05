@@ -1,5 +1,5 @@
 import { type } from "@testing-library/user-event/dist/type";
-//inital state
+//initial state
 const initState = {
 	headMessage: "Welcome To BattleShip",
 	player: {

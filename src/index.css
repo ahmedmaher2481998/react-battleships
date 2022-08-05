@@ -31,10 +31,7 @@
 		@apply text-lg font-bold text-center;
 	}
 	.rule-content {
-		@apply text-lg font-thin;
-	}
-	.cursor-ship {
-		cursor: url(./assests/boat.png);
+		@apply text-lg  text-black;
 	}
 }
 

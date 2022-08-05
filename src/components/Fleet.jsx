@@ -19,7 +19,7 @@ const Fleet = () => {
 	const dispatch = useDispatch();
 	const selectedShip = useSelector((s) => getSelectedShip(s));
 	const placingStatus = useSelector((s) => getPlacingStatus(s));
-	const [holdPosition, setHoldPosition] = useState("start");
+	const [placingPosition, setPlacingPosition] = useState("v");
 	const selected = (nameOfShip) => {
 		dispatch(placeShip(nameOfShip));
 	};
@@ -47,20 +47,19 @@ const Fleet = () => {
 					<div className='relative   left-0 top-0' id='fleet'>
 						<div className='-mt-16 max-w-[8rem]  sm:max-w-none '>
 							<select
-								id='holdingPosition'
-								name='holdingPosition'
-								value={holdPosition}
+								id='placingPosition'
+								name='placingPosition'
+								value={placingPosition}
 								onChange={(e) => {
-									setHoldPosition(() => e.target.value);
-									console.log(holdPosition);
-									dispatch(changePlacingPostion(holdPosition));
-									toast.success(`Ship position now Is  ${holdPosition}`);
+									setPlacingPosition(() => e.target.value);
+									console.log(placingPosition);
+									dispatch(changePlacingPostion(placingPosition));
+									toast.success(`Ship position now Is  ${placingPosition}`);
 								}}
 								class='mt-1 block w-full py-2 px-3 border text-3xl  text-white border-gray-300 bg-mainmeduimblue rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm'
 							>
-								<option value='start'>Start</option>
-								<option value='center'>Center</option>
-								<option value='end'>End</option>
+								<option value='v'>Vertical</option>
+								<option value='h'>Horizontal</option>
 							</select>
 						</div>
 						<div className='flex md:flex-col text-center'>
