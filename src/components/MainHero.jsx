@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { heroVideo } from "../assests";
+import { heroVideo } from "../assets";
 import { useDispatch } from "react-redux";
 import { setPlayerName } from "../store";
 import { useNavigate } from "react-router-dom";

@@ -7,26 +7,32 @@ import {
 	getIsOccupied,
 	getTimeline,
 	getIsHit,
-	getPlacingPostion,
+	getPlacingPosition,
 	getPlacingType,
 } from "./selectors";
-import { initCells, cellHit, occupyCell } from "./cells/cellReducer";
 import {
 	ChangeHeadMessage,
-	changePlacingPostion,
-	changePlacingType,
-	TIMELINE,
-	setPlayerName,
 	placeShip,
-	endPlacing,
-	changeGameState,
-} from "./main/mainReducer";
-
+	setPlayerName,
+	changePlacingPosition,
+	changePlacingStatus,
+} from "./main/actions";
+import {
+	CELL_HIT,
+	CELL_OCCUPY,
+	INIT_CELLS,
+	initCells,
+	cellHit,
+	occupyCell,
+} from "./cells/actions";
 //exports
 export {
 	getHeadMessage,
+	CELL_HIT,
+	CELL_OCCUPY,
+	INIT_CELLS,
 	getPlacingStatus,
-	getIsOccupied as getIsOccupuied,
+	getIsOccupied,
 	getTimeline,
 	getIsHit,
 	initCells,
@@ -34,14 +40,11 @@ export {
 	occupyCell,
 	configStore as storeConfig,
 	ChangeHeadMessage,
-	TIMELINE,
 	setPlayerName,
 	placeShip,
 	getSelectedShip,
-	endPlacing,
-	changeGameState,
-	changePlacingPostion,
-	changePlacingType,
-	getPlacingPostion,
+	getPlacingPosition,
 	getPlacingType,
+	changePlacingPosition,
+	changePlacingStatus,
 };

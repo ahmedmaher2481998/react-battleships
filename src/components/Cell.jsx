@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
 	cellHit,
-	getPlacingPostion,
+	getPlacingPosition,
 	getPlacingType,
 	occupyCell,
 } from "../store";
@@ -14,15 +14,16 @@ import {
 	boat,
 	carrier,
 	explosion,
-} from "../assests";
+} from "../assets";
 import {
 	getIsHit,
-	getIsOccupuied,
+	getIsOccupied,
 	getTimeline,
 	getSelectedShip,
+	getPlacingPostion,
 } from "../store/";
 //end imports
-const getOcuupierImageSrc = (ship) => {
+const getOccupierImageSrc = (ship) => {
 	switch (ship) {
 		case "boat":
 			return boat;
@@ -43,38 +44,32 @@ const Cell = ({ col, row }) => {
 	let cellId = `${generateCellId(row, col)}`;
 	const [cellContent, setCellContent] = useState(generateCellId(row, col));
 	const isHit = useSelector((s) => getIsHit(s, cellId));
-	const occupyObj = useSelector((s) => getIsOccupuied(s, cellId));
+	const occupyObj = useSelector((s) => getIsOccupied(s, cellId));
 	const selectedShipPlacing = useSelector(getSelectedShip);
 	const timeline = useSelector(getTimeline);
 	const type = useSelector((s) => getPlacingType(s));
-	const postion = useSelector((s) => getPlacingPostion(s));
+	const position = useSelector((s) => getPlacingPosition(s));
 
 	const handleCellClick = () => {
 		if (timeline.placing) {
-			let isVaildLocation =
+			let isValidLocation =
 				selectedShipPlacing === ""
 					? null
-					: validateShipLocation(
-							row,
-							col,
-							selectedShipPlacing,
-							type,
-							postion
-					  );
-			if (isVaildLocation)
-				dispatch(occupyCell(row, col, selectedShipPlacing));
+					: validateShipLocation(row, col, selectedShipPlacing, type, position);
+			if (isValidLocation) dispatch(occupyCell(row, col, selectedShipPlacing));
 		}
 	};
+
 	// 	data-id={`${generateCellId(row, col)}`}
 	return (
 		<>
 			<div
-				className={` w-[9%] h-8 md:h-[100%] bg-indigo-400 m-[2px] rounded-full flex items-center justify-center hover:bg-yeelow `}
+				className={` w-[9%] h-8 md:h-[100%] bg-indigo-400 m-[2px] rounded-full flex items-center justify-center hover:bg-verydarkblue `}
 				onClick={handleCellClick}
 			>
 				{occupyObj.isOccupied ? (
 					<img
-						src={getOcuupierImageSrc(occupyObj.occupier)}
+						src={getOccupierImageSrc(occupyObj.occupier)}
 						alt={occupyObj.occupier}
 					/>
 				) : null}

@@ -3,15 +3,14 @@ import { useDispatch, useSelector } from "react-redux";
 import {
 	placeShip,
 	getSelectedShip,
-	endPlacing,
 	getPlacingStatus,
 	ChangeHeadMessage,
 	changeGameState,
-	changePlacingPostion,
+	changePlacingPosition,
 	changePlacingType,
 } from "../store";
 import { ToastContainer, toast } from "react-toastify";
-import { boat, battlesShip, submarine, ship, carrier } from "../assests";
+import { boat, battlesShip, submarine, ship, carrier } from "../assets";
 import { Link } from "react-router-dom";
 
 const Fleet = () => {
@@ -36,7 +35,7 @@ const Fleet = () => {
 		if (selectedShip !== "") {
 			setFleet([...fleet, selectedShip]);
 			if (fleet.length === 4) {
-				dispatch(endPlacing());
+				// dispatch(endPlacing());
 			}
 		}
 	}, [selectedShip]);
@@ -54,7 +53,7 @@ const Fleet = () => {
 								onChange={(e) => {
 									setPlacingPosition(() => e.target.value);
 									console.log(placingPosition);
-									dispatch(changePlacingPostion(placingPosition));
+									dispatch(changePlacingPosition(placingPosition));
 									toast.success(`Ship position now Is  ${placingPosition}`);
 								}}
 								class='mt-1 block w-full py-2 px-3 border text-3xl  text-white border-gray-300 bg-mainmeduimblue rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm'

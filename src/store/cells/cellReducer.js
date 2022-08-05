@@ -1,5 +1,5 @@
 import { generateCellId } from "../../helpers/helpers";
-
+import { CELL_HIT, CELL_OCCUPY, INIT_CELLS } from "./actions";
 export const initCellState = (row, col) => {
 	return {
 		col,
@@ -12,24 +12,6 @@ export const initCellState = (row, col) => {
 	};
 };
 
-//actions type
-export const INIT_CELLS = "start/Create/Cell";
-const CELL_HIT = "combat/change/CellHit";
-const CELL_OCCUPY = "combat/change/CellOccupy";
-//hit cell , occupy cell ,
-//action creators
-export const initCells = (cells) => {
-	return {
-		type: INIT_CELLS,
-		payload: { ...cells },
-	};
-};
-export const cellHit = (row, col) => {
-	return { type: CELL_HIT, payload: { row, col } };
-};
-export const occupyCell = (row, col, ship) => {
-	return { type: CELL_OCCUPY, payload: { row, col, ship } };
-};
 //reducers
 export const cellReducer = (state = {}, { type, payload }) => {
 	let newState = { ...state };

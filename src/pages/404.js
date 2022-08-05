@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { image404 } from "../assests/index";
+import { image404 } from "../assets/index";
 import { Head } from "../components";
 
 const NotFound = () => {

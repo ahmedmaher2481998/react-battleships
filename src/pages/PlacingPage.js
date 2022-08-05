@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Fleet, GridBoard, Head } from "../components";
-import { changeGameState, ChangeHeadMessage } from "../store";
+import { ChangeHeadMessage } from "../store";
 import { getHeadMessage, getName } from "../store/selectors";
 import { ToastContainer } from "react-toastify";
 
@@ -10,7 +10,7 @@ const PlacingPage = () => {
 	const dispatch = useDispatch();
 	const headMsg = useSelector((s) => getHeadMessage(s));
 	useEffect(() => {
-		dispatch(changeGameState("placing"));
+		// dispatch(changeGameState("placing"));
 		//just taking the first name
 		dispatch(ChangeHeadMessage("Place Your Fleet " + name.split(" ")[0]));
 	}, [dispatch, name]);

@@ -8,7 +8,7 @@ import {
 	getSelectedShip,
 	getPlacingStatus,
 	initCells,
-	changeGameState,
+	// changeGameState,
 } from "../store";
 import { useDispatch, useSelector } from "react-redux";
 //end of imports
