@@ -7,5 +7,6 @@ import Cell from "./Cell";
 import GridWrapper from "./GridWrapper";
 import Row from "./Row";
 import GridBoard from "./GridBoard";
+import Head from "./Head";
 //exporting components
-export { MainHero, Footer, Fleet, GridBoard, Cell, Row, GridWrapper };
+export { Head, MainHero, Footer, Fleet, GridBoard, Cell, Row, GridWrapper };

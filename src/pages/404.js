@@ -1,11 +1,13 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { image404 } from "../assests/index";
+import { Head } from "../components";
 
 const NotFound = () => {
 	const navigate = useNavigate();
 	return (
 		<>
+			<Head title={"BattleShip | 404"} />
 			<div
 				className='bg-mainheavyblue
 			flex justify-center items-center gap-3 flex-col

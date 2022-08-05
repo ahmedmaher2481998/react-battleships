@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { Head } from "../components";
 const RulesPage = () => {
 	const Naviagte = useNavigate();
 	const name = useSelector((s) => s.main.player.name);
@@ -8,6 +9,7 @@ const RulesPage = () => {
 		e.preventDefault();
 		Naviagte("/placing", { replace: true });
 	};
+
 	const gameObjectives = `	The object of Battleship is to try and sink all of the
 						other player's before they sink all of your ships. All
 						of the other player's ships are somewhere on his/her
@@ -39,8 +41,10 @@ const RulesPage = () => {
 						red peg is placed on the top edge of the vertical board to indicate
 						a sunk ship. As soon as all of one player's ships have been sunk,
 						the game ends.`;
+
 	return (
 		<>
+			<Head title={"BattleShip | Rules"} />
 			<div className='p-4 felx h-full md:h-[var(--contentHeight)] flex-col items-center  justify-start flex bg-mainmeduimblue  w-screen '>
 				<div className=' mb-2 text-mainheavyblue text-6xl hover:text-bage '>
 					Welcome {name ? name : "player"}.

@@ -19,6 +19,7 @@ const MainHero = () => {
 			? navigate("/placing", { replace: true })
 			: navigate("/rules", { replace: true });
 	};
+
 	return (
 		<main
 			className=' 
@@ -54,6 +55,9 @@ const MainHero = () => {
 						placeholder='Your Name ? '
 						onChange={(e) => {
 							changeName(e.target.value);
+						}}
+						onKeyUp={(e) => {
+							if (e.key === "Enter") setName(e, false);
 						}}
 					/>
 				</div>

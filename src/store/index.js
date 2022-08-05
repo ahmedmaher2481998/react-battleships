@@ -9,7 +9,7 @@ import {
 	getIsHit,
 	getPlacingPostion,
 	getPlacingType,
-} from "./selectores";
+} from "./selectors";
 import { initCells, cellHit, occupyCell } from "./cellReducer";
 import {
 	ChangeHeadMessage,

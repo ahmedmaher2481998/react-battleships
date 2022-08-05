@@ -1,8 +1,9 @@
 import React from "react";
-import { MainHero } from "../components";
+import { Head, MainHero } from "../components";
 const WelcomePage = () => {
 	return (
 		<>
+			<Head title={"BattleShip | Welcome"} />
 			<MainHero />
 		</>
 	);
