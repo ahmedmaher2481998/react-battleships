@@ -1,16 +1,9 @@
 import React, { useEffect } from 'react';
 import Cell from './Cell';
 import Row from './Row';
-import { generateCellId, validateShipLocation } from '../helpers';
+import { generateCellId, validateShipLocation, ROW_SIZE } from '../helpers';
 import { initCellState } from '../store/cells/cellReducer';
-import { ROW_SIZE } from '../helpers';
-import {
-  getSelectedShip,
-  getPlacingStatus,
-  initCells,
-  occupyCell,
-  // changeGameState,
-} from '../store';
+import { initCells } from '../store';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { useState } from 'react';
@@ -50,9 +43,9 @@ const GridBoard = ({ pc }) => {
 
   const { pathname } = useLocation();
 
-  const selectedShip = useSelector((s) => getSelectedShip(s));
+  // const selectedShip = useSelector((s) => getSelectedShip(s));
 
-  const placingStatus = useSelector((s) => getPlacingStatus(s));
+  // const placingStatus = useSelector((s) => getPlacingStatus(s));
 
   const [pcCells, setPcCells] = useState([]);
 
@@ -69,8 +62,9 @@ const GridBoard = ({ pc }) => {
 
   //the pc is the on generating the grid
   if (pc) {
-    const getRandom = () => Math.floor(Math.random() * 10 + 1);
-
+    //get random cell row,or col number
+    const getRandom = () => Math.floor(Math.random() * ROW_SIZE + 1);
+    //get the random position for placing  but optimize it for placing possibility
     const getPlacingPosition = ({ row, col }) => {
       //improving the chances of placing the ship
       if (row > 5) return 'H';
@@ -114,7 +108,26 @@ const GridBoard = ({ pc }) => {
         randomCol = getRandom();
         randomRow = getRandom();
       }
-      console.log('col', randomCol, 'row', randomRow, shipName);
+      // const { row, col, placingPosition, shipSize, ship } = payload;
+      const col = randomCol;
+      const row = randomRow;
+      const shipSize = fleet.shipSize[shipName];
+      const placingPosition = getPlacingPosition({ row, col });
+      if (placingPosition === 'H') {
+        for (let newCol = col; newCol < col + shipSize; newCol++) {
+          const cellId = generateCellId(row, newCol);
+          cellsState[cellId].occupy.isOccupied = true;
+          cellsState[cellId].occupy.occupier = shipName;
+        }
+      } else if (placingPosition === 'V') {
+        for (let newRow = row; newRow < row + shipSize; newRow++) {
+          const cellId = generateCellId(newRow, col);
+          cellsState[cellId].occupy.isOccupied = true;
+          cellsState[cellId].occupy.occupier = shipName;
+        }
+      }
+
+      //end of ForEach....
     });
   }
 
@@ -128,8 +141,8 @@ const GridBoard = ({ pc }) => {
 		md:h-full
 		flex flex-col justify-between items-center
 		rounded-lg p-2 lg:p-4 xl:p-6 
-		${selectedShip !== '' && !placingStatus ? 'cursor-grabbing' : null}
 		`}
+      // ${selectedShip !== '' && !placingStatus ? 'cursor-grabbing' : null}
     >
       {rows}
     </div>

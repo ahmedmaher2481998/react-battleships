@@ -14,15 +14,23 @@ const BattlePage = () => {
 
   return (
     <>
-      <div className=" bg-mainred text-center  ">
-        <p className="font-serif text-3xl text-green-300">{headMessage}</p>
+      <Head title="BattleShip | Battle" />
+      <div
+        className=" bg-mainred text-center  md:h-[var(--contentHeight)]
+      
+      grid grid-rows-9 grid-cols-5 gap-2
+      "
+      >
+        <div className="col-span-5 row-start-1 flex flex-wrap justify-center items-center row-span-1">
+          <p className="font-serif text-3xl text-green-300">{headMessage}</p>
+        </div>
 
-        <Head title="BattleShip | Battle" />
-        <div className="flex justify-center items-center flex-col lg:flex-row">
-          <div className="  mb-4 border-6 border-mainmeduimblue">
+        <div className="flex p-2 h-4/5 justify-center gap-2 items-center flex-col xl:flex-row row-span-7 col-span-5 row-start-2">
+          <div className="border-2 border-gray">
             <GridBoard />
           </div>
-          <div className=" mt-6 mb-g border-4 border-mainmeduimblue">
+
+          <div className=" border-2 border-black bg-slate-700">
             <GridBoard pc={true} />
           </div>
         </div>
