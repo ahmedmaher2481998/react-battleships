@@ -4,10 +4,12 @@ import Row from './Row';
 import { generateCellId, validateShipLocation, ROW_SIZE } from '../helpers';
 import { initCellState } from '../store/cells/cellReducer';
 import { initCells } from '../store';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { useState } from 'react';
+
 //end of imports
+
 const createGrid = (size, pc = false) => {
   let rows = [];
   let cellsState = {};
@@ -47,9 +49,9 @@ const GridBoard = ({ pc }) => {
 
   // const placingStatus = useSelector((s) => getPlacingStatus(s));
 
-  const [pcCells, setPcCells] = useState([]);
-
   const { rows, cellsState } = createGrid(ROW_SIZE, pc ? pc : false);
+
+  const [pcCells, setPcCells] = useState(cellsState);
 
   useEffect(() => {
     if (!pc) {
@@ -90,8 +92,9 @@ const GridBoard = ({ pc }) => {
       let randomCol = getRandom();
 
       let randomRow = getRandom();
-
+      //keep changing coordinates till finding a right cell to place the current ship in
       while (
+        //while the ship location is not valid keep trying
         !validateShipLocation({
           row: randomRow,
           col: randomCol,
@@ -99,12 +102,13 @@ const GridBoard = ({ pc }) => {
             row: randomRow,
             col: randomCol,
           }),
-          cells: '',
+          cells: pcCells,
           isOccupied:
             pcCells[generateCellId(randomRow, randomCol)]?.occupy.isOccupied,
           shipSize: fleet.shipSize[shipName],
         })
       ) {
+        //while ship location is not valid randomize another cell coordination
         randomCol = getRandom();
         randomRow = getRandom();
       }
@@ -113,19 +117,25 @@ const GridBoard = ({ pc }) => {
       const row = randomRow;
       const shipSize = fleet.shipSize[shipName];
       const placingPosition = getPlacingPosition({ row, col });
+      const newPcCells = { ...pcCells };
       if (placingPosition === 'H') {
         for (let newCol = col; newCol < col + shipSize; newCol++) {
           const cellId = generateCellId(row, newCol);
-          cellsState[cellId].occupy.isOccupied = true;
-          cellsState[cellId].occupy.occupier = shipName;
+          newPcCells[cellId] = {
+            ...newPcCells[cellId],
+            occupy: { isOccupied: true, occupier: shipName },
+          };
         }
       } else if (placingPosition === 'V') {
         for (let newRow = row; newRow < row + shipSize; newRow++) {
           const cellId = generateCellId(newRow, col);
-          cellsState[cellId].occupy.isOccupied = true;
-          cellsState[cellId].occupy.occupier = shipName;
+          newPcCells[cellId] = {
+            ...newPcCells[cellId],
+            occupy: { isOccupied: true, occupier: shipName },
+          };
         }
       }
+      setPcCells(newPcCells);
 
       //end of ForEach....
     });

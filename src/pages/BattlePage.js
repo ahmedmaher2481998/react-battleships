@@ -26,7 +26,7 @@ const BattlePage = () => {
         </div>
 
         <div className="flex p-2 h-4/5 justify-center gap-2 items-center flex-col xl:flex-row row-span-7 col-span-5 row-start-2">
-          <div className="border-2 border-gray">
+          <div className="border-2 border-gray bg-neutral-100">
             <GridBoard />
           </div>
 

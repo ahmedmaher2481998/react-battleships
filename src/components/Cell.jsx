@@ -1,15 +1,6 @@
-// import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-// import { ChangeHeadMessage } from '../store';
 import { generateCellId, validateShipLocation, getShipSize } from '../helpers/';
-import {
-  battlesShip,
-  ship,
-  submarine,
-  boat,
-  carrier,
-  // explosion,
-} from '../assets';
+import { battlesShip, ship, submarine, boat, carrier } from '../assets';
 import {
   getPlacingStatus,
   getSelectedShip,
@@ -20,7 +11,9 @@ import {
   getOccupier,
   ChangeHeadMessage,
 } from '../store/';
+
 //end imports
+
 const getOccupierImageSrc = (shipName) => {
   switch (shipName) {
     case 'boat':
@@ -38,40 +31,31 @@ const getOccupierImageSrc = (shipName) => {
   }
 };
 
-const Cell = ({ col, row, pc }) => {
+const Cell = ({ col, row, pcObj }) => {
+  const { pc, cellState } = pcObj;
+  console.log(cellState);
   const dispatch = useDispatch();
-  // let cellId = `${generateCellId(row, col)}`;
-  // const [cellContent, setCellContent] = useState(generateCellId(row, col));
-  // const isHit = useSelector((s) => getIsHit(s, cellId));
-  // const occupyObj = useSelector((s) => getIsOccupied(s, cellId));
-  // const selectedShipPlacing = useSelector(getSelectedShip);
-  // const timeline = useSelector(getTimeline);
-  // const type = useSelector((s) => getPlacingType(s));
   const placingPosition = useSelector(getPlacingPosition);
+
   const placingStatus = useSelector(getPlacingStatus);
+
   const selectedShip = useSelector(getSelectedShip);
+
   const isOccupied = useSelector((s) =>
     getIsOccupied({ cellId: generateCellId(row, col), s })
   );
+
   const cells = useSelector((s) => s.cells);
+
   const occupier = useSelector((s) =>
     getOccupier({ cellId: generateCellId(row, col), s })
   );
+  if (!pc) {
+  }
+
   const handleCellClick = () => {
     console.log(placingStatus);
     if (placingStatus.split(' ')[0] === 'placing') {
-      // console.log(
-      //   `placing ship ${selectedShip} at ${generateCellId(
-      //     row,
-      //     col
-      //   )} while in ${placingPosition}`,
-      //   {
-      //     row,
-      //     col,
-      //     placingPosition,
-      //     shipSize: getShipSize(selectedShip),
-      //   }
-      // );
       if (
         validateShipLocation({
           row,
@@ -104,7 +88,6 @@ const Cell = ({ col, row, pc }) => {
     }
   };
 
-  // 	data-id={`${generateCellId(row, col)}`}
   return (
     <>
       <div
