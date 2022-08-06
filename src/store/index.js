@@ -6,6 +6,8 @@ import {
   getPlacingPosition,
   getOccupier,
   getIsOccupied,
+  getName,
+  getIsHit,
 } from './selectors';
 import {
   ChangeHeadMessage,
@@ -42,4 +44,6 @@ export {
   getPlacingPosition,
   changePlacingPosition,
   changePlacingStatus,
+  getIsHit,
+  getName,
 };
