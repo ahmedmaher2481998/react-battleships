@@ -35,7 +35,6 @@ const FleetShip = ({ img, name, cells, setFleet, fleet }) => {
 								}.`
 							)
 						);
-						console.log("placing status changed !!");
 					} else {
 						dispatch(
 							ChangeHeadMessage(
