@@ -1,10 +1,45 @@
 //size of grid
 export const ROW_SIZE = 10;
 export const generateCellId = (row, col) => {
-	return row * ROW_SIZE + col - ROW_SIZE;
+  return row * ROW_SIZE + col - ROW_SIZE;
+};
+export const validateShipLocation = ({
+  row,
+  col,
+  placingPosition = 'H',
+  shipSize = 5,
+}) => {
+  // let validity = true;
+  row = 1 * row;
+  col = col * 1;
+  if (placingPosition === 'H') {
+    // if(cellId + cellNumber > 100) validity = false
+    if (col - 1 + shipSize > ROW_SIZE) return false;
+    // else if ()
+  } else if (placingPosition === 'V') {
+    if (row - 1 + shipSize > ROW_SIZE) return false;
+  }
+  return true;
+};
+export const getShipSize = (ship) => {
+  switch (ship) {
+    case 'boat':
+      return 1;
+    case 'ship':
+      return 2;
+    case 'submarine':
+      return 3;
+    case 'battlesShip':
+      return 4;
+    case 'carrier':
+      return 5;
+    default:
+      return 0;
+  }
 };
 //takes the coordinates of the cell and returns an obj {}
-//the returned obj has array of cells ocupied in case the validity of the ocuupition is true
+//the returned obj has array of cells occupied in case the validity of the occupation is true
+/*
 export const validateShipLocation = (row, col, ship, type, postion) => {
 	let shipSize;
 	//getting the size of the ship
@@ -87,3 +122,4 @@ export const validateShipLocation = (row, col, ship, type, postion) => {
 	console.log("**************");
 	//when done send true if valid or false if not valid and then send the array of cells that need to be occupied
 };
+*/
