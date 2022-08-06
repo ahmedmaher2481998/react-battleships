@@ -16,7 +16,7 @@ const initState = {
 	placing: {
 		selectedShip: "",
 		placingStatus: "start", //start select placed end
-		placingPosition: "V",
+		placingPosition: "H",
 	},
 };
 

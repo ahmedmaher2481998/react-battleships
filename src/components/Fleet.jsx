@@ -1,31 +1,31 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import FleetShip from "./FleetShip";
 import {
-	placeShip,
-	getSelectedShip,
+	// placeShip,
+	// getSelectedShip,
 	getPlacingStatus,
-	ChangeHeadMessage,
+	// ChangeHeadMessage,
 	changePlacingPosition,
-	changePlacingStatus,
+	// changePlacingStatus,
 } from "../store";
 import { boat, battlesShip, submarine, ship, carrier } from "../assets";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 const Fleet = () => {
 	const dispatch = useDispatch();
-	const selectedShip = useSelector((s) => getSelectedShip(s));
+	// const selectedShip = useSelector((s) => getSelectedShip(s));
 	const placingStatus = useSelector((s) => getPlacingStatus(s));
 	const [placingPosition, setPlacingPosition] = useState("v");
 	const [fleet, setFleet] = useState([]);
-	useEffect(() => {
-		if (selectedShip !== "") {
-			setFleet([...fleet, selectedShip]);
-			if (fleet.length === 4) {
-				// dispatch(endPlacing());
-			}
-		}
-	}, [selectedShip]);
+	// useEffect(() => {
+	// 	if (selectedShip !== "") {
+	// 		setFleet([...fleet, selectedShip]);
+	// 		if (fleet.length === 4) {
+	// 			// dispatch(endPlacing());
+	// 		}
+	// 	}
+	// }, [selectedShip]);
 
 	return (
 		<>

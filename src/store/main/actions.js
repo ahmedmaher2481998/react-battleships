@@ -17,7 +17,7 @@ const setPlayerName = (name) => {
 	return { type: SET_PLAYER_NAME, payload: { name } };
 };
 
-const placeShip = (ship) => {
+const selectShip = (ship) => {
 	return { type: SELECT_FLEET_SHIP, payload: { shipName: ship } };
 };
 
@@ -39,7 +39,7 @@ const changePlacingPosition = (position) => {
 
 export {
 	setPlayerName,
-	placeShip,
+	selectShip,
 	changePlacingStatus,
 	ChangeHeadMessage,
 	changePlacingPosition,

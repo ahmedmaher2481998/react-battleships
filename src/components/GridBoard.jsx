@@ -41,7 +41,8 @@ const GridBoard = () => {
 
 	useEffect(() => {
 		dispatch(initCells(cellsState));
-	}, [cellsState, dispatch]);
+		//eslint-disable-next-line
+	}, []);
 	return (
 		<div
 			className={` bg-purple-900 bg-opacity-40
