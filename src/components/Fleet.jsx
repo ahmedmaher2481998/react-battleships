@@ -26,7 +26,7 @@ const Fleet = () => {
       dispatch(changePlacingStatus('end'));
       dispatch(
         ChangeHeadMessage(
-          <p className="bg-green-400 text-black font-bold p-1 text-xl ">
+          <p className="bg-green-400 text-black font-bold p-1 text-xl rounded-lg">
             Let's start the battle
           </p>
         )

@@ -14,7 +14,7 @@ const BattlePage = () => {
           <GridBoard />
         </div>
         <div className="h-[80vh] mt-6 mb-g border-4 border-mainmeduimblue">
-          <GridBoard />
+          <GridBoard pc={true} />
         </div>
       </div>
     </>

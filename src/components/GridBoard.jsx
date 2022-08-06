@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import Cell from './Cell';
 import Row from './Row';
-import { generateCellId } from '../helpers';
+import { generateCellId ,validateShipLocation} from '../helpers';
 import { initCellState } from '../store/cells/cellReducer';
 import { ROW_SIZE } from '../helpers';
 import {
@@ -32,7 +32,8 @@ const createGrid = (size) => {
   return { cellsState, rows };
 };
 
-const GridBoard = () => {
+const GridBoard = ({ pc }) => {
+  pc = pc || false;
   const dispatch = useDispatch();
   const { pathname } = useLocation();
   // const { rows, cellsState } = createGrid(10);
@@ -45,6 +46,35 @@ const GridBoard = () => {
     dispatch(initCells(cellsState));
     //eslint-disable-next-line
   }, []);
+  //the pc is the on generating the grid
+  if (pc) {
+    const getRandom = ()=>Math.floor((Math.random() * 10) +1 )
+   const getPlacingPosition = ({ row, col }) => {
+  //improving the chances of placing the ship
+  if (row > 5) return 'H';
+  else if (col > 5) return 'V';
+  else if (col > row) return 'V';
+  //means it's better chance in the h direction
+  else if (row > col) return 'H';
+  else return 'V';
+};
+
+    const fleet = {
+      ship: ['boat', 'ship', 'battlesShip', 'submarine', 'carrier'],
+      shipSize: {
+        boat: 1,
+        ship: 2,
+        battlesShip: 4,
+        submarine: 3,
+        carrier: 5,
+      },
+    };
+    fleet.ship.forEach(shipName=>{
+      let randomCol = getRandom()
+      let randomRow =  getRandom()
+      while(!validateShipLocation({row:randomRow,col:randomCol,placingPosition: getPlacingPosition(row:randomRow,col:randomCol) }))
+    })
+  }
   return (
     <div
       className={`${
