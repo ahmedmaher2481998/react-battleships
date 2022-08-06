@@ -23,12 +23,20 @@ const createGrid = (size, pc = false) => {
     let cells = [];
     //creating cells
     for (let col = 1; col < size + 1; col++) {
-      //creating grid
-      cells.push(
-        <Cell key={generateCellId(row, col)} row={row} col={col} pc={pc} />
-      );
       //creating cells state
       cellsState[`${generateCellId(row, col)}`] = initCellState(row, col);
+      //creating grid
+      cells.push(
+        <Cell
+          key={generateCellId(row, col)}
+          row={row}
+          col={col}
+          pc={{
+            pc,
+            cellState: cellsState[`${generateCellId(row, col)}`],
+          }}
+        />
+      );
     }
     rows.push(<Row key={row} cells={cells} />);
   }
@@ -99,11 +107,14 @@ const GridBoard = ({ pc }) => {
           }),
           cells: '',
           isOccupied:
-            pcCells[generateCellId(randomRow, randomCol)]?.occupyCell
-              .isOccupied,
+            pcCells[generateCellId(randomRow, randomCol)]?.occupy.isOccupied,
           shipSize: fleet.shipSize[shipName],
         })
-      ) {}
+      ) {
+        randomCol = getRandom();
+        randomRow = getRandom();
+      }
+      console.log('col', randomCol, 'row', randomRow, shipName);
     });
   }
 

@@ -38,7 +38,7 @@ const getOccupierImageSrc = (shipName) => {
   }
 };
 
-const Cell = ({ col, row }) => {
+const Cell = ({ col, row, pc }) => {
   const dispatch = useDispatch();
   // let cellId = `${generateCellId(row, col)}`;
   // const [cellContent, setCellContent] = useState(generateCellId(row, col));
@@ -72,7 +72,6 @@ const Cell = ({ col, row }) => {
       //     shipSize: getShipSize(selectedShip),
       //   }
       // );
-
       if (
         validateShipLocation({
           row,
