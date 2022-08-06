@@ -14,16 +14,17 @@ const ChangeHeadMessage = (msg) => {
 };
 
 const setPlayerName = (name) => {
-	return { type: SET_PLAYER_NAME, payload: name };
+	return { type: SET_PLAYER_NAME, payload: { name } };
 };
 
 const placeShip = (ship) => {
-	return { type: SELECT_FLEET_SHIP, payload: ship };
+	return { type: SELECT_FLEET_SHIP, payload: { shipName: ship } };
 };
 
-const changePlacingStatus = () => {
+const changePlacingStatus = (status) => {
 	return {
 		type: CHANGE_PLACING_STATUS,
+		payload: { status },
 	};
 };
 

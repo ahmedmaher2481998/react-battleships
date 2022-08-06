@@ -9,11 +9,13 @@ import {
 const initState = {
 	headMessage: "Welcome To BattleShip",
 	player: {
-		name: "",
+		// name: "",
+		// just for development
+		name: "ahmed maher ",
 	},
 	placing: {
 		selectedShip: "",
-		placingStatus: undefined,
+		placingStatus: "start", //start select placed end
 		placingPosition: "V",
 	},
 };
@@ -30,19 +32,18 @@ export const mainReducer = (state = initState, action) => {
 			newState.headMessage = payload;
 			return newState;
 		case SELECT_FLEET_SHIP:
-			newState.selected = payload;
+			newState.placing.selectedShip = payload.shipName;
 			return newState;
 		case SET_PLAYER_NAME:
-			newState.player.name = payload;
+			newState.player.name = payload.name;
 			return newState;
 		case CHANGE_PLACING_STATUS:
-			newState.placing.placingStatus = true;
+			newState.placing.placingStatus = payload.status;
 			return newState;
 		case CHANGE_PLACING_POSITION:
-			newState.placing.position = payload.position;
+			newState.placing.placingPosition = payload.position;
 			return newState;
-
 		default:
-			return state;
+			return newState;
 	}
 };
