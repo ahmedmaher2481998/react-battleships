@@ -110,7 +110,7 @@ const Cell = ({ col, row }) => {
     <>
       <div
         className={` w-[9%] h-8 md:h-[100%]  m-[2px] rounded-full flex items-center justify-center hover:bg-slate-300 ${
-          isOccupied ? 'bg-rose-900' : 'bg-indigo-400'
+          isOccupied ? 'bg-gray-400' : 'bg-gray-800'
         } `}
         onClick={handleCellClick}
       >
@@ -120,7 +120,9 @@ const Cell = ({ col, row }) => {
             className="w-full "
             alt={occupier}
           />
-        ) : null}
+        ) : (
+          <></>
+        )}
       </div>
     </>
   );
