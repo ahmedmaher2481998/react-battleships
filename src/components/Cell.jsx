@@ -53,23 +53,25 @@ const Cell = ({ col, row }) => {
   const isOccupied = useSelector((s) =>
     getIsOccupied({ cellId: generateCellId(row, col), s })
   );
+  const cells = useSelector((s) => s.cells);
   const occupier = useSelector((s) =>
     getOccupier({ cellId: generateCellId(row, col), s })
   );
   const handleCellClick = () => {
+    console.log(placingStatus);
     if (placingStatus.split(' ')[0] === 'placing') {
-      console.log(
-        `placing ship ${selectedShip} at ${generateCellId(
-          row,
-          col
-        )} while in ${placingPosition}`,
-        {
-          row,
-          col,
-          placingPosition,
-          shipSize: getShipSize(selectedShip),
-        }
-      );
+      // console.log(
+      //   `placing ship ${selectedShip} at ${generateCellId(
+      //     row,
+      //     col
+      //   )} while in ${placingPosition}`,
+      //   {
+      //     row,
+      //     col,
+      //     placingPosition,
+      //     shipSize: getShipSize(selectedShip),
+      //   }
+      // );
 
       if (
         validateShipLocation({
@@ -77,6 +79,8 @@ const Cell = ({ col, row }) => {
           col,
           placingPosition,
           shipSize: getShipSize(selectedShip),
+          isOccupied,
+          cells,
         })
       ) {
         dispatch(
@@ -89,9 +93,15 @@ const Cell = ({ col, row }) => {
           })
         );
         dispatch(changePlacingStatus('done'));
-      } else if (placingStatus === 'done') {
-        dispatch(ChangeHeadMessage('Please Select a ship...'));
+      } else {
+        dispatch(
+          ChangeHeadMessage(
+            'this is not a valid location to place the ' + selectedShip
+          )
+        );
       }
+    } else if (placingStatus === 'done') {
+      dispatch(ChangeHeadMessage('Please Select a ship...'));
     }
   };
 
@@ -99,17 +109,18 @@ const Cell = ({ col, row }) => {
   return (
     <>
       <div
-        className={` w-[9%] h-8 md:h-[100%]  m-[2px] rounded-full flex items-center justify-center hover:bg-verydarkblue ${
+        className={` w-[9%] h-8 md:h-[100%]  m-[2px] rounded-full flex items-center justify-center hover:bg-slate-300 ${
           isOccupied ? 'bg-rose-900' : 'bg-indigo-400'
         } `}
         onClick={handleCellClick}
       >
-        {/* {occupyObj.isOccupied ? (
-					<img
-						src={getOccupierImageSrc(occupyObj.occupier)}
-						alt={occupyObj.occupier}
-					/> 
-				) : null}*/}
+        {isOccupied ? (
+          <img
+            src={getOccupierImageSrc(occupier)}
+            className="w-full "
+            alt={occupier}
+          />
+        ) : null}
       </div>
     </>
   );

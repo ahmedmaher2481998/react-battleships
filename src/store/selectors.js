@@ -15,10 +15,8 @@ export const getPlacingStatus = (s) => s.main.placing.placingStatus;
 
 export const getPlacingPosition = (s) => s.main.placing.placingPosition;
 
-export const getIsOccupied = ({ cellId, s }) => {
-  // console.log(s);
-  return s.cells[cellId]?.occupy.isOccupied;
-};
+export const getIsOccupied = ({ cellId, s }) =>
+  s.cells[cellId]?.occupy.isOccupied;
 
 export const getOccupier = ({ cellId, s }) => s.cells[cellId]?.occupy.occupier;
 

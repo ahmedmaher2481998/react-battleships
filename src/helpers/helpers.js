@@ -8,16 +8,26 @@ export const validateShipLocation = ({
   col,
   placingPosition = 'H',
   shipSize = 5,
+  isOccupied,
+  cells,
 }) => {
-  // let validity = true;
   row = 1 * row;
   col = col * 1;
   if (placingPosition === 'H') {
-    // if(cellId + cellNumber > 100) validity = false
     if (col - 1 + shipSize > ROW_SIZE) return false;
-    // else if ()
+
+    for (let newCol = col; newCol < col + shipSize; newCol++) {
+      const cellId = generateCellId(row, newCol);
+      if (cells[cellId].occupy.isOccupied) return false;
+    }
   } else if (placingPosition === 'V') {
     if (row - 1 + shipSize > ROW_SIZE) return false;
+
+    for (let newRow = row; newRow < row + shipSize; newRow++) {
+      const cellId = generateCellId(newRow, col);
+      if (cells[cellId].occupy.isOccupied) return false;
+    }
+  } else {
   }
   return true;
 };
