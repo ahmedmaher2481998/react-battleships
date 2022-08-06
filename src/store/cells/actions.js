@@ -1,19 +1,24 @@
 //actions type
-const INIT_CELLS = "start/Create/Cell";
-const CELL_HIT = "combat/change/CellHit";
-const CELL_OCCUPY = "combat/change/CellOccupy";
+const INIT_CELLS = 'start/Create/Cell';
+const OCCUPY_CELL = 'placing/occupyCell';
+const HIT_CELL = 'combat/change/CellHit';
 //hit cell , occupy cell ,
 //action creators
 const initCells = (cells) => {
-	return {
-		type: INIT_CELLS,
-		payload: { ...cells },
-	};
+  return {
+    type: INIT_CELLS,
+    payload: { ...cells },
+  };
 };
+const occupyCell = (payload) => {
+  return {
+    type: OCCUPY_CELL,
+    payload,
+  };
+};
+
+//needs modifications
 const cellHit = (row, col) => {
-	return { type: CELL_HIT, payload: { row, col } };
+  return { type: HIT_CELL, payload: { row, col } };
 };
-const occupyCell = (row, col, ship) => {
-	return { type: CELL_OCCUPY, payload: { row, col, ship } };
-};
-export { cellHit, occupyCell, initCells, CELL_HIT, CELL_OCCUPY, INIT_CELLS };
+export { cellHit, occupyCell, initCells, HIT_CELL, OCCUPY_CELL, INIT_CELLS };

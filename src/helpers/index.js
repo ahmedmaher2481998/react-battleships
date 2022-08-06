@@ -1,3 +1,8 @@
-import { ROW_SIZE, generateCellId, validateShipLocation } from "./helpers";
+import {
+  ROW_SIZE,
+  generateCellId,
+  validateShipLocation,
+  getShipSize,
+} from './helpers';
 
-export { ROW_SIZE, generateCellId, validateShipLocation };
+export { ROW_SIZE, generateCellId, validateShipLocation, getShipSize };

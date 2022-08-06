@@ -1,12 +1,11 @@
-//exporting list for componets folder
+//exporting list for components folder
 //importing needed components
-import MainHero from "./MainHero";
-import Footer from "./Footer";
-import Fleet from "./Fleet";
-import Cell from "./Cell";
-import GridWrapper from "./GridWrapper";
-import Row from "./Row";
-import GridBoard from "./GridBoard";
-import Head from "./Head";
+import MainHero from './MainHero';
+import Footer from './Footer';
+import Fleet from './Fleet';
+import Cell from './Cell';
+import Row from './Row';
+import GridBoard from './GridBoard';
+import Head from './Head';
 //exporting components
-export { Head, MainHero, Footer, Fleet, GridBoard, Cell, Row, GridWrapper };
+export { Head, MainHero, Footer, Fleet, GridBoard, Cell, Row };

@@ -1,27 +1,28 @@
-import React, { useState } from 'react';
+// import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { ChangeHeadMessage } from '../store';
-import {
-  generateCellId,
-  validateShipLocation,
-  getShipSize,
-} from '../helpers/helpers';
+// import { ChangeHeadMessage } from '../store';
+import { generateCellId, validateShipLocation, getShipSize } from '../helpers/';
 import {
   battlesShip,
   ship,
   submarine,
   boat,
   carrier,
-  explosion,
+  // explosion,
 } from '../assets';
 import {
   getPlacingStatus,
   getSelectedShip,
   getPlacingPosition,
+  occupyCell,
+  changePlacingStatus,
+  getIsOccupied,
+  getOccupier,
+  ChangeHeadMessage,
 } from '../store/';
 //end imports
-const getOccupierImageSrc = (ship) => {
-  switch (ship) {
+const getOccupierImageSrc = (shipName) => {
+  switch (shipName) {
     case 'boat':
       return boat;
     case 'ship':
@@ -39,7 +40,7 @@ const getOccupierImageSrc = (ship) => {
 
 const Cell = ({ col, row }) => {
   const dispatch = useDispatch();
-  let cellId = `${generateCellId(row, col)}`;
+  // let cellId = `${generateCellId(row, col)}`;
   // const [cellContent, setCellContent] = useState(generateCellId(row, col));
   // const isHit = useSelector((s) => getIsHit(s, cellId));
   // const occupyObj = useSelector((s) => getIsOccupied(s, cellId));
@@ -49,6 +50,12 @@ const Cell = ({ col, row }) => {
   const placingPosition = useSelector(getPlacingPosition);
   const placingStatus = useSelector(getPlacingStatus);
   const selectedShip = useSelector(getSelectedShip);
+  const isOccupied = useSelector((s) =>
+    getIsOccupied({ cellId: generateCellId(row, col), s })
+  );
+  const occupier = useSelector((s) =>
+    getOccupier({ cellId: generateCellId(row, col), s })
+  );
   const handleCellClick = () => {
     if (placingStatus.split(' ')[0] === 'placing') {
       console.log(
@@ -63,31 +70,38 @@ const Cell = ({ col, row }) => {
           shipSize: getShipSize(selectedShip),
         }
       );
+
+      if (
+        validateShipLocation({
+          row,
+          col,
+          placingPosition,
+          shipSize: getShipSize(selectedShip),
+        })
+      ) {
+        dispatch(
+          occupyCell({
+            row,
+            col,
+            placingPosition,
+            shipSize: getShipSize(selectedShip),
+            ship: selectedShip,
+          })
+        );
+        dispatch(changePlacingStatus('done'));
+      } else if (placingStatus === 'done') {
+        dispatch(ChangeHeadMessage('Please Select a ship...'));
+      }
     }
-    if (
-      !validateShipLocation({
-        row,
-        col,
-        placingPosition,
-        shipSize: getShipSize(selectedShip),
-      })
-    ) {
-      dispatch(ChangeHeadMessage("That's noy a valid Cell "));
-    }
-    // if (timeline.placing) {
-    // 	let isValidLocation =
-    // 		selectedShipPlacing === ""
-    // 			? null
-    // 			: validateShipLocation(row, col, selectedShipPlacing, type, position);
-    // 	if (isValidLocation) dispatch(occupyCell(row, col, selectedShipPlacing));
-    // }
   };
 
   // 	data-id={`${generateCellId(row, col)}`}
   return (
     <>
       <div
-        className={` w-[9%] h-8 md:h-[100%] bg-indigo-400 m-[2px] rounded-full flex items-center justify-center hover:bg-verydarkblue `}
+        className={` w-[9%] h-8 md:h-[100%]  m-[2px] rounded-full flex items-center justify-center hover:bg-verydarkblue ${
+          isOccupied ? 'bg-rose-900' : 'bg-indigo-400'
+        } `}
         onClick={handleCellClick}
       >
         {/* {occupyObj.isOccupied ? (
