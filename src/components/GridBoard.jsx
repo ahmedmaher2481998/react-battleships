@@ -26,7 +26,7 @@ const createGrid = (size, pc = false) => {
           key={generateCellId(row, col)}
           row={row}
           col={col}
-          pc={{
+          pcObj={{
             pc,
             cellState: cellsState[`${generateCellId(row, col)}`],
           }}
