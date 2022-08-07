@@ -4,7 +4,10 @@ import {
   CHANGE_PLACING_STATUS,
   SELECT_FLEET_SHIP,
   SET_PLAYER_NAME,
+  CHANGE_BOT_TURN,
+  CHANGE_PLAYER_TURN,
 } from './actions';
+
 //initial state
 const initState = {
   headMessage: 'Welcome To BattleShip',
@@ -12,12 +15,15 @@ const initState = {
     // name: "",
     // just for development
     name: 'ahmed maher ',
-    turnToHit: false,
   },
   placing: {
     selectedShip: '',
     placingStatus: 'start', //start select placed end
     placingPosition: 'H',
+  },
+  battle: {
+    isPlayerTurn: false,
+    isBotTurn: false,
   },
 };
 
@@ -43,6 +49,21 @@ export const mainReducer = (state = initState, action) => {
       return newState;
     case CHANGE_PLACING_POSITION:
       newState.placing.placingPosition = payload.position;
+      return newState;
+    case CHANGE_BOT_TURN:
+      const { isBotTurn } = newState.battle;
+      newState.battle.isBotTurn = !isBotTurn;
+      newState.headMessage = `Now it's ${
+        isBotTurn ? 'bot' : newState.player.name.split(' ')[0]
+      } turn ...`;
+      return newState;
+    case CHANGE_PLAYER_TURN:
+      const { isPlayerTurn } = newState.battle;
+      newState.battle.isPlayerTurn = !isPlayerTurn;
+      newState.headMessage = `Now it's ${
+        isPlayerTurn ? newState.player.name.split(' ')[0] : 'bot'
+      } turn ...`;
+
       return newState;
     default:
       return newState;

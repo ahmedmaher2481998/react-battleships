@@ -17,6 +17,10 @@ import {
   setPlayerName,
   changePlacingPosition,
   changePlacingStatus,
+  CHANGE_BOT_TURN,
+  CHANGE_PLAYER_TURN,
+  changeBotTurn,
+  changePlayerTurn,
 } from './main/actions';
 import {
   HIT_CELL,
