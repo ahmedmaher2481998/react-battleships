@@ -99,11 +99,22 @@ const Cell = ({ col, row, pcObj }) => {
         } `}
         onClick={handleCellClick}
       >
-        {isOccupied ? (
+        {/* showing img for player  */}
+        {isOccupied && !pc ? (
           <img
             src={getOccupierImageSrc(occupier)}
             className="w-full "
             alt={occupier}
+          />
+        ) : (
+          <></>
+        )}
+        {/* showing img for pc  */}
+        {pc && isOccupiedPc ? (
+          <img
+            src={getOccupierImageSrc(occupierPc)}
+            className="w-full "
+            alt={occupierPc}
           />
         ) : (
           <></>
