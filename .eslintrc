@@ -12,7 +12,11 @@
     "react/react-in-jsx-scope": "off",
     "no-console": "warn",
     "no-unused-vars": "warn",
-    "no-case-declarations": "off"
+    "no-case-declarations": "off",
+    "react-redux/useSelector-prefer-selectors": "off",
+    "react/prop-types": "off",
+    "import/no-unresolved": "warn",
+    "react/no-unescaped-entities": "warn"
   },
   "parser": "@babel/eslint-parser",
 

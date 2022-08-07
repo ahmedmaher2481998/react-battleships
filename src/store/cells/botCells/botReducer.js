@@ -33,7 +33,7 @@ export const botReducer = (state = {}, { type, payload }) => {
         for (let newRow = row; newRow < row + shipSize; newRow++) {
           const cellId = generateCellId(newRow, col);
           console.log(cellId);
-          console.log('State', newState);
+          // console.log('State', newState);
           newState[cellId].occupy.isOccupied = true;
           newState[cellId].occupy.occupier = ship;
         }
