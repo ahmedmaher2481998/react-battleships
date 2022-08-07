@@ -90,12 +90,16 @@ const Cell = ({ col, row, pcObj }) => {
       // hitCell
     }
   };
-
+  if (isOccupiedPc) console.log('row', row, 'col', col);
   return (
     <>
       <div
         className={` w-[9%] h-8 md:h-[100%]  m-[2px] rounded-full flex items-center justify-center hover:bg-slate-300 ${
-          isOccupied ? 'bg-gray-400' : 'bg-gray-800'
+          isOccupied && !pc
+            ? 'bg-gray-400'
+            : isOccupiedPc && pc
+            ? 'bg-blue-600'
+            : 'bg-gray-800'
         } `}
         onClick={handleCellClick}
       >
@@ -111,13 +115,19 @@ const Cell = ({ col, row, pcObj }) => {
         )}
         {/* showing img for pc  */}
         {pc && isOccupiedPc ? (
-          <img
-            src={getOccupierImageSrc(occupierPc)}
-            className="w-full "
-            alt={occupierPc}
-          />
+          <>
+            <img
+              src={getOccupierImageSrc(occupierPc)}
+              className="w-full "
+              alt={occupierPc}
+            />
+            <div>"HH"</div>
+          </>
         ) : (
-          <></>
+          <>
+            {' '}
+            <div>"HH"</div>
+          </>
         )}
       </div>
     </>

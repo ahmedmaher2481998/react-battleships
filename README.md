@@ -13,11 +13,15 @@
 1. placing
 
    - placing page is done and working
-   - placing page directly changes the global state and store in local storage (ship place , and get over write )
+   - placing page directly changes the global s
+   <!-- tate and store in local storage (ship place , and get over write ) -->
    - placing have a reset button
    - shows hovering effect of the cells before placing
 
 2. moving to battle page
+   - generating the newCell for bot and then placing all ships in
+   - placing all ships in the bot grid up on mounting
+   - start the turn with the player he hit the bot's grid in cell that cell is dispatching hit event on it
 3. then results page
 
 - how should the game go

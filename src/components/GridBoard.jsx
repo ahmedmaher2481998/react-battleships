@@ -11,7 +11,7 @@ import { useState } from 'react';
 //end of imports
 
 export const createGrid = (size, pc = false) => {
-  console.log('starting the board grid ');
+  // console.log('starting the board grid ');
   let rows = [];
   let cellsState = {};
   //creating rows
@@ -61,7 +61,7 @@ const GridBoard = ({ pc }) => {
 
   const { rows, cellsState } = createGrid(ROW_SIZE, pc ? pc : false);
 
-  // const [pcCells, setPcCells] = useState(cellsState);
+  const [pcCells, setPcCells] = useState(null);
 
   useEffect(() => {
     if (!pc) {
@@ -144,7 +144,7 @@ const GridBoard = ({ pc }) => {
         randomCol = getRandom();
         randomRow = getRandom();
       }
-      console.log('col', randomCol, 'row', randomRow);
+      // console.log('col', randomCol, 'row', randomRow);
       /** END OF THE BIG WHILE LOOP**/
 
       // const { row, col, placingPosition, shipSize, ship } = payload;
@@ -160,7 +160,7 @@ const GridBoard = ({ pc }) => {
             ...cellsState[cellId],
             occupy: { isOccupied: true, occupier: shipName },
           };
-          console.log(cellsState[cellId]);
+          // console.log(cellsState[cellId]);
         }
       } else if (placingPosition === 'V') {
         for (let newRow = row; newRow < row + shipSize; newRow++) {
@@ -170,7 +170,7 @@ const GridBoard = ({ pc }) => {
             ...cellsState[cellId],
             occupy: { isOccupied: true, occupier: shipName },
           };
-          console.log(cellsState[cellId]);
+          // console.log(cellsState[cellId]);
         }
       }
 
