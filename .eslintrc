@@ -1,5 +1,11 @@
 {
-  "extends": ["eslint:recommended", "plugin:react/recommended"],
+  "plugins": ["react-redux"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:react-redux/recommended",
+    "plugin:import/recommended"
+  ],
   "rules": { "no-console": "warn" },
   "parser": "@babel/eslint-parse",
   "parserOptions": { "ecmaFeatures": { "jsx": true }, "ecmaVersion": 2015 }

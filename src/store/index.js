@@ -24,6 +24,14 @@ import {
   cellHit,
   occupyCell,
 } from './cells/actions';
+import {
+  BOT_CELL_HIT,
+  BOT_CELL_OCCUPY,
+  INIT_BOT_CELLS,
+  hitBotCell,
+  initBotCells,
+  occupyBotCell,
+} from './cells/botCells/actions';
 //exports
 export {
   getHeadMessage,
@@ -46,4 +54,10 @@ export {
   changePlacingStatus,
   getIsHit,
   getName,
+  BOT_CELL_HIT,
+  BOT_CELL_OCCUPY,
+  INIT_BOT_CELLS,
+  hitBotCell,
+  initBotCells,
+  occupyBotCell,
 };
