@@ -32,9 +32,9 @@ const getOccupierImageSrc = (shipName) => {
 };
 
 const Cell = ({ col, row, pcObj }) => {
-  const { pc, cellState } = pcObj;
-  console.log(cellState);
+  // console.log(cellState);
   const dispatch = useDispatch();
+  const { pc, cellState } = pcObj || {};
   const placingPosition = useSelector(getPlacingPosition);
 
   const placingStatus = useSelector(getPlacingStatus);
@@ -45,16 +45,17 @@ const Cell = ({ col, row, pcObj }) => {
     getIsOccupied({ cellId: generateCellId(row, col), s })
   );
 
-  const cells = useSelector((s) => s.cells);
-
   const occupier = useSelector((s) =>
     getOccupier({ cellId: generateCellId(row, col), s })
   );
-  if (!pc) {
-  }
+
+  //pc Variables
+  const isOccupiedPc = cellState?.occupy.isOccupied;
+  const occupierPc = cellState?.occupy.occupier;
+  const isHitPc = cellState?.hit;
+  const cells = useSelector((s) => s.cells);
 
   const handleCellClick = () => {
-    console.log(placingStatus);
     if (placingStatus.split(' ')[0] === 'placing') {
       if (
         validateShipLocation({
@@ -85,6 +86,8 @@ const Cell = ({ col, row, pcObj }) => {
       }
     } else if (placingStatus === 'done') {
       dispatch(ChangeHeadMessage('Please Select a ship...'));
+    } else if (placingStatus === 'end' && !pc) {
+      // hitCell
     }
   };
 

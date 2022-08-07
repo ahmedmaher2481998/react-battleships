@@ -7,10 +7,12 @@ export const validateShipLocation = ({
   row,
   col,
   placingPosition = 'H',
-  shipSize = 5,
+  shipSize,
   isOccupied,
   cells,
 }) => {
+  //test the parameters is right
+  // console.log({ row, col, placingPosition, shipSize, isOccupied, cells });
   row = 1 * row;
   col = col * 1;
   if (isOccupied) return false;
