@@ -13,12 +13,13 @@ export const botReducer = (state = {}, { type, payload }) => {
   let newState = { ...state };
   switch (type) {
     case INIT_BOT_CELLS:
+      console.log('bot cells', payload);
       newState = { botCells: { ...payload } };
       return newState;
 
-    // case HIT_CELL:
-    //   newState[generateCellId(payload.row, payload.col)].hit = true;
-    //   return newState;
+    case BOT_CELL_HIT:
+      //   newState[generateCellId(payload.row, payload.col)].hit = true;
+      return newState;
 
     case BOT_CELL_OCCUPY:
       const { row, col, placingPosition, shipSize, ship } = payload;
@@ -32,6 +33,7 @@ export const botReducer = (state = {}, { type, payload }) => {
         for (let newRow = row; newRow < row + shipSize; newRow++) {
           const cellId = generateCellId(newRow, col);
           console.log(cellId);
+          console.log('State', newState);
           newState[cellId].occupy.isOccupied = true;
           newState[cellId].occupy.occupier = ship;
         }

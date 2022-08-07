@@ -1,12 +1,20 @@
 {
+  "root": true,
   "plugins": ["react-redux"],
   "extends": [
+    "react-app",
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:react-redux/recommended",
     "plugin:import/recommended"
   ],
-  "rules": { "no-console": "warn" },
-  "parser": "@babel/eslint-parse",
+  "rules": {
+    "react/react-in-jsx-scope": "off",
+    "no-console": "warn",
+    "no-unused-vars": "warn",
+    "no-case-declarations": "off"
+  },
+  "parser": "@babel/eslint-parser",
+
   "parserOptions": { "ecmaFeatures": { "jsx": true }, "ecmaVersion": 2015 }
 }
