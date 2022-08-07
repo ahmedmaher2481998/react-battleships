@@ -20,6 +20,12 @@ export const getIsOccupied = ({ cellId, s }) =>
 
 export const getOccupier = ({ cellId, s }) => s.cells[cellId]?.occupy.occupier;
 
+export const getIsOccupiedByBot = ({ cellId, s }) => {
+  if (s.bot.botCells) return s.bot?.botCells[cellId]?.occupy.isOccupied;
+};
+export const getOccupierByBot = ({ cellId, s }) => {
+  if (s.bot.botCells) return s.bot?.botCells[cellId]?.occupy.occupier;
+};
 // need to be modified
 export const getTimeline = ({ main }) => {
   return main.timeLine;

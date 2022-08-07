@@ -18,7 +18,6 @@ const FleetShip = ({ img, name, cells, setFleet, fleet }) => {
     <>
       <span
         onClick={() => {
-          // console.log(selectedShip);
           if (
             placingStatus.split(' ')[0] !== 'placing' ||
             placingStatus === 'start'

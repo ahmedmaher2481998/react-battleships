@@ -47,20 +47,6 @@ fleet.ship.forEach((shipName) => {
     })
   ) {
     //while ship location is not valid randomize another cell coordination
-    // console.log(
-    //   !validateShipLocation({
-    //     row: randomRow,
-    //     col: randomCol,
-    //     placingPosition: getPlacingPosition({
-    //       row: randomRow,
-    //       col: randomCol,
-    //     }),
-    //     cells: cellsState,
-    //     isOccupied:
-    //       cellsState[generateCellId(randomRow, randomCol)]?.occupy.isOccupied,
-    //     shipSize,
-    //   })
-    // );
 
     randomCol = getRandom();
     randomRow = getRandom();

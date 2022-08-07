@@ -10,13 +10,14 @@
   ],
   "rules": {
     "react/react-in-jsx-scope": "off",
-    "no-console": "warn",
-    "no-unused-vars": "warn",
     "no-case-declarations": "off",
     "react-redux/useSelector-prefer-selectors": "off",
     "react/prop-types": "off",
+    "react/no-unescaped-entities": "warn",
+    //before production make then errors
+    "no-unused-vars": "warn",
     "import/no-unresolved": "warn",
-    "react/no-unescaped-entities": "warn"
+    "no-console": "warn"
   },
   "parser": "@babel/eslint-parser",
 

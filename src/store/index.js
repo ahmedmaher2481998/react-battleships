@@ -8,6 +8,8 @@ import {
   getIsOccupied,
   getName,
   getIsHit,
+  getIsOccupiedByBot,
+  getOccupierByBot,
 } from './selectors';
 import {
   ChangeHeadMessage,
@@ -60,4 +62,6 @@ export {
   hitBotCell,
   initBotCells,
   occupyBotCell,
+  getIsOccupiedByBot,
+  getOccupierByBot,
 };

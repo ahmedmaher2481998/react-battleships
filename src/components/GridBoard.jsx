@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Cell from './Cell';
 import Row from './Row';
 import { generateCellId, validateShipLocation, ROW_SIZE } from '../helpers';
@@ -9,14 +9,13 @@ import {
   occupyBotCell,
   ChangeHeadMessage,
 } from '../store';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
-import { useState } from 'react';
-
 //end of imports
 
+//creating cell states and components  to form grid for pc / player
 export const createGrid = (size, pc = false) => {
-  // console.log('starting the board grid ');
+  console.log(pc);
   let rows = [];
   let cellsState = {};
   //creating rows
@@ -49,22 +48,22 @@ const GridBoard = ({ pc }) => {
 
   const { rows, cellsState } = createGrid(ROW_SIZE, pc);
 
-  // const [pcCells, setPcCells] = useState(null);
-
   useEffect(() => {
     if (!pc) {
       dispatch(initCells(cellsState));
     } else {
-      // setPcCells(cellsState);
       dispatch(initBotCells(cellsState));
     }
-    //eslint-disable-next-line
+    // eslint-disable-next-line
   }, []);
 
+  const botCellStates = useSelector((s) => s.bot?.botCells);
+
   //the pc is the on generating the grid
-  if (pc) {
+  if (pc && botCellStates) {
     //get random cell row,or col number
     const getRandom = () => Math.floor(Math.random() * ROW_SIZE + 1);
+
     //get the random position for placing  but optimize it for placing possibility
     const getPlacingPositionForPc = ({ row, col }) => {
       //improving the chances of placing the ship
@@ -113,30 +112,12 @@ const GridBoard = ({ pc }) => {
       ) {
         //while ship location is not valid randomize another cell coordination
         // logging if the random cell is vialed
-        // console.log(
-        //   'is Valid',
-        //   validateShipLocation({
-        //     row: randomRow,
-        //     col: randomCol,
-        //     placingPosition: getPlacingPositionForPc({
-        //       row: randomRow,
-        //       col: randomCol,
-        //     }),
-        //     cells: cellsState,
-        //     isOccupied:
-        //       cellsState[generateCellId(randomRow, randomCol)]?.occupy
-        //         .isOccupied,
-        //     shipSize,
-        //   })
-        // );
-
         randomCol = getRandom();
         randomRow = getRandom();
       }
-      // console.log('col', randomCol, 'row', randomRow);
+
       /** END OF THE BIG WHILE LOOP**/
 
-      // const { row, col, placingPosition, shipSize, ship } = payload;
       const col = randomCol;
       const row = randomRow;
       const placingPosition = getPlacingPositionForPc({ row, col });
@@ -144,32 +125,9 @@ const GridBoard = ({ pc }) => {
         occupyBotCell({ row, col, placingPosition, shipSize, ship: shipName })
       );
       dispatch(ChangeHeadMessage(`bot is now placing ${shipName}`));
-      // const newPcCells = { ...pcCells };
-      // if (placingPosition === 'H') {
-      //   for (let newCol = col; newCol < col + shipSize; newCol++) {
-      //     const cellId = generateCellId(row, newCol);
-
-      //     cellsState[cellId] = {
-      //       ...cellsState[cellId],
-      //       occupy: { isOccupied: true, occupier: shipName },
-      //     };
-      //     // console.log(cellsState[cellId]);
-      //   }
-      // } else if (placingPosition === 'V') {
-      //   for (let newRow = row; newRow < row + shipSize; newRow++) {
-      //     const cellId = generateCellId(newRow, col);
-
-      //     cellsState[cellId] = {
-      //       ...cellsState[cellId],
-      //       occupy: { isOccupied: true, occupier: shipName },
-      //     };
-      //     // console.log(cellsState[cellId]);
-      //   }
-      // }
 
       //end of ForEach....
     });
-    dispatch(ChangeHeadMessage());
   }
 
   return (

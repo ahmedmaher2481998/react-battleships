@@ -25,15 +25,15 @@ const BattlePage = () => {
           <p className="font-serif text-3xl text-green-300">{headMessage}</p>
         </div>
 
-        <div className="flex p-2 h-4/5 justify-center gap-2 items-center flex-col xl:flex-row row-span-7 col-span-5 row-start-2">
-          <div className="border-2 border-gray bg-neutral-100">
-            <GridBoard />
-          </div>
-
-          <div className=" border-2 border-black bg-slate-700">
-            <GridBoard pc={true} />
-          </div>
+        {/* <div className="flex p-2 h-4/5 justify-center gap-2 items-center flex-col xl:flex-row row-span-7 col-span-5 row-start-2 bg-sky-400"> */}
+        <div className="border-2 border-gray bg-neutral-100 ">
+          <GridBoard />
         </div>
+
+        <div className=" border-2 border-black bg-slate-700 ">
+          <GridBoard pc={true} />
+        </div>
+        {/* </div> */}
       </div>
     </>
   );

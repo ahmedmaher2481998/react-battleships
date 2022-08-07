@@ -1,5 +1,5 @@
 const INIT_BOT_CELLS = 'battle/initBotCells';
-const BOT_CELL_OCCUPY = 'battle/occupyCell';
+const BOT_CELL_OCCUPY = 'battle/occupyBotCell';
 const BOT_CELL_HIT = 'battle/hitBotCell';
 // const
 const initBotCells = (cells) => {

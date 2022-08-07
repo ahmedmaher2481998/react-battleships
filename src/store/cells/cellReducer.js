@@ -37,7 +37,6 @@ export const cellReducer = (state = {}, { type, payload }) => {
       } else if (placingPosition === 'V') {
         for (let newRow = row; newRow < row + shipSize; newRow++) {
           const cellId = generateCellId(newRow, col);
-          console.log(cellId);
           newState[cellId].occupy.isOccupied = true;
           newState[cellId].occupy.occupier = ship;
         }

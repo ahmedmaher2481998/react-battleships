@@ -10,6 +10,8 @@ import {
   getIsOccupied,
   getOccupier,
   ChangeHeadMessage,
+  getIsOccupiedByBot,
+  getOccupierByBot,
 } from '../store/';
 
 //end imports
@@ -31,10 +33,11 @@ const getOccupierImageSrc = (shipName) => {
   }
 };
 
-const Cell = ({ col, row, pcObj }) => {
-  // console.log(cellState);
+const Cell = ({ col, row, pc }) => {
+  pc = pc || false;
+
   const dispatch = useDispatch();
-  const { pc, cellState } = pcObj || {};
+
   const placingPosition = useSelector(getPlacingPosition);
 
   const placingStatus = useSelector(getPlacingStatus);
@@ -42,20 +45,22 @@ const Cell = ({ col, row, pcObj }) => {
   const selectedShip = useSelector(getSelectedShip);
 
   const isOccupied = useSelector((s) =>
-    getIsOccupied({ cellId: generateCellId(row, col), s })
+    pc
+      ? getIsOccupiedByBot({ cellId: generateCellId(row, col), s })
+      : getIsOccupied({ cellId: generateCellId(row, col), s })
   );
-
   const occupier = useSelector((s) =>
-    getOccupier({ cellId: generateCellId(row, col), s })
+    pc
+      ? getOccupierByBot({ cellId: generateCellId(row, col), s })
+      : getOccupier({ cellId: generateCellId(row, col), s })
   );
-
-  //pc Variables
-  const isOccupiedPc = cellState?.occupy.isOccupied;
-  const occupierPc = cellState?.occupy.occupier;
-  const isHitPc = cellState?.hit;
   const cells = useSelector((s) => s.cells);
 
+  //bot Variables
+  const botCells = useSelector((s) => s.bot.botCells);
+
   const handleCellClick = () => {
+    //handle placing ship
     if (placingStatus.split(' ')[0] === 'placing') {
       if (
         validateShipLocation({
@@ -84,51 +89,43 @@ const Cell = ({ col, row, pcObj }) => {
           )
         );
       }
-    } else if (placingStatus === 'done') {
+    }
+    //clicked on after placing a ship
+    else if (placingStatus === 'done') {
       dispatch(ChangeHeadMessage('Please Select a ship...'));
-    } else if (placingStatus === 'end' && !pc) {
+    }
+    //clicked to hit a ship
+    else if (placingStatus === 'end' && !pc) {
       // hitCell
     }
   };
-  if (isOccupiedPc) console.log('row', row, 'col', col);
+  if (isOccupied && pc)
+    console.log(
+      "this is a bot cell and it's occupied at ",
+      'row',
+      row,
+      'col',
+      col
+    );
   return (
     <>
       <div
         className={` w-[9%] h-8 md:h-[100%]  m-[2px] rounded-full flex items-center justify-center hover:bg-slate-300 ${
-          isOccupied && !pc
-            ? 'bg-gray-400'
-            : isOccupiedPc && pc
-            ? 'bg-blue-600'
-            : 'bg-gray-800'
+          isOccupied && !pc ? 'bg-gray-400' : 'bg-gray-800'
         } `}
         onClick={handleCellClick}
       >
-        {/* showing img for player  */}
+        {/* showing img for both  */}
         {isOccupied && !pc ? (
-          <img
-            src={getOccupierImageSrc(occupier)}
-            className="w-full "
-            alt={occupier}
-          />
-        ) : (
-          <></>
-        )}
-        {/* showing img for pc  */}
-        {pc && isOccupiedPc ? (
           <>
             <img
-              src={getOccupierImageSrc(occupierPc)}
+              src={getOccupierImageSrc(occupier)}
               className="w-full "
-              alt={occupierPc}
+              alt={occupier}
             />
-            <div>"HH"</div>
           </>
-        ) : (
-          <>
-            {' '}
-            <div>"HH"</div>
-          </>
-        )}
+        ) : null}
+        {/* {pc ? (isOccupied ? `${occupier}` : null) : 'pc'} */}
       </div>
     </>
   );

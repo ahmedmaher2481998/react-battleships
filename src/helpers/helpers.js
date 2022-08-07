@@ -12,7 +12,6 @@ export const validateShipLocation = ({
   cells,
 }) => {
   //test the parameters is right
-  // console.log({ row, col, placingPosition, shipSize, isOccupied, cells });
   row = 1 * row;
   col = col * 1;
   if (isOccupied) return false;
@@ -30,7 +29,6 @@ export const validateShipLocation = ({
       const cellId = generateCellId(newRow, col);
       if (cells[cellId]?.occupy.isOccupied) return false;
     }
-  } else {
   }
   return true;
 };
