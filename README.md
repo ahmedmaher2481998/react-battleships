@@ -23,7 +23,7 @@
    - generating the newCell for bot and then placing all ships in
    - placing all ships in the bot grid up on mounting
    - start the turn with the player he hit the bot's grid in cell that cell is dispatching hit event on it
-     - when mounting the battle component we set player turn to true
+     - when mounting the battle page component we set player turn to true
      - when the player hit a cell we notify him using portal abut hit or mis
      - then we set the bot turn to true and randomly hit a cell
      - after bot hit a cell we add new notifier to the portal and keeps going

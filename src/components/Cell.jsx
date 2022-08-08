@@ -66,7 +66,6 @@ const Cell = ({ col, row, pc }) => {
   const battleStarted = useSelector(getStartBattle);
   //bot Variables
   const botTurn = useSelector(getBotTurn);
-
   const handleCellClick = () => {
     //handle placing ship
     if (placingStatus.split(' ')[0] === 'placing') {
@@ -114,18 +113,18 @@ const Cell = ({ col, row, pc }) => {
       console.log('p', playerTurn, 'b', botTurn);
     }
   };
-  if (isOccupied && pc && playerTurn)
-    console.log(
-      "this is a bot cell and it's occupied at ",
-      'row',
-      row,
-      'col',
-      col,
-      'bot turn',
-      botTurn,
-      'player turn',
-      playerTurn
-    );
+  //see state while dev
+  // if (isOccupied && pc && playerTurn)    console.log(
+  //     "this is a bot cell and it's occupied at ",
+  //     'row',
+  //     row,
+  //     'col',
+  //     col,
+  //     'bot turn',
+  //     botTurn,
+  //     'player turn',
+  //     playerTurn
+  //   );
   return (
     <>
       <div

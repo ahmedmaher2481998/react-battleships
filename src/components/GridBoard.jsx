@@ -51,6 +51,8 @@ const GridBoard = ({ pc }) => {
   useEffect(() => {
     if (!pc) {
       dispatch(initCells(cellsState));
+      console.log('changing players turn');
+      dispatch(changePlayerTurn());
     } else {
       dispatch(initBotCells(cellsState));
     }
@@ -59,75 +61,89 @@ const GridBoard = ({ pc }) => {
 
   const botCellStates = useSelector((s) => s.bot?.botCells);
 
-  //the pc is the on generating the grid
-  if (pc && botCellStates) {
-    //get random cell row,or col number
-    const getRandom = () => Math.floor(Math.random() * ROW_SIZE + 1);
+  function pC(pc, botCellStates) {
+    //the pc is the on generating the grid
+    if (pc && botCellStates) {
+      //get random cell row,or col number
+      const getRandom = () => Math.floor(Math.random() * ROW_SIZE + 1);
 
-    //get the random position for placing  but optimize it for placing possibility
-    const getPlacingPositionForPc = ({ row, col }) => {
-      //improving the chances of placing the ship
-      if (row > 5) return 'H';
-      else if (col > 5) return 'V';
-      else if (col > row) return 'V';
-      //means it's better chance in the h direction
-      else if (row > col) return 'H';
-      else return 'V';
-    };
+      //get the random position for placing  but optimize it for placing possibility
+      const getPlacingPositionForPc = ({ row, col }) => {
+        //improving the chances of placing the ship
+        if (row > 5) return 'H';
+        else if (col > 5) return 'V';
+        else if (col > row) return 'V';
+        //means it's better chance in the h direction
+        else if (row > col) return 'H';
+        else return 'V';
+      };
 
-    const fleetShips = ['boat', 'ship', 'battlesShip', 'submarine', 'carrier'];
-    const sizeOfShips = {
-      boat: 1,
-      ship: 2,
-      submarine: 3,
-      battlesShip: 4,
-      carrier: 5,
-    };
+      const fleetShips = [
+        'boat',
+        'ship',
+        'battlesShip',
+        'submarine',
+        'carrier',
+      ];
+      const sizeOfShips = {
+        boat: 1,
+        ship: 2,
+        submarine: 3,
+        battlesShip: 4,
+        carrier: 5,
+      };
 
-    fleetShips.forEach((shipName) => {
-      let randomCol = getRandom();
+      fleetShips.forEach((shipName) => {
+        let randomCol = getRandom();
 
-      let randomRow = getRandom();
+        let randomRow = getRandom();
 
-      const shipSize = sizeOfShips[shipName];
+        const shipSize = sizeOfShips[shipName];
 
-      /* START THE BIG WHILE LOOP */
+        /* START THE BIG WHILE LOOP */
 
-      //keep changing coordinates till finding a right cell to place the current ship in
+        //keep changing coordinates till finding a right cell to place the current ship in
 
-      while (
-        //while the ship location is not valid keep trying
-        !validateShipLocation({
-          row: randomRow,
-          col: randomCol,
-          placingPosition: getPlacingPositionForPc({
+        while (
+          //while the ship location is not valid keep trying
+          !validateShipLocation({
             row: randomRow,
             col: randomCol,
-          }),
-          shipSize,
-          isOccupied:
-            cellsState[generateCellId(randomRow, randomCol)].occupy.isOccupied,
-          cells: cellsState,
-        })
-      ) {
-        //while ship location is not valid randomize another cell coordination
-        // logging if the random cell is vialed
-        randomCol = getRandom();
-        randomRow = getRandom();
-      }
+            placingPosition: getPlacingPositionForPc({
+              row: randomRow,
+              col: randomCol,
+            }),
+            shipSize,
+            isOccupied:
+              cellsState[generateCellId(randomRow, randomCol)].occupy
+                .isOccupied,
+            cells: cellsState,
+          })
+        ) {
+          //while ship location is not valid randomize another cell coordination
+          // logging if the random cell is vialed
+          randomCol = getRandom();
+          randomRow = getRandom();
+        }
 
-      /** END OF THE BIG WHILE LOOP**/
+        /** END OF THE BIG WHILE LOOP**/
 
-      const col = randomCol;
-      const row = randomRow;
-      const placingPosition = getPlacingPositionForPc({ row, col });
-      dispatch(
-        occupyBotCell({ row, col, placingPosition, shipSize, ship: shipName })
-      );
+        const col = randomCol;
+        const row = randomRow;
+        const placingPosition = getPlacingPositionForPc({ row, col });
+        console.log('*****', { shipName, row, col });
+        dispatch(
+          occupyBotCell({ row, col, placingPosition, shipSize, ship: shipName })
+        );
 
-      //end of ForEach....
-    });
+        //end of ForEach....
+      });
+    }
   }
+  useEffect(() => {
+    if (pc && botCellStates) pC(pc, botCellStates);
+    console.log(Boolean(botCellStates));
+  }, [Boolean(botCellStates)]);
 
   return (
     <div
