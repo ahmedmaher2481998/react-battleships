@@ -48,3 +48,5 @@ export const getShipSize = (ship) => {
       return 0;
   }
 };
+// returns a random cell / col number
+export const getRandom = () => Math.floor(Math.random() * ROW_SIZE + 1);

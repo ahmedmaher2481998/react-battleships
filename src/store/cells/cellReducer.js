@@ -23,7 +23,8 @@ export const cellReducer = (state = {}, { type, payload }) => {
       return newState;
 
     case HIT_CELL:
-      newState[generateCellId(payload.row, payload.col)].hit = true;
+      const { cellId } = payload;
+      newState[cellId].hit = true;
       return newState;
 
     case OCCUPY_CELL:

@@ -25,7 +25,7 @@ import {
   changePlayerTurn,
   startBattle,
 } from './main/actions';
-import { initCells, cellHit, occupyCell } from './cells/actions';
+import { initCells, hitPlayerCell, occupyCell } from './cells/actions';
 import {
   hitBotCell,
   initBotCells,
@@ -38,7 +38,7 @@ export {
   getOccupier,
   getPlacingStatus,
   initCells,
-  cellHit,
+  hitPlayerCell,
   occupyCell,
   configStore,
   ChangeHeadMessage,

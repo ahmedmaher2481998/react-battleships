@@ -3,6 +3,13 @@ import {
   generateCellId,
   validateShipLocation,
   getShipSize,
+  getRandom,
 } from './helpers';
 
-export { ROW_SIZE, generateCellId, validateShipLocation, getShipSize };
+export {
+  ROW_SIZE,
+  generateCellId,
+  getRandom,
+  validateShipLocation,
+  getShipSize,
+};

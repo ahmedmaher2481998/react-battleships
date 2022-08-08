@@ -1,7 +1,12 @@
 import { useState, useEffect } from 'react';
 import Cell from './Cell';
 import Row from './Row';
-import { generateCellId, validateShipLocation, ROW_SIZE } from '../helpers';
+import {
+  generateCellId,
+  getRandom,
+  validateShipLocation,
+  ROW_SIZE,
+} from '../helpers';
 import { initCellState } from '../store/cells/cellReducer';
 import {
   initCells,
@@ -42,7 +47,6 @@ const GridBoard = ({ pc }) => {
   const dispatch = useDispatch();
 
   const { pathname } = useLocation();
-  const playerTurn = useSelector(getPlayerTurn);
   // const selectedShip = useSelector((s) => getSelectedShip(s));
 
   // const placingStatus = useSelector((s) => getPlacingStatus(s));
@@ -67,7 +71,6 @@ const GridBoard = ({ pc }) => {
     //the pc is the on generating the grid
     if (pc && botCellStates) {
       //get random cell row,or col number
-      const getRandom = () => Math.floor(Math.random() * ROW_SIZE + 1);
 
       //get the random position for placing  but optimize it for placing possibility
       const getPlacingPositionForPc = ({ row, col }) => {

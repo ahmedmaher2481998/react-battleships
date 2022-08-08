@@ -1,5 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { generateCellId, validateShipLocation, getShipSize } from '../helpers/';
+import {
+  generateCellId,
+  validateShipLocation,
+  getShipSize,
+  getRandom,
+} from '../helpers/';
 import { battlesShip, ship, submarine, boat, carrier } from '../assets';
 import {
   getPlacingStatus,
@@ -20,6 +25,7 @@ import {
   hitBotCell,
   getIsHitBot,
   getIsHit,
+  hitPlayerCell,
 } from '../store/';
 
 //end imports
@@ -115,23 +121,14 @@ const Cell = ({ col, row, pc }) => {
       } else if (botTurn) {
         dispatch(changeBotTurn(false));
         dispatch(changePlayerTurn(true));
+        hitPlayerCell(generateCellId(getRandom(), getRandom()));
+
         console.log("now it's bot turn");
       }
       console.log('p', playerTurn, 'b', botTurn);
     }
   };
-  //see state while dev
-  // if (isOccupied && pc && playerTurn)    console.log(
-  //     "this is a bot cell and it's occupied at ",
-  //     'row',
-  //     row,
-  //     'col',
-  //     col,
-  //     'bot turn',
-  //     botTurn,
-  //     'player turn',
-  //     playerTurn
-  //   );
+
   const getBgColor = ({ pc, isHit, isOccupied }) => {
     if (!pc && isOccupied && !isHit) return 'bg-gray-400';
     else if (pc && isOccupied && !isHit) return 'bg-sky-400';
@@ -158,7 +155,6 @@ const Cell = ({ col, row, pc }) => {
             />
           </>
         ) : null}
-        {/* {pc ? (isOccupied ? `${occupier}` : null) : 'pc'} */}
       </div>
     </>
   );

@@ -1,7 +1,7 @@
 //actions type
 const INIT_CELLS = 'start/Create/Cell';
 const OCCUPY_CELL = 'placing/occupyCell';
-const HIT_CELL = 'combat/change/CellHit';
+const HIT_CELL = 'battle/hitPlayerCell';
 //hit cell , occupy cell ,
 //action creators
 const initCells = (cells) => {
@@ -17,8 +17,14 @@ const occupyCell = (payload) => {
   };
 };
 
-//needs modifications
-const cellHit = (row, col) => {
-  return { type: HIT_CELL, payload: { row, col } };
+const hitPlayerCell = (cellId) => {
+  return { type: HIT_CELL, payload: { cellId } };
 };
-export { cellHit, occupyCell, initCells, HIT_CELL, OCCUPY_CELL, INIT_CELLS };
+export {
+  hitPlayerCell,
+  occupyCell,
+  initCells,
+  HIT_CELL,
+  OCCUPY_CELL,
+  INIT_CELLS,
+};
