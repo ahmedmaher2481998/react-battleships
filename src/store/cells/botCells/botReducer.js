@@ -17,7 +17,8 @@ export const botReducer = (state = {}, { type, payload }) => {
       return newState;
 
     case BOT_CELL_HIT:
-      //   newState[generateCellId(payload.row, payload.col)].hit = true;
+      const { cellId } = payload;
+      newState.botCells[cellId].hit = true;
       return newState;
 
     case BOT_CELL_OCCUPY:

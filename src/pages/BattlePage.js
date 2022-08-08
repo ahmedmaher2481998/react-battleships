@@ -8,7 +8,6 @@ import {
   getName,
   getHeadMessage,
   startBattle,
-  changePlayerTurn,
 } from '../store';
 const BattlePage = () => {
   const Navigate = useNavigate();
@@ -26,9 +25,9 @@ const BattlePage = () => {
 
   useEffect(() => {
     if (name === '') Navigate('/');
-    console.log('starting');
+    console.log('%c battle page loaded ', 'color:red');
     dispatch(startBattle());
-    dispatch(changePlayerTurn());
+
     //eslint-disable-next-line
   }, []);
   return (

@@ -17,6 +17,9 @@ import {
   getBotTurn,
   getPlayerTurn,
   getStartBattle,
+  hitBotCell,
+  getIsHitBot,
+  getIsHit,
 } from '../store/';
 
 //end imports
@@ -42,7 +45,7 @@ const Cell = ({ col, row, pc }) => {
   pc = pc || false;
 
   const dispatch = useDispatch();
-
+  const cellId = generateCellId(row, col);
   const placingPosition = useSelector(getPlacingPosition);
 
   const placingStatus = useSelector(getPlacingStatus);
@@ -50,14 +53,13 @@ const Cell = ({ col, row, pc }) => {
   const selectedShip = useSelector(getSelectedShip);
 
   const isOccupied = useSelector((s) =>
-    pc
-      ? getIsOccupiedByBot({ cellId: generateCellId(row, col), s })
-      : getIsOccupied({ cellId: generateCellId(row, col), s })
+    pc ? getIsOccupiedByBot({ cellId, s }) : getIsOccupied({ cellId, s })
   );
   const occupier = useSelector((s) =>
-    pc
-      ? getOccupierByBot({ cellId: generateCellId(row, col), s })
-      : getOccupier({ cellId: generateCellId(row, col), s })
+    pc ? getOccupierByBot({ cellId, s }) : getOccupier({ cellId, s })
+  );
+  const isHit = useSelector((s) =>
+    pc ? getIsHitBot(s, cellId) : getIsHit(s, cellId)
   );
   const cells = useSelector((s) => s.cells);
 
@@ -66,6 +68,7 @@ const Cell = ({ col, row, pc }) => {
   const battleStarted = useSelector(getStartBattle);
   //bot Variables
   const botTurn = useSelector(getBotTurn);
+
   const handleCellClick = () => {
     //handle placing ship
     if (placingStatus.split(' ')[0] === 'placing') {
@@ -103,11 +106,15 @@ const Cell = ({ col, row, pc }) => {
     }
     //clicked to hit a ship
     if (battleStarted) {
+      console.log('its battle....', playerTurn);
       if (playerTurn) {
-        console.log('player Hit ' + generateCellId(row, col));
-        dispatch(changePlayerTurn());
-        dispatch(changeBotTurn());
+        console.log('player Hit ' + cellId);
+        dispatch(changePlayerTurn(false));
+        dispatch(changeBotTurn(true));
+        dispatch(hitBotCell(cellId));
       } else if (botTurn) {
+        dispatch(changeBotTurn(false));
+        dispatch(changePlayerTurn(true));
         console.log("now it's bot turn");
       }
       console.log('p', playerTurn, 'b', botTurn);
@@ -125,11 +132,16 @@ const Cell = ({ col, row, pc }) => {
   //     'player turn',
   //     playerTurn
   //   );
+  const getBgColor = () => {
+    if (!pc && isOccupied) return 'bg-gray-400';
+    else if (isHit && isOccupied) return 'bg-pink-800';
+    else return 'bg-gray-800';
+  };
   return (
     <>
       <div
         className={` w-[9%] h-8 md:h-[100%]  m-[2px] rounded-full flex items-center justify-center hover:bg-slate-300 ${
-          isOccupied && !pc ? 'bg-gray-400' : 'bg-gray-800'
+          isOccupied && !pc ? 'bg-pink-800' : 'bg-gray-800'
         } `}
         onClick={handleCellClick}
       >

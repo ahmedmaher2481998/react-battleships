@@ -60,18 +60,17 @@ export const mainReducer = (state = initState, action) => {
       return newState;
 
     case CHANGE_BOT_TURN:
-      const { isBotTurn } = newState.battle;
-      newState.battle.isBotTurn = !isBotTurn;
+      newState.battle.isBotTurn = payload;
       newState.headMessage = `Now it's ${
-        isBotTurn ? 'bot' : newState.player.name.split(' ')[0]
+        payload ? 'bot' : newState.player.name.split(' ')[0]
       } turn ...`;
       return newState;
 
     case CHANGE_PLAYER_TURN:
-      const { isPlayerTurn } = newState.battle;
-      newState.battle.isPlayerTurn = !isPlayerTurn;
+      newState.battle.isPlayerTurn = payload;
+      console.log('****changing the player position', payload);
       newState.headMessage = `Now it's ${
-        isPlayerTurn ? newState.player.name.split(' ')[0] : 'bot'
+        payload ? newState.player.name.split(' ')[0] : 'bot'
       } turn ...`;
       return newState;
 

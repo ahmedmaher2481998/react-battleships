@@ -1,3 +1,5 @@
+import { generateCellId } from '../helpers';
+
 //selectors
 export const getName = (state) => {
   let name = state.main.player.name;
@@ -26,7 +28,8 @@ export const getIsOccupiedByBot = ({ cellId, s }) => {
 export const getOccupierByBot = ({ cellId, s }) => {
   if (s.bot.botCells) return s.bot?.botCells[cellId]?.occupy.occupier;
 };
-
+export const getIsHitBot = (s, cellId) => s.bot?.botCells[cellId]?.hit;
+export const getIsHit = (s, cellId) => s.cells[cellId]?.hit;
 export const getPlayerTurn = (s) => s.main.battle.isPlayerTurn;
 export const getBotTurn = (s) => s.main.battle.isBotTurn;
 export const getStartBattle = (s) => s.main.battle.start;
@@ -36,8 +39,3 @@ export const getTimeline = ({ main }) => {
 };
 
 export const getCellById = (s, cellId) => s.main.cells[cellId];
-
-export const getIsHit = ({ cells }, cellId) => {
-  let hit = cells[cellId]?.hit || false;
-  return hit;
-};

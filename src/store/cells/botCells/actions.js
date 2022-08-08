@@ -16,8 +16,8 @@ const occupyBotCell = (payload) => {
 };
 
 //needs modifications
-const hitBotCell = (row, col) => {
-  return { type: BOT_CELL_HIT, payload: { row, col } };
+const hitBotCell = (cellId) => {
+  return { type: BOT_CELL_HIT, payload: { cellId } };
 };
 export {
   BOT_CELL_HIT,

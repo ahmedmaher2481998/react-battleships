@@ -8,6 +8,7 @@ import {
   initBotCells,
   occupyBotCell,
   ChangeHeadMessage,
+  getPlayerTurn,
   changePlayerTurn,
 } from '../store';
 import { useDispatch, useSelector } from 'react-redux';
@@ -41,7 +42,7 @@ const GridBoard = ({ pc }) => {
   const dispatch = useDispatch();
 
   const { pathname } = useLocation();
-
+  const playerTurn = useSelector(getPlayerTurn);
   // const selectedShip = useSelector((s) => getSelectedShip(s));
 
   // const placingStatus = useSelector((s) => getPlacingStatus(s));
@@ -51,11 +52,12 @@ const GridBoard = ({ pc }) => {
   useEffect(() => {
     if (!pc) {
       dispatch(initCells(cellsState));
-      console.log('changing players turn');
-      dispatch(changePlayerTurn());
     } else {
+      console.log('changing players turn');
       dispatch(initBotCells(cellsState));
+      dispatch(changePlayerTurn(true));
     }
+
     // eslint-disable-next-line
   }, []);
 
@@ -131,7 +133,7 @@ const GridBoard = ({ pc }) => {
         const col = randomCol;
         const row = randomRow;
         const placingPosition = getPlacingPositionForPc({ row, col });
-        console.log('*****', { shipName, row, col });
+
         dispatch(
           occupyBotCell({ row, col, placingPosition, shipSize, ship: shipName })
         );
@@ -142,7 +144,7 @@ const GridBoard = ({ pc }) => {
   }
   useEffect(() => {
     if (pc && botCellStates) pC(pc, botCellStates);
-    console.log(Boolean(botCellStates));
+    //eslint-disable-next-line
   }, [Boolean(botCellStates)]);
 
   return (

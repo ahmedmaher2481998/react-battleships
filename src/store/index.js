@@ -13,6 +13,7 @@ import {
   getPlayerTurn,
   getBotTurn,
   getStartBattle,
+  getIsHitBot,
 } from './selectors';
 import {
   ChangeHeadMessage,
@@ -60,4 +61,5 @@ export {
   getBotTurn,
   startBattle,
   getStartBattle,
+  getIsHitBot,
 };

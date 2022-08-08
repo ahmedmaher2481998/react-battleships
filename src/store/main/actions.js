@@ -41,11 +41,11 @@ const changePlacingPosition = (position) => {
     },
   };
 };
-const changePlayerTurn = () => {
-  return { type: CHANGE_PLAYER_TURN };
+const changePlayerTurn = (payload) => {
+  return { type: CHANGE_PLAYER_TURN, payload };
 };
-const changeBotTurn = () => {
-  return { type: CHANGE_BOT_TURN };
+const changeBotTurn = (payload) => {
+  return { type: CHANGE_BOT_TURN, payload };
 };
 export {
   setPlayerName,
