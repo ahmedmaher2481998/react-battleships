@@ -68,6 +68,7 @@ const Cell = ({ col, row, pc }) => {
     pc ? getIsHitBot(s, cellId) : getIsHit(s, cellId)
   );
   const cells = useSelector((s) => s.cells);
+  const state = useSelector((s) => s);
 
   const playerTurn = useSelector(getPlayerTurn);
 
@@ -75,6 +76,7 @@ const Cell = ({ col, row, pc }) => {
   //bot Variables
   const botTurn = useSelector(getBotTurn);
 
+  //When a cell is clicked this will run ...
   const handleCellClick = () => {
     //handle placing ship
     if (placingStatus.split(' ')[0] === 'placing') {
@@ -112,23 +114,41 @@ const Cell = ({ col, row, pc }) => {
     }
     //clicked to hit a ship
     if (battleStarted) {
-      console.log('its battle....', playerTurn);
+      // console.log('its battle....', playerTurn);
       if (playerTurn && pc) {
-        console.log('player Hit ' + cellId);
-        dispatch(changePlayerTurn(false));
-        dispatch(changeBotTurn(true));
-        dispatch(hitBotCell(cellId));
-        botHit();
+        // console.log('player Hit ' + cellId);
+        if (!isHit) {
+          dispatch(changePlayerTurn(false));
+          dispatch(changeBotTurn(true));
+
+          dispatch(hitBotCell(cellId));
+          botHit(state);
+        } else {
+          dispatch(
+            ChangeHeadMessage(
+              'this cell is already hit ,try a different cell....'
+            )
+          );
+        }
       }
       console.log('player', playerTurn, 'bot', botTurn);
     }
   };
-  const botHit = () => {
-    const targetCellId = generateCellId(getRandom(), getRandom());
 
+  const botHit = (state) => {
+    //generates random id
+    const getRandomCellId = () => generateCellId(getRandom(), getRandom());
+    //holds that id
+    let cellId = getRandomCellId();
+    //change roles
     dispatch(changeBotTurn(false));
     dispatch(changePlayerTurn(true));
-    dispatch(hitPlayerCell(targetCellId));
+    //while the random cellId is been hit before get a new one
+    while (getIsHit(state, cellId)) {
+      cellId = getRandomCellId();
+    }
+    //hit the new cellId
+    dispatch(hitPlayerCell(cellId));
   };
   const getBgColor = ({ pc, isHit, isOccupied }) => {
     if (!pc && isOccupied && !isHit) return 'bg-gray-400';
