@@ -132,17 +132,19 @@ const Cell = ({ col, row, pc }) => {
   //     'player turn',
   //     playerTurn
   //   );
-  const getBgColor = () => {
-    if (!pc && isOccupied) return 'bg-gray-400';
+  const getBgColor = ({ pc, isHit, isOccupied }) => {
+    if (!pc && isOccupied && !isHit) return 'bg-gray-400';
+    else if (pc && isOccupied && !isHit) return 'bg-sky-400';
     else if (isHit && isOccupied) return 'bg-pink-800';
+    else if (isHit && !isOccupied) return 'bg-white';
     else return 'bg-gray-800';
   };
   return (
     <>
       <div
-        className={` w-[9%] h-8 md:h-[100%]  m-[2px] rounded-full flex items-center justify-center hover:bg-slate-300 ${
-          isOccupied && !pc ? 'bg-pink-800' : 'bg-gray-800'
-        } `}
+        className={` w-[9%] h-8 md:h-[100%]  m-[2px] rounded-full flex items-center justify-center hover:bg-slate-300 ${getBgColor(
+          { pc, isHit, isOccupied }
+        )} `}
         onClick={handleCellClick}
       >
         {/* showing img for both  */}

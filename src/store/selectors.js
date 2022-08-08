@@ -28,7 +28,9 @@ export const getIsOccupiedByBot = ({ cellId, s }) => {
 export const getOccupierByBot = ({ cellId, s }) => {
   if (s.bot.botCells) return s.bot?.botCells[cellId]?.occupy.occupier;
 };
-export const getIsHitBot = (s, cellId) => s.bot?.botCells[cellId]?.hit;
+export const getIsHitBot = (s, cellId) => {
+  if (s.bot.botCells) return s.bot?.botCells[cellId]?.hit;
+};
 export const getIsHit = (s, cellId) => s.cells[cellId]?.hit;
 export const getPlayerTurn = (s) => s.main.battle.isPlayerTurn;
 export const getBotTurn = (s) => s.main.battle.isBotTurn;
