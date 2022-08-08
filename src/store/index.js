@@ -10,6 +10,9 @@ import {
   getIsHit,
   getIsOccupiedByBot,
   getOccupierByBot,
+  getPlayerTurn,
+  getBotTurn,
+  getStartBattle,
 } from './selectors';
 import {
   ChangeHeadMessage,
@@ -17,23 +20,12 @@ import {
   setPlayerName,
   changePlacingPosition,
   changePlacingStatus,
-  CHANGE_BOT_TURN,
-  CHANGE_PLAYER_TURN,
   changeBotTurn,
   changePlayerTurn,
+  startBattle,
 } from './main/actions';
+import { initCells, cellHit, occupyCell } from './cells/actions';
 import {
-  HIT_CELL,
-  OCCUPY_CELL,
-  INIT_CELLS,
-  initCells,
-  cellHit,
-  occupyCell,
-} from './cells/actions';
-import {
-  BOT_CELL_HIT,
-  BOT_CELL_OCCUPY,
-  INIT_BOT_CELLS,
   hitBotCell,
   initBotCells,
   occupyBotCell,
@@ -41,11 +33,8 @@ import {
 //exports
 export {
   getHeadMessage,
-  INIT_CELLS,
-  HIT_CELL,
   getIsOccupied,
   getOccupier,
-  OCCUPY_CELL,
   getPlacingStatus,
   initCells,
   cellHit,
@@ -60,12 +49,15 @@ export {
   changePlacingStatus,
   getIsHit,
   getName,
-  BOT_CELL_HIT,
-  BOT_CELL_OCCUPY,
-  INIT_BOT_CELLS,
   hitBotCell,
   initBotCells,
   occupyBotCell,
   getIsOccupiedByBot,
   getOccupierByBot,
+  changeBotTurn,
+  changePlayerTurn,
+  getPlayerTurn,
+  getBotTurn,
+  startBattle,
+  getStartBattle,
 };

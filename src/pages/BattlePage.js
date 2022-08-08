@@ -1,17 +1,36 @@
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Head } from '../components';
 import { GridBoard } from '../components';
-import { ChangeHeadMessage, getName, getHeadMessage } from '../store';
+import {
+  ChangeHeadMessage,
+  getName,
+  getHeadMessage,
+  startBattle,
+  changePlayerTurn,
+} from '../store';
 const BattlePage = () => {
+  const Navigate = useNavigate();
+
   const dispatch = useDispatch();
+
   const name = useSelector(getName);
+
   const headMessage = useSelector(getHeadMessage);
+
   useEffect(() => {
     dispatch(ChangeHeadMessage(`it's ${name.split(' ')[0]} turn ..`));
     //eslint-disable-next-line
   }, []);
 
+  useEffect(() => {
+    if (name === '') Navigate('/');
+    console.log('starting');
+    dispatch(startBattle());
+    dispatch(changePlayerTurn());
+    //eslint-disable-next-line
+  }, []);
   return (
     <>
       <Head title="BattleShip | Battle" />

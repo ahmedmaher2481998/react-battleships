@@ -12,6 +12,11 @@ import {
   ChangeHeadMessage,
   getIsOccupiedByBot,
   getOccupierByBot,
+  changePlayerTurn,
+  changeBotTurn,
+  getBotTurn,
+  getPlayerTurn,
+  getStartBattle,
 } from '../store/';
 
 //end imports
@@ -56,8 +61,11 @@ const Cell = ({ col, row, pc }) => {
   );
   const cells = useSelector((s) => s.cells);
 
+  const playerTurn = useSelector(getPlayerTurn);
+
+  const battleStarted = useSelector(getStartBattle);
   //bot Variables
-  const botCells = useSelector((s) => s.bot.botCells);
+  const botTurn = useSelector(getBotTurn);
 
   const handleCellClick = () => {
     //handle placing ship
@@ -95,17 +103,28 @@ const Cell = ({ col, row, pc }) => {
       dispatch(ChangeHeadMessage('Please Select a ship...'));
     }
     //clicked to hit a ship
-    else if (placingStatus === 'end' && !pc) {
-      // hitCell
+    if (battleStarted) {
+      if (playerTurn) {
+        console.log('player Hit ' + generateCellId(row, col));
+        dispatch(changePlayerTurn());
+        dispatch(changeBotTurn());
+      } else if (botTurn) {
+        console.log("now it's bot turn");
+      }
+      console.log('p', playerTurn, 'b', botTurn);
     }
   };
-  if (isOccupied && pc)
+  if (isOccupied && pc && playerTurn)
     console.log(
       "this is a bot cell and it's occupied at ",
       'row',
       row,
       'col',
-      col
+      col,
+      'bot turn',
+      botTurn,
+      'player turn',
+      playerTurn
     );
   return (
     <>
@@ -116,7 +135,8 @@ const Cell = ({ col, row, pc }) => {
         onClick={handleCellClick}
       >
         {/* showing img for both  */}
-        {isOccupied && !pc ? (
+        {/*&& !pc*/}
+        {isOccupied ? (
           <>
             <img
               src={getOccupierImageSrc(occupier)}

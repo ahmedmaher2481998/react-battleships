@@ -8,6 +8,7 @@ import {
   initBotCells,
   occupyBotCell,
   ChangeHeadMessage,
+  changePlayerTurn,
 } from '../store';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
@@ -15,7 +16,6 @@ import { useLocation } from 'react-router-dom';
 
 //creating cell states and components  to form grid for pc / player
 export const createGrid = (size, pc = false) => {
-  console.log(pc);
   let rows = [];
   let cellsState = {};
   //creating rows
@@ -124,7 +124,6 @@ const GridBoard = ({ pc }) => {
       dispatch(
         occupyBotCell({ row, col, placingPosition, shipSize, ship: shipName })
       );
-      dispatch(ChangeHeadMessage(`bot is now placing ${shipName}`));
 
       //end of ForEach....
     });
@@ -141,7 +140,6 @@ const GridBoard = ({ pc }) => {
 		flex flex-col justify-between items-center
 		rounded-lg p-2 lg:p-4 xl:p-6 
 		`}
-      // ${selectedShip !== '' && !placingStatus ? 'cursor-grabbing' : null}
     >
       {rows}
     </div>

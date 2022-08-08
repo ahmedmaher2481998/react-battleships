@@ -6,8 +6,11 @@ const CHANGE_PLACING_STATUS = 'placing/setStatus';
 const CHANGE_PLACING_POSITION = 'placing/setPosition';
 const CHANGE_PLAYER_TURN = 'battle/changePlayerTurn';
 const CHANGE_BOT_TURN = 'battle/changeBotTurn';
+const START_BATTLE = 'battle/startBattle';
 //actions
-
+const startBattle = () => {
+  return { type: START_BATTLE };
+};
 const ChangeHeadMessage = (msg) => {
   return {
     type: CHANGE_HEAD_MESSAGE,
@@ -59,4 +62,6 @@ export {
   CHANGE_PLAYER_TURN,
   changeBotTurn,
   changePlayerTurn,
+  START_BATTLE,
+  startBattle,
 };

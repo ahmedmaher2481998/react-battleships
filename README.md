@@ -19,9 +19,22 @@
    - shows hovering effect of the cells before placing
 
 2. moving to battle page
+
    - generating the newCell for bot and then placing all ships in
    - placing all ships in the bot grid up on mounting
    - start the turn with the player he hit the bot's grid in cell that cell is dispatching hit event on it
+     - when mounting the battle component we set player turn to true
+     - when the player hit a cell we notify him using portal abut hit or mis
+     - then we set the bot turn to true and randomly hit a cell
+     - after bot hit a cell we add new notifier to the portal and keeps going
+     - when a hit for the bot / player we inc their score by 1
+     - after that when any of the bot / player collect 15 point it means he won cuz theirs 15
+     - 1 boat + 2 ship + 3 submarine + 4 battleship + 5 carrier = 15 points
+     - calc game time save score / name / time of game / duration in local storage / make is accessible from the welcome page
+     - ideas to add
+     - hover effect on placing
+     -
+
 3. then results page
 
 - how should the game go

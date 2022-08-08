@@ -26,6 +26,10 @@ export const getIsOccupiedByBot = ({ cellId, s }) => {
 export const getOccupierByBot = ({ cellId, s }) => {
   if (s.bot.botCells) return s.bot?.botCells[cellId]?.occupy.occupier;
 };
+
+export const getPlayerTurn = (s) => s.main.battle.isPlayerTurn;
+export const getBotTurn = (s) => s.main.battle.isBotTurn;
+export const getStartBattle = (s) => s.main.battle.start;
 // need to be modified
 export const getTimeline = ({ main }) => {
   return main.timeLine;

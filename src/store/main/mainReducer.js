@@ -6,11 +6,13 @@ import {
   SET_PLAYER_NAME,
   CHANGE_BOT_TURN,
   CHANGE_PLAYER_TURN,
+  START_BATTLE,
 } from './actions';
 
 //initial state
 const initState = {
   headMessage: 'Welcome To BattleShip',
+  // startTime: null,
   player: {
     // name: "",
     // just for development
@@ -22,8 +24,10 @@ const initState = {
     placingPosition: 'H',
   },
   battle: {
+    start: false,
     isPlayerTurn: false,
     isBotTurn: false,
+    end: false,
   },
 };
 
@@ -38,18 +42,23 @@ export const mainReducer = (state = initState, action) => {
     case CHANGE_HEAD_MESSAGE:
       newState.headMessage = payload;
       return newState;
+
     case SELECT_FLEET_SHIP:
       newState.placing.selectedShip = payload.shipName;
       return newState;
+
     case SET_PLAYER_NAME:
       newState.player.name = payload.name;
       return newState;
+
     case CHANGE_PLACING_STATUS:
       newState.placing.placingStatus = payload.status;
       return newState;
+
     case CHANGE_PLACING_POSITION:
       newState.placing.placingPosition = payload.position;
       return newState;
+
     case CHANGE_BOT_TURN:
       const { isBotTurn } = newState.battle;
       newState.battle.isBotTurn = !isBotTurn;
@@ -57,14 +66,19 @@ export const mainReducer = (state = initState, action) => {
         isBotTurn ? 'bot' : newState.player.name.split(' ')[0]
       } turn ...`;
       return newState;
+
     case CHANGE_PLAYER_TURN:
       const { isPlayerTurn } = newState.battle;
       newState.battle.isPlayerTurn = !isPlayerTurn;
       newState.headMessage = `Now it's ${
         isPlayerTurn ? newState.player.name.split(' ')[0] : 'bot'
       } turn ...`;
-
       return newState;
+
+    case START_BATTLE:
+      newState.battle.start = true;
+      return newState;
+
     default:
       return newState;
   }
