@@ -19,19 +19,18 @@ export const cellReducer = (state = {}, { type, payload }) => {
   let newState = { ...state };
   switch (type) {
     case INIT_CELLS:
-      // newState = { ...payload };
+      // newState = { playerCells:{...payload} };
       //experimental for building the battle page
-      newState = { ...test };
+      newState = { playerCells: { ...test }, botResult: 0 };
       return newState;
 
     case HIT_CELL:
       const { cellId } = payload;
-      if (!newState[cellId].hit) newState[cellId].hit = true;
-      else
-        console.log(
-          '%c***trying to hit an already hit cell**',
-          'font-size:50px;color:red;'
-        );
+      if (!newState.playerCells[cellId].hit)
+        newState.playerCells[cellId].hit = true;
+      if (newState.playerCells[cellId].occupy.isOccupied) {
+        newState.botResult++;
+      }
       return newState;
 
     case OCCUPY_CELL:
@@ -39,14 +38,14 @@ export const cellReducer = (state = {}, { type, payload }) => {
       if (placingPosition === 'H') {
         for (let newCol = col; newCol < col + shipSize; newCol++) {
           const cellId = generateCellId(row, newCol);
-          newState[cellId].occupy.isOccupied = true;
-          newState[cellId].occupy.occupier = ship;
+          newState.playerCells[cellId].occupy.isOccupied = true;
+          newState.playerCells[cellId].occupy.occupier = ship;
         }
       } else if (placingPosition === 'V') {
         for (let newRow = row; newRow < row + shipSize; newRow++) {
           const cellId = generateCellId(newRow, col);
-          newState[cellId].occupy.isOccupied = true;
-          newState[cellId].occupy.occupier = ship;
+          newState.playerCells[cellId].occupy.isOccupied = true;
+          newState.playerCells[cellId].occupy.occupier = ship;
         }
       }
       return newState;

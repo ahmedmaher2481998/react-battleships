@@ -14,6 +14,8 @@ import {
   getBotTurn,
   getStartBattle,
   getIsHitBot,
+  getBotResult,
+  getPlayerResult,
 } from './selectors';
 import {
   ChangeHeadMessage,
@@ -66,4 +68,6 @@ export {
   getIsHitBot,
   playerHitTarget,
   botHitTarget,
+  getBotResult,
+  getPlayerResult,
 };

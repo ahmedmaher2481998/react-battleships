@@ -13,12 +13,15 @@ export const botReducer = (state = {}, { type, payload }) => {
   let newState = { ...state };
   switch (type) {
     case INIT_BOT_CELLS:
-      newState = { botCells: { ...payload } };
+      newState = { botCells: { ...payload }, playerResult: 0 };
       return newState;
 
     case BOT_CELL_HIT:
       const { cellId } = payload;
       newState.botCells[cellId].hit = true;
+      if (newState.botCells[cellId].occupy.isOccupied) {
+        newState.playerResult++;
+      }
       return newState;
 
     case BOT_CELL_OCCUPY:
