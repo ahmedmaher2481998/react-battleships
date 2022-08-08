@@ -24,6 +24,8 @@ import {
   changeBotTurn,
   changePlayerTurn,
   startBattle,
+  playerHitTarget,
+  botHitTarget,
 } from './main/actions';
 import { initCells, hitPlayerCell, occupyCell } from './cells/actions';
 import {
@@ -62,4 +64,6 @@ export {
   startBattle,
   getStartBattle,
   getIsHitBot,
+  playerHitTarget,
+  botHitTarget,
 };

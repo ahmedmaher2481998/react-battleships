@@ -113,22 +113,23 @@ const Cell = ({ col, row, pc }) => {
     //clicked to hit a ship
     if (battleStarted) {
       console.log('its battle....', playerTurn);
-      if (playerTurn) {
+      if (playerTurn && pc) {
         console.log('player Hit ' + cellId);
         dispatch(changePlayerTurn(false));
         dispatch(changeBotTurn(true));
         dispatch(hitBotCell(cellId));
-      } else if (botTurn) {
-        dispatch(changeBotTurn(false));
-        dispatch(changePlayerTurn(true));
-        hitPlayerCell(generateCellId(getRandom(), getRandom()));
-
-        console.log("now it's bot turn");
+        botHit();
       }
-      console.log('p', playerTurn, 'b', botTurn);
+      console.log('player', playerTurn, 'bot', botTurn);
     }
   };
+  const botHit = () => {
+    const targetCellId = generateCellId(getRandom(), getRandom());
 
+    dispatch(changeBotTurn(false));
+    dispatch(changePlayerTurn(true));
+    dispatch(hitPlayerCell(targetCellId));
+  };
   const getBgColor = ({ pc, isHit, isOccupied }) => {
     if (!pc && isOccupied && !isHit) return 'bg-gray-400';
     else if (pc && isOccupied && !isHit) return 'bg-sky-400';

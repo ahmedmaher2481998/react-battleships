@@ -7,6 +7,8 @@ const CHANGE_PLACING_POSITION = 'placing/setPosition';
 const CHANGE_PLAYER_TURN = 'battle/changePlayerTurn';
 const CHANGE_BOT_TURN = 'battle/changeBotTurn';
 const START_BATTLE = 'battle/startBattle';
+const PLAYER_HIT_TARGET = 'battle/playerHitTarget';
+const BOT_HIT_TARGET = 'battle/botHitTarget';
 //actions
 const startBattle = () => {
   return { type: START_BATTLE };
@@ -47,6 +49,13 @@ const changePlayerTurn = (payload) => {
 const changeBotTurn = (payload) => {
   return { type: CHANGE_BOT_TURN, payload };
 };
+
+const playerHitTarget = () => {
+  return { type: PLAYER_HIT_TARGET };
+};
+const botHitTarget = () => {
+  return { type: BOT_HIT_TARGET };
+};
 export {
   setPlayerName,
   selectShip,
@@ -64,4 +73,8 @@ export {
   changePlayerTurn,
   START_BATTLE,
   startBattle,
+  BOT_HIT_TARGET,
+  PLAYER_HIT_TARGET,
+  playerHitTarget,
+  botHitTarget,
 };

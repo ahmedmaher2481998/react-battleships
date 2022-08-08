@@ -27,6 +27,7 @@ const initState = {
     start: false,
     isPlayerTurn: false,
     isBotTurn: false,
+
     end: false,
   },
 };
