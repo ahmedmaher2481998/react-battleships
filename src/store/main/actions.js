@@ -58,7 +58,7 @@ const playerHitTarget = () => {
 const botHitTarget = () => {
   return { type: BOT_HIT_TARGET };
 };
-const notify = ({ payload }) => {
+const notify = (payload) => {
   return { type: NOTIFY, payload };
 };
 export {

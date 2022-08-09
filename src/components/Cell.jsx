@@ -117,6 +117,7 @@ const Cell = ({ col, row, pc }) => {
     }
 
     //clicked to hit a ship
+    console.log(battleStarted);
     if (battleStarted) {
       console.log('its battle....', playerTurn);
       if (playerTurn && pc) {
@@ -207,7 +208,7 @@ const Cell = ({ col, row, pc }) => {
         className={` w-[9%] h-8 md:h-[100%]  m-[2px] rounded-full flex items-center justify-center hover:bg-slate-300 ${getBgColor(
           { pc, isHit, isOccupied }
         )} `}
-        onClick={() => alert('yy')}
+        onClick={handleCellClick}
       >
         {/* showing img for both  */}
         {/*&& !pc*/}

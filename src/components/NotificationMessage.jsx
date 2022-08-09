@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import { AiOutlineCloseCircle } from 'react-icons/ai/index';
 
-const NotificationMessage = ({ body, isHit }) => {
+const NotificationMessage = ({ body, isHit, cellId }) => {
   const [open, setOpen] = useState(true);
   const bg = isHit ? 'green-400' : 'rose-500';
   console.log(bg);
@@ -10,6 +10,7 @@ const NotificationMessage = ({ body, isHit }) => {
   return (
     <>
       <div
+        key={cellId}
         className={`${
           open ? 'not' : 'hidden'
         } w-full p-3 mt-8 bg-${bg} rounded flex items-center `}

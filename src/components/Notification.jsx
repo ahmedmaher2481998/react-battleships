@@ -14,11 +14,14 @@ export const Notification = () => {
         <NotificationPanel>
           {notifications.map((notification) => {
             return (
-              <NotificationMessage
-                body={notification.body}
-                isHit={notification.isHit}
-                key={notification.cellId}
-              />
+              notification && (
+                <NotificationMessage
+                  cellId={notification.cellId}
+                  body={notification.body}
+                  isHit={notification.isHit}
+                  key={notification.cellId}
+                />
+              )
             );
           })}
         </NotificationPanel>

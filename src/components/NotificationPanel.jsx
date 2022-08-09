@@ -8,18 +8,18 @@ const NotificationPanel = ({ children }) => {
       {open ? (
         <motion.div
           key={'Notification-panel'}
-          initial={{ y: 20, opacity: 0 }}
+          initial={{ y: 0, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.3, ease: 'easeInOut' }}
           exit={{
-            X: -100,
+            X: 0,
             opacity: 0,
             transition: { duration: 0.3, ease: 'easeInOut' },
           }}
-          className="w-[70%] absolute z-10 right-0 h-full overflow-x-hidden transform translate-x-0 transition ease-in-out duration-700"
+          className="w-full absolute h-full overflow-x-hidden transform translate-x-0 transition ease-in-out duration-700"
           id="notification"
         >
-          <div className="2xl:w-4/12 bg-[#7e4e53b0] h-screen overflow-y-auto p-8 absolute right-0">
+          <div className=" bg-mainred bg-opacity-50  h-screen overflow-y-auto p-8 absolute right-0">
             <div className="flex items-center justify-between">
               <p className="text-2xl font-semibold leading-6 text-gray-800">
                 Notification bar

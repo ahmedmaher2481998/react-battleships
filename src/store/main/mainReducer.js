@@ -82,6 +82,7 @@ export const mainReducer = (state = initState, action) => {
       return newState;
 
     case NOTIFY:
+      console.log('this is the playload ', payload);
       newState.notification.push(payload);
       return newState;
 
