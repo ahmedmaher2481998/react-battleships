@@ -26,6 +26,7 @@ import {
   getIsHitBot,
   getIsHit,
   hitPlayerCell,
+  notify,
 } from '../store/';
 
 //end imports
@@ -78,6 +79,7 @@ const Cell = ({ col, row, pc }) => {
 
   //When a cell is clicked this will run ...
   const handleCellClick = () => {
+    console.log(`%c ${cellId} is clicked`, 'color:blue;font-size:50px;');
     //handle placing ship
     if (placingStatus.split(' ')[0] === 'placing') {
       if (
@@ -108,20 +110,42 @@ const Cell = ({ col, row, pc }) => {
         );
       }
     }
+
     //clicked on after placing a ship
     else if (placingStatus === 'done') {
       dispatch(ChangeHeadMessage('Please Select a ship...'));
     }
+
     //clicked to hit a ship
     if (battleStarted) {
-      // console.log('its battle....', playerTurn);
+      console.log('its battle....', playerTurn);
       if (playerTurn && pc) {
-        // console.log('player Hit ' + cellId);
+        console.log('player Hit ' + cellId);
         if (!isHit) {
           dispatch(changePlayerTurn(false));
           dispatch(changeBotTurn(true));
 
           dispatch(hitBotCell(cellId));
+          //the player hit a a target
+
+          if (isOccupied) {
+            dispatch(
+              notify({
+                body: `The player shot cell ${cellId} and it's a HIt`,
+                cellId,
+                isHit: true,
+              })
+            );
+          } else {
+            dispatch(
+              notify({
+                body: `The player shot cell ${cellId} and it's a Miss...`,
+                cellId,
+                isHit: false,
+              })
+            );
+          }
+          //the bot turn played
           botHit(state);
         } else {
           dispatch(
@@ -149,7 +173,26 @@ const Cell = ({ col, row, pc }) => {
     }
     //hit the new cellId
     dispatch(hitPlayerCell(cellId));
+
+    if (getIsOccupiedByBot({ s: state, cellId })) {
+      dispatch(
+        notify({
+          body: `The Bot shot cell ${cellId} and it's a HIt`,
+          cellId,
+          isHit: true,
+        })
+      );
+    } else {
+      dispatch(
+        notify({
+          body: `The Bot shot cell ${cellId} and it's a Miss...`,
+          cellId,
+          isHit: false,
+        })
+      );
+    }
   };
+
   const getBgColor = ({ pc, isHit, isOccupied }) => {
     if (!pc && isOccupied && !isHit) return 'bg-gray-400';
     else if (pc && isOccupied && !isHit) return 'bg-sky-400';
@@ -157,13 +200,14 @@ const Cell = ({ col, row, pc }) => {
     else if (isHit && !isOccupied) return 'bg-white';
     else return 'bg-gray-800';
   };
+
   return (
     <>
       <div
         className={` w-[9%] h-8 md:h-[100%]  m-[2px] rounded-full flex items-center justify-center hover:bg-slate-300 ${getBgColor(
           { pc, isHit, isOccupied }
         )} `}
-        onClick={handleCellClick}
+        onClick={() => alert('yy')}
       >
         {/* showing img for both  */}
         {/*&& !pc*/}

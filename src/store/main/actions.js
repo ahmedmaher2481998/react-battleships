@@ -9,7 +9,9 @@ const CHANGE_BOT_TURN = 'battle/changeBotTurn';
 const START_BATTLE = 'battle/startBattle';
 const PLAYER_HIT_TARGET = 'battle/playerHitTarget';
 const BOT_HIT_TARGET = 'battle/botHitTarget';
+const NOTIFY = 'battle/notify';
 //actions
+
 const startBattle = () => {
   return { type: START_BATTLE };
 };
@@ -56,6 +58,9 @@ const playerHitTarget = () => {
 const botHitTarget = () => {
   return { type: BOT_HIT_TARGET };
 };
+const notify = ({ payload }) => {
+  return { type: NOTIFY, payload };
+};
 export {
   setPlayerName,
   selectShip,
@@ -72,9 +77,11 @@ export {
   changeBotTurn,
   changePlayerTurn,
   START_BATTLE,
+  NOTIFY,
   startBattle,
   BOT_HIT_TARGET,
   PLAYER_HIT_TARGET,
   playerHitTarget,
   botHitTarget,
+  notify,
 };

@@ -7,6 +7,7 @@ import {
   CHANGE_BOT_TURN,
   CHANGE_PLAYER_TURN,
   START_BATTLE,
+  NOTIFY,
 } from './actions';
 
 //initial state
@@ -30,6 +31,7 @@ const initState = {
 
     end: false,
   },
+  notification: [],
 };
 
 //reducers
@@ -77,6 +79,10 @@ export const mainReducer = (state = initState, action) => {
 
     case START_BATTLE:
       newState.battle.start = true;
+      return newState;
+
+    case NOTIFY:
+      newState.notification.push(payload);
       return newState;
 
     default:

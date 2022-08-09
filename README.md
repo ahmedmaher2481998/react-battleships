@@ -46,3 +46,5 @@
 * when it's pc turn randomly hit an un hit cell and turn switch turns
 * use the main message to notify the player id it's his turn
 * show results and store then in local storage
+
+// VscError bg-pink/rose-300,, GiSpikyExplosion bg-green-500

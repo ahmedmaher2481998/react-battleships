@@ -13,10 +13,8 @@ import {
   initBotCells,
   occupyBotCell,
   ChangeHeadMessage,
-  getPlayerTurn,
+  // getPlayerTurn,
   changePlayerTurn,
-  getBotResult,
-  getPlayerResult,
 } from '../store';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
@@ -54,15 +52,7 @@ const GridBoard = ({ pc }) => {
   // const placingStatus = useSelector((s) => getPlacingStatus(s));
 
   const { rows, cellsState } = createGrid(ROW_SIZE, pc);
-  const playerResult = useSelector(getPlayerResult);
-  const botResult = useSelector(getBotResult);
 
-  useEffect(() => {
-    console.log(
-      `%c ${botResult}, ${playerResult}`,
-      'color:blue;font-size:50px;'
-    );
-  }, [playerResult, botResult]);
   useEffect(() => {
     if (!pc) {
       dispatch(initCells(cellsState));

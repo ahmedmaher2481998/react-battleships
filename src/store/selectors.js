@@ -44,3 +44,5 @@ export const getStartBattle = (s) => s.main.battle.start;
 
 export const getPlayerResult = (s) => s.bot.playerResult;
 export const getBotResult = (s) => s.cells.botResult;
+
+export const getNotification = (s) => s.main.notification;

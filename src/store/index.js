@@ -16,6 +16,7 @@ import {
   getIsHitBot,
   getBotResult,
   getPlayerResult,
+  getNotification,
 } from './selectors';
 import {
   ChangeHeadMessage,
@@ -28,6 +29,7 @@ import {
   startBattle,
   playerHitTarget,
   botHitTarget,
+  notify,
 } from './main/actions';
 import { initCells, hitPlayerCell, occupyCell } from './cells/actions';
 import {
@@ -70,4 +72,6 @@ export {
   botHitTarget,
   getBotResult,
   getPlayerResult,
+  getNotification,
+  notify,
 };
