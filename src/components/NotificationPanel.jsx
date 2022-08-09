@@ -16,7 +16,7 @@ const NotificationPanel = ({ children }) => {
             opacity: 0,
             transition: { duration: 0.3, ease: 'easeInOut' },
           }}
-          className="w-full absolute h-full overflow-x-hidden transform translate-x-0 transition ease-in-out duration-700"
+          className="w-full absolute h-full overflow-x-hidden transform translate-x-0 transition ease-in-out duration-700 border-2 border-pink-500"
           id="notification"
         >
           <div className=" bg-mainred bg-opacity-50  h-screen overflow-y-auto p-8 absolute right-0">

@@ -132,7 +132,7 @@ const Cell = ({ col, row, pc }) => {
           if (isOccupied) {
             dispatch(
               notify({
-                body: `The player shot cell ${cellId} and it's a HIt`,
+                body: `The player shot cell ${cellId} and ${occupier} was destroyed, it's a HIt`,
                 cellId,
                 isHit: true,
               })
@@ -178,7 +178,10 @@ const Cell = ({ col, row, pc }) => {
     if (getIsOccupiedByBot({ s: state, cellId })) {
       dispatch(
         notify({
-          body: `The Bot shot cell ${cellId} and it's a HIt`,
+          body: `The Bot shot cell ${cellId} and ${getOccupierByBot({
+            s: state,
+            cellId,
+          })} was destroyed, it's a HIt`,
           cellId,
           isHit: true,
         })
