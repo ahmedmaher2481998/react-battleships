@@ -10,6 +10,7 @@ import {
   ResultsPage,
   BattlePage,
   PlacingPage,
+  WinnerPage,
 } from './pages';
 import { Footer } from './components';
 import NotFound from './pages/404';
@@ -21,6 +22,7 @@ function App() {
         <Route path="/" element={<Navigate to="/welcome" replace />} />
         <Route path="/rules" element={<Rules />} />
         <Route path="/result" element={<ResultsPage />} />
+        <Route path="/winner/:winnerName" element={<WinnerPage />} />
         <Route path="/placing" element={<PlacingPage />} />
         <Route path="/battle" element={<BattlePage />} />
         <Route path="*" element={<NotFound />} />

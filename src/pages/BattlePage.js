@@ -40,16 +40,61 @@ const BattlePage = () => {
     dispatch(startBattle());
     //eslint-disable-next-line
   }, []);
+  const startTime = useSelector((s) => s.main.startTime);
 
   useEffect(() => {
+    let time;
     console.log(
       `%c ${botResult}, ${playerResult}`,
       'color:blue;font-size:50px;'
     );
     if (playerResult === 15) {
       setPlayerWon(true);
+      time = setTimeout(() => {
+        Navigate(`/winner/${name.split(' ')[0]}`);
+      }, 3000);
     } else if (botResult === 15) {
       setBotWon(true);
+      time = setTimeout(() => {
+        Navigate(`/winner/bot`);
+      }, 3000);
+    }
+    //the game ended and there's a winner
+    if (playerWon || botWon) {
+      dispatch(
+        ChangeHeadMessage(
+          <p className="text-white bg-green-500 p-2 rounded-md">
+            Game Ended,Please Wait to See Tee Result ...
+          </p>
+        )
+      );
+
+      //formatting the data to save in local Storage
+      const diffInMilliSeconds = Math.abs(startTime - Date.now()) / 1000;
+      const minutes = Math.floor(diffInMilliSeconds / 60) % 60;
+
+      const result = {
+        winner: playerWon ? name : 'Bot',
+        score: `${name}:${playerResult},Bot:${botResult}`,
+        timePlayed: `${
+          startTime.toLocaleDateString('en-us', {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric',
+          }) +
+          ',' +
+          startTime.toLocaleTimeString('en-US')
+        }`,
+        durationOfGame: `${minutes} min`,
+      };
+      if (!localStorage.getItem('results')) {
+        localStorage.setItem('results', JSON.stringify([result]));
+      } else if (localStorage.getItem('results')) {
+        const results = JSON.parse(localStorage.getItem('results'));
+        localStorage.setItem('results', JSON.stringify([...results, result]));
+      }
+      if (time) return clearTimeout(time);
     }
   }, [playerResult, botResult]);
 
@@ -68,7 +113,16 @@ const BattlePage = () => {
 
       {/* <div className="flex p-2 h-4/5 justify-center gap-2 items-center flex-col xl:flex-row row-span-7 col-span-5 row-start-2 bg-sky-400"> */}
       {playerWon || botWon ? (
-        <Winner playerWon={playerWon} botWon={botWon} />
+        <div className="bg-blue-400 w-screen h-screen flex justify-center items-center">
+          <style
+            dangerouslySetInnerHTML={{
+              __html:
+                '\n\t@keyframes loader-rotate {\n\t\t0% {\n\t\t\ttransform: rotate(0);\n\t\t}\n\t\t100% {\n\t\t\ttransform: rotate(360deg);\n\t\t}\n\t}\n\t.loader {\n\t\tborder-right-color: transparent;\n\t\tanimation: loader-rotate 1s linear infinite;\n\t}\n',
+            }}
+          />
+
+          <div className="w-20 h-20 border-4 border-blue-600 rounded-full loader"></div>
+        </div>
       ) : (
         <>
           <AnimatePresence>

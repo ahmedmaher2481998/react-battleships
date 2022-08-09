@@ -32,6 +32,7 @@ const initState = {
     end: false,
   },
   notification: [],
+  startTime: Date.now(),
 };
 
 //reducers
@@ -71,10 +72,10 @@ export const mainReducer = (state = initState, action) => {
 
     case CHANGE_PLAYER_TURN:
       newState.battle.isPlayerTurn = payload;
-      console.log('****changing the player position', payload);
-      newState.headMessage = `Now it's ${
-        payload ? newState.player.name.split(' ')[0] : 'bot'
-      } turn ...`;
+      // console.log('****changing the player position', payload);
+      // newState.headMessage = `Now it's ${
+      //   payload ? newState.player.name.split(' ')[0] : 'bot'
+      // } turn ...`;
       return newState;
 
     case START_BATTLE:
@@ -82,7 +83,7 @@ export const mainReducer = (state = initState, action) => {
       return newState;
 
     case NOTIFY:
-      console.log('this is the playload ', payload);
+      // console.log('this is the playload ', payload);
       newState.notification.push(payload);
       return newState;
 

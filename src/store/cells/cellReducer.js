@@ -1,6 +1,5 @@
 import { generateCellId } from '../../helpers/helpers';
 import { HIT_CELL, OCCUPY_CELL, INIT_CELLS } from './actions';
-import { test } from '../../helpers/test';
 
 export const initCellState = (row, col) => {
   return {
@@ -19,9 +18,8 @@ export const cellReducer = (state = {}, { type, payload }) => {
   let newState = { ...state };
   switch (type) {
     case INIT_CELLS:
-      // newState = { playerCells:{...payload} };
+      newState = { playerCells: { ...payload }, botResult: 0 };
       //experimental for building the battle page
-      newState = { playerCells: { ...test }, botResult: 0 };
       return newState;
 
     case HIT_CELL:
