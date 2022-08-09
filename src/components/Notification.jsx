@@ -15,16 +15,16 @@ export const Notification = () => {
   const containerRef = useRef(null);
   const state = useSelector((s) => s);
   const scrollToView = () => {
-    flushSync(() => setNotifications(getNotification(state)));
-    const lastChild = containerRef?.current?.lastElementChild;
-    lastChild?.scrollToView({
+    document.getElementById('last')?.scrollIntoView({
       behavior: 'smooth',
       block: 'end',
       inline: 'nearest',
     });
   };
-  scrollToView();
-  useEffect(() => {}, [notifications.length]);
+  useEffect(() => {
+    setNotifications(getNotification(state));
+    scrollToView();
+  }, [notifications.length]);
   return (
     <>
       <Portal>
@@ -34,12 +34,16 @@ export const Notification = () => {
               return (
                 notification &&
                 (index === notifications.length - 1 ? (
-                  <div ref={containerRef}>
+                  <div
+                    id="last"
+                    key={notification.cellId * Math.random()}
+                    ref={containerRef}
+                  >
                     <NotificationMessage
                       cellId={notification.cellId}
                       body={notification.body}
                       isHit={notification.isHit}
-                      key={notification.cellId}
+                      key={notification.cellId * Math.random()}
                     />
                   </div>
                 ) : (
@@ -47,7 +51,7 @@ export const Notification = () => {
                     cellId={notification.cellId}
                     body={notification.body}
                     isHit={notification.isHit}
-                    key={notification.cellId}
+                    key={notification.cellId * Math.random()}
                   />
                 ))
               );

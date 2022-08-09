@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { Head } from '../components';
-import { GridBoard } from '../components';
+import { GridBoard, Head, Notification, Winner } from '../components';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   ChangeHeadMessage,
@@ -12,7 +11,6 @@ import {
   getBotResult,
   getPlayerResult,
 } from '../store';
-import Notification from '../components/Notification';
 
 const playerGridAnimation = {};
 const botGridAnimation = {};
@@ -70,9 +68,7 @@ const BattlePage = () => {
 
       {/* <div className="flex p-2 h-4/5 justify-center gap-2 items-center flex-col xl:flex-row row-span-7 col-span-5 row-start-2 bg-sky-400"> */}
       {playerWon || botWon ? (
-        <button key={'win'} className="btn">
-          {'someone won '}
-        </button>
+        <Winner playerWon={playerWon} botWon={botWon} />
       ) : (
         <>
           <AnimatePresence>

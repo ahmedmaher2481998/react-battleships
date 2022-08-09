@@ -8,5 +8,18 @@ import Row from './Row';
 import GridBoard from './GridBoard';
 import Head from './Head';
 import Card from './ResultCard';
+import Notification from './Notification';
+import Winner from './Winner';
 //exporting components
-export { Head, MainHero, Footer, Card, Fleet, GridBoard, Cell, Row };
+export {
+  Head,
+  Notification,
+  Winner,
+  MainHero,
+  Footer,
+  Card,
+  Fleet,
+  GridBoard,
+  Cell,
+  Row,
+};
