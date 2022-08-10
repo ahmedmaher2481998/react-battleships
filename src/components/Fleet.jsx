@@ -13,10 +13,10 @@ import {
 } from '../store';
 import { boat, battlesShip, submarine, ship, carrier } from '../assets';
 import { toast } from 'react-toastify';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 const Fleet = () => {
   const dispatch = useDispatch();
-  // const selectedShip = useSelector((s) => getSelectedShip(s));
+  const navigate = useNavigate();
   const placingStatus = useSelector((s) => getPlacingStatus(s));
   const [placingPosition, setPlacingPosition] = useState('v');
   const [fleet, setFleet] = useState([]);
@@ -36,7 +36,7 @@ const Fleet = () => {
 
   return (
     <>
-      <div className={placingStatus === 'end' ? 'hidden' : null}>
+      <div className={placingStatus === 'end' ? 'hidden' : ''}>
         <div className=" absolute   ">
           <div className="relative   left-0 top-0" id="fleet">
             <div className="-mt-8 mb-2 sm:max-w-[8rem]  max-w-[4rem] ">
@@ -96,13 +96,18 @@ const Fleet = () => {
         </div>
       </div>
       {placingStatus === 'end' ? (
-        <>
-          <div className=" absolute">
-            <button className=" relative -top-5  md:top-40 md:left-0 left-40 btn w-[100%] mx-auto my-auto">
-              <Link to={'/battle'}>Start Battle</Link>
-            </button>
-          </div>
-        </>
+        <div className=" absolute">
+          <button
+            type="button"
+            onClick={(e) => {
+              e.preventDefault();
+              navigate('/battle');
+            }}
+            className=" relative -top-5  md:top-40 md:left-0 left-40 btn w-[100%] mx-auto my-auto"
+          >
+            tart Battle
+          </button>
+        </div>
       ) : null}
     </>
   );

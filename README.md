@@ -36,6 +36,8 @@
      -
 
 3. then results page
+   - get the results object from localStorage if there's not show a button to the welcome page ..
+   - display the results on cards each has the data stored in it
 
 - how should the game go
 
@@ -48,3 +50,9 @@
 * show results and store then in local storage
 
 // VscError bg-pink/rose-300,, GiSpikyExplosion bg-green-500
+bugs to be fixed
+weird notifications from bot
+the layout on the battle page
+the winner page img and background
+the number of cell by the slider on the start
+the head message on the battle page

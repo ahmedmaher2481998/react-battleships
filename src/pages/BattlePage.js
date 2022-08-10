@@ -12,9 +12,6 @@ import {
   getPlayerResult,
 } from '../store';
 
-const playerGridAnimation = {};
-const botGridAnimation = {};
-
 const BattlePage = () => {
   const Navigate = useNavigate();
 
@@ -52,50 +49,55 @@ const BattlePage = () => {
       setPlayerWon(true);
       time = setTimeout(() => {
         Navigate(`/winner/${name.split(' ')[0]}`);
-      }, 3000);
+      }, 4000);
     } else if (botResult === 15) {
       setBotWon(true);
       time = setTimeout(() => {
         Navigate(`/winner/bot`);
-      }, 3000);
+      }, 4000);
     }
     //the game ended and there's a winner
     if (playerWon || botWon) {
       dispatch(
         ChangeHeadMessage(
-          <p className="text-white bg-green-500 p-2 rounded-md">
-            Game Ended,Please Wait to See Tee Result ...
-          </p>
+          <span className="text-white bg-green-500 p-2 rounded-md">
+            Game Ended,Please Wait to See Tee Result in 4 sec ...
+          </span>
         )
       );
 
       //formatting the data to save in local Storage
       const diffInMilliSeconds = Math.abs(startTime - Date.now()) / 1000;
       const minutes = Math.floor(diffInMilliSeconds / 60) % 60;
-
+      //constructing the result object to store in local Storage
       const result = {
         winner: playerWon ? name : 'Bot',
-        score: `${name}:${playerResult},Bot:${botResult}`,
-        timePlayed: `${
-          startTime.toLocaleDateString('en-us', {
-            weekday: 'long',
-            year: 'numeric',
-            month: 'short',
-            day: 'numeric',
-          }) +
-          ',' +
-          startTime.toLocaleTimeString('en-US')
-        }`,
+        startTime,
+        playerScore: `${playerResult}`,
+        botScore: `${botResult}`,
+        timePlayed: `${startTime.toLocaleDateString('en-us', {
+          weekday: 'long',
+          year: 'numeric',
+          month: 'short',
+          day: 'numeric',
+        })} , at :
+          ${startTime.toLocaleTimeString('en-US')}`,
         durationOfGame: `${minutes} min`,
       };
+      console.log('***************************', result);
+      //checking if there's a results array
       if (!localStorage.getItem('results')) {
-        localStorage.setItem('results', JSON.stringify([result]));
+        const results = [];
+        results.push(result);
+        localStorage.setItem('results', JSON.stringify(results));
       } else if (localStorage.getItem('results')) {
         const results = JSON.parse(localStorage.getItem('results'));
-        localStorage.setItem('results', JSON.stringify([...results, result]));
+        result.push(result);
+        localStorage.setItem('results', JSON.stringify(results));
       }
       if (time) return clearTimeout(time);
     }
+    //will call only if someone won ..
   }, [playerResult, botResult]);
 
   return (
@@ -108,7 +110,9 @@ const BattlePage = () => {
       <Notification />
       <Head title="BattleShip | Battle" />
       <div className="col-span-5 row-start-1 flex flex-wrap justify-center items-center row-span-1">
-        <p className="font-serif text-3xl text-green-300">{headMessage}</p>
+        <span className="font-serif text-3xl text-green-300">
+          {headMessage}
+        </span>
       </div>
 
       {/* <div className="flex p-2 h-4/5 justify-center gap-2 items-center flex-col xl:flex-row row-span-7 col-span-5 row-start-2 bg-sky-400"> */}
@@ -128,11 +132,11 @@ const BattlePage = () => {
           <AnimatePresence>
             <motion.div
               key={'playerGrid'}
-              initial={{ y: 0, x: '-50%', opacity: 0 }}
-              animate={{ y: 0, x: 0, opacity: 1 }}
+              initial={{ y: 100, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
               exit={{
-                y: 0,
-                x: '50%',
+                y: -100,
+
                 opacity: 0,
                 transition: { duration: 0.2, ease: 'easeInOut' },
               }}
@@ -141,11 +145,22 @@ const BattlePage = () => {
             >
               <GridBoard />
             </motion.div>
-          </AnimatePresence>
 
-          <div className=" border-2 border-black bg-slate-700 ">
-            <GridBoard pc={true} />
-          </div>
+            <motion.div
+              key={'botGrid'}
+              initial={{ y: 100, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{
+                y: -100,
+                opacity: 0,
+                transition: { duration: 0.2, ease: 'easeInOut' },
+              }}
+              transition={{ duration: 0.3, ease: 'easeIn' }}
+              className=" border-2 border-black bg-slate-700 "
+            >
+              <GridBoard pc={true} />
+            </motion.div>
+          </AnimatePresence>
         </>
       )}
       {/* </div> */}

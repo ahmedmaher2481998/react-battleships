@@ -79,7 +79,7 @@ const Cell = ({ col, row, pc }) => {
 
   //When a cell is clicked this will run ...
   const handleCellClick = () => {
-    console.log(`%c ${cellId} is clicked`, 'color:blue;font-size:50px;');
+    // console.log(`%c ${cellId} is clicked`, 'color:blue;font-size:50px;');
     //handle placing ship
     if (placingStatus.split(' ')[0] === 'placing') {
       if (
@@ -120,6 +120,7 @@ const Cell = ({ col, row, pc }) => {
     console.log(battleStarted);
     if (battleStarted) {
       console.log('its battle....', playerTurn);
+      //this is a bot cell and player turn
       if (playerTurn && pc) {
         console.log('player Hit ' + cellId);
         if (!isHit) {
@@ -147,7 +148,9 @@ const Cell = ({ col, row, pc }) => {
             );
           }
           //the bot turn played
-          botHit(state);
+          if (pc) {
+            botHit(state);
+          }
         } else {
           dispatch(
             ChangeHeadMessage(
@@ -204,7 +207,7 @@ const Cell = ({ col, row, pc }) => {
     else if (isHit && !isOccupied) return 'bg-white';
     else return 'bg-gray-800';
   };
-
+  if (!pc && isOccupied) console.log('******', occupier, cellId);
   return (
     <>
       <div

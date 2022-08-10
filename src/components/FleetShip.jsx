@@ -49,7 +49,7 @@ const FleetShip = ({ img, name, cells, setFleet, fleet }) => {
         className={fleet.includes(name) ? 'hidden' : ''}
       >
         <img src={img} alt={name} className="item" />
-        <p>{`${name} (${cells})`}</p>
+        <span>{`${name} (${cells})`}</span>
       </span>
     </>
   );
