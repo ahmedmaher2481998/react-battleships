@@ -9,12 +9,11 @@ import GridBoard from './GridBoard';
 import Head from './Head';
 import Card from './ResultCard';
 import Notification from './Notification';
-import Winner from './Winner';
+
 //exporting components
 export {
   Head,
   Notification,
-  Winner,
   MainHero,
   Footer,
   Card,

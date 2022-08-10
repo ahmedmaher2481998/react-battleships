@@ -4,6 +4,8 @@ import { Head, Card } from '../components';
 import { motion } from 'framer-motion';
 
 const ResultsPage = () => {
+  const results = JSON.parse(localStorage.getItem('results'));
+  console.log(results);
   return (
     <>
       <Head title={'BattleShip | Results'} />
@@ -20,21 +22,41 @@ const ResultsPage = () => {
               </p>
             </Link>
           </div>
-          <div className="container px-5 py-24 mx-auto">
-            <div className="flex flex-col text-center w-full mb-20">
-              <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-bage">
-                This is all results collected on this device.
-              </h1>
-              <p className="lg:w-2/3 mx-auto text-bage leading-relaxed text-base">
-                all scores are from /15
-              </p>
-            </div>
-            <div className="flex flex-wrap -m-4">
-              <Card />
-            </div>
-          </div>
+          {results ? (
+            <ResultBody>
+              {results.map((result, index) => {
+                <Card key={index} result={result} />;
+              })}
+            </ResultBody>
+          ) : (
+            <>
+              <div className="flex flex-col text-center w-full mb-20">
+                <h1 className="sm:text-3xl text-2xl font-medium mt-20 title-font mb-4 text-bage">
+                  No Results Yet..
+                </h1>
+              </div>
+            </>
+          )}
         </section>
       </>
+    </>
+  );
+};
+
+const ResultBody = ({ children }) => {
+  return (
+    <>
+      <div className="container px-5 py-24 mx-auto">
+        <div className="flex flex-col text-center w-full mb-20">
+          <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-bage">
+            This is all results collected on this device.
+          </h1>
+          <p className="lg:w-2/3 mx-auto text-bage leading-relaxed text-base">
+            all scores are from /15
+          </p>
+        </div>
+        <div className="flex flex-wrap -m-4">{children}</div>
+      </div>
     </>
   );
 };

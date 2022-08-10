@@ -1,9 +1,21 @@
 import React from 'react';
+import { motion } from 'framer-motion';
+const Card = ({ result, index }) => {
+  const { winner } = result;
 
-const Card = ({ resultObj }) => {
   return (
     <>
-      <div className="lg:w-1/3 sm:w-1/2 p-4">
+      <motion.div
+        initial={{ y: 100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        exit={{
+          y: -100,
+          opacity: 0,
+          transition: { duration: 0.2, ease: 'easeInOut' },
+        }}
+        transition={{ duration: 0.3, ease: 'easeIn' }}
+        className="lg:w-1/3 sm:w-1/2 p-4"
+      >
         <div className="flex relative">
           <div className="px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-100 hover:">
             <h2 className="tracking-widest text-sm title-font font-medium text-indigo-500 mb-1">
@@ -18,7 +30,7 @@ const Card = ({ resultObj }) => {
             </p>
           </div>
         </div>
-      </div>
+      </motion.div>
     </>
   );
 };

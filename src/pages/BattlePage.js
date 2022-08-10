@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { GridBoard, Head, Notification, Winner } from '../components';
+import { GridBoard, Head, Notification } from '../components';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   ChangeHeadMessage,
