@@ -50,3 +50,10 @@ export const getShipSize = (ship) => {
 };
 // returns a random cell / col number
 export const getRandom = () => Math.floor(Math.random() * ROW_SIZE + 1);
+
+export const getDurationInMinutes = (startTime) => {
+  //formatting the data to save in local Storage
+  const diffInMilliSeconds = Math.abs(startTime - Date.now()) / 1000;
+  const minutes = Math.floor(diffInMilliSeconds / 60) % 60;
+  return minutes;
+};

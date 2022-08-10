@@ -11,7 +11,7 @@ import {
   getBotResult,
   getPlayerResult,
 } from '../store';
-
+import { getDurationInMinutes } from '../helpers';
 const BattlePage = () => {
   const Navigate = useNavigate();
   const dispatch = useDispatch();
@@ -19,8 +19,8 @@ const BattlePage = () => {
   const playerResult = useSelector(getPlayerResult);
   const botResult = useSelector(getBotResult);
   const headMessage = useSelector(getHeadMessage);
-  const [playerWon, setPlayerWon] = useState(false);
-  const [botWon, setBotWon] = useState(false);
+  const playerWon = playerResult === 15;
+  const botWon = botResult === 15;
 
   useEffect(() => {
     dispatch(
@@ -36,7 +36,7 @@ const BattlePage = () => {
     dispatch(startBattle());
     //eslint-disable-next-line
   }, []);
-  const startTime = useSelector((s) => s.main.startTime);
+  const startTime = useSelector((s) => new Date(s.main?.startTime));
 
   useEffect(() => {
     let time;
@@ -55,18 +55,20 @@ const BattlePage = () => {
     );
     //wining cases
     if (playerResult === 15) {
-      setPlayerWon(true);
+      console.log('******', playerResult);
       time = setTimeout(() => {
+        console.log('%c first', 'color:black;font-size:60px;');
         Navigate(`/winner/${name.split(' ')[0]}`);
-      }, 4000);
+      }, 3000);
     } else if (botResult === 15) {
-      setBotWon(true);
       time = setTimeout(() => {
         Navigate(`/winner/bot`);
-      }, 4000);
+      }, 3000);
     }
     //the game ended and there's a winner
+    console.log('debug', playerWon, botWon, playerWon || botWon);
     if (playerWon || botWon) {
+      console.log('Winner winner chicken dinner ');
       dispatch(
         ChangeHeadMessage(
           <span className="text-white bg-green-500 p-2 rounded-md">
@@ -75,9 +77,6 @@ const BattlePage = () => {
         )
       );
 
-      //formatting the data to save in local Storage
-      const diffInMilliSeconds = Math.abs(startTime - Date.now()) / 1000;
-      const minutes = Math.floor(diffInMilliSeconds / 60) % 60;
       //constructing the result object to store in local Storage
       const result = {
         winner: playerWon ? name : 'Bot',
@@ -91,9 +90,11 @@ const BattlePage = () => {
           day: 'numeric',
         })} , at :
           ${startTime.toLocaleTimeString('en-US')}`,
-        durationOfGame: `${minutes} min`,
+        durationOfGame: `${getDurationInMinutes(startTime)} min`,
       };
+
       console.log('***************************', result);
+
       //checking if there's a results array
       if (!localStorage.getItem('results')) {
         const results = [];
@@ -106,7 +107,7 @@ const BattlePage = () => {
       }
     }
 
-    if (time) return clearTimeout(time);
+    // return clearTimeout(time);
     //will call only if someone won ..
     //eslint-disable-next-line
   }, [playerResult, botResult]);

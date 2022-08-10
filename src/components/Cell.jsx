@@ -211,7 +211,7 @@ const Cell = ({ col, row, pc }) => {
   return (
     <>
       <div
-        className={` w-[9%] h-8 md:h-[100%]  m-[2px] rounded-full flex items-center justify-center hover:bg-slate-300 ${getBgColor(
+        className={` w-[9%] h-8 md:h-[100%]  rounded-full flex items-center justify-center hover:bg-slate-300 ${getBgColor(
           { pc, isHit, isOccupied }
         )} `}
         onClick={handleCellClick}

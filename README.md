@@ -51,9 +51,14 @@
 
 // VscError bg-pink/rose-300,, GiSpikyExplosion bg-green-500
 bugs to be fixed
-weird notifications from bot //done
-the layout on the battle page //done
+
+<!-- weird notifications from bot //done -->
+<!-- the layout on the battle page //done -->
+
 the winner page img and background
 the number of cell by the slider on the start
-the head message on the battle page //done
+the head message on the battle page when hit a hit cell
+the result object
+submarine over occupy a cell
+
 upon hitting a cell display this VscError bg-pink/rose-300,, GiSpikyExplosion bg-green-500

@@ -1,13 +1,32 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { FaSmileBeam, FaRegSadTear } from 'react-icons/fa/index';
+import { useSelector } from 'react-redux';
+import { getBotResult, getName, getPlayerResult } from '../store';
+import { victory } from '../assets';
+import { getDurationInMinutes } from '../helpers';
 const WinnerPage = () => {
+  const navigate = useNavigate();
   const { winnerName } = useParams();
+  const getWinnerScore = useSelector((s) =>
+    winnerName === 'bot' ? getBotResult : getPlayerResult
+  );
+  const name = useSelector(getName);
+  const startTime = useSelector((s) => new Date(s.main.startTime));
+  const botResult = useSelector(getBotResult);
+  const playerResult = useSelector(getPlayerResult);
+  const timePlayed = `${startTime.toLocaleDateString('en-us', {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  })} , at :
+          ${startTime.toLocaleTimeString('en-US')}`;
+
   return (
     <>
-      bg-cover bg-center
       <div
-        style={{ backgroundImage: `url('../assets/victory.jpg')` }}
+        style={{ backgroundImage: `url(${victory})` }}
         className=" mx-auto h-screen w-screen bg-cover bg-center"
       >
         <div className="flex items-center justify-center h-full">
@@ -22,9 +41,11 @@ const WinnerPage = () => {
                 <div className="flex flex-row space-x-4 items-center">
                   <div id="icon">
                     <span
-                      className={`text-${
-                        winnerName === 'bot' ? 'rose' : 'green'
-                      }-500 text-4xl`}
+                      className={`${
+                        winnerName === 'bot'
+                          ? 'text-rose-500'
+                          : 'text-green-500'
+                      } text-4xl`}
                     >
                       {winnerName === 'bot' ? (
                         <FaRegSadTear />
@@ -34,9 +55,15 @@ const WinnerPage = () => {
                     </span>
                   </div>
                   <div id="temp">
-                    <h4 className="text-4xl text-white">Score : </h4>
-                    <p className="text-xs text-gray-200">
-                      the game lasted for it was an epic battle{' '}
+                    <h4 className="text-4xl mb-4  text-white">
+                      Score: {getWinnerScore}
+                    </h4>
+                    <p className="text-s flex flex-wrap max-w-sm text-gray-400 lg:text-lg">
+                      the game started at {timePlayed}, and it lasted for{' '}
+                      {getDurationInMinutes(startTime)} min, it was an epic
+                      battle.which ended by winning of {winnerName} by
+                      {playerResult > botResult ? playerResult : botResult}
+                      ,great game {name}
                     </p>
                   </div>
                 </div>
@@ -44,6 +71,9 @@ const WinnerPage = () => {
               <div className="w-full place-items-end text-right border-t-2 border-gray-100 mt-2">
                 <button
                   type="button"
+                  onClick={() => {
+                    navigate('/results');
+                  }}
                   className="border border-teal-500 bg-teal-500 text-white rounded-md px-3 py-2 m-2 
                   transition duration-500 ease select-none hover:bg-teal-600 focus:outline-none
                    focus:shadow-outline"

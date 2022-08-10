@@ -4,6 +4,7 @@ import {
   validateShipLocation,
   getShipSize,
   getRandom,
+  getDurationInMinutes,
 } from './helpers';
 
 export {
@@ -12,4 +13,5 @@ export {
   getRandom,
   validateShipLocation,
   getShipSize,
+  getDurationInMinutes,
 };

@@ -21,7 +21,7 @@ function App() {
         <Route path="/welcome" element={<WelcomePage />} />
         <Route path="/" element={<Navigate to="/welcome" replace />} />
         <Route path="/rules" element={<Rules />} />
-        <Route path="/result" element={<ResultsPage />} />
+        <Route path="/results" element={<ResultsPage />} />
         <Route path="/winner/:winnerName" element={<WinnerPage />} />
         <Route path="/placing" element={<PlacingPage />} />
         <Route path="/battle" element={<BattlePage />} />
