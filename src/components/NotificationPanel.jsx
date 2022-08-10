@@ -4,14 +4,6 @@ import { motion } from 'framer-motion';
 import { BsFillArrowUpCircleFill } from 'react-icons/bs/index';
 const NotificationPanel = ({ children }) => {
   const [open, setOpen] = useState(true);
-  const scrollToTheTop = () => {
-    console.log('upppp');
-    document.getElementById('notification').scrollIntoView({
-      behavior: 'smooth',
-      block: 'end',
-      inline: 'nearest',
-    });
-  };
   return (
     <>
       {open ? (
@@ -62,14 +54,7 @@ const NotificationPanel = ({ children }) => {
             </div>
             <hr className="my-2" />
             {children}
-            <span
-              id="last"
-              className="flex justify-center  bg-white mt-2 text-4xl text-black"
-            >
-              <span onClick={scrollToTheTop}>
-                <BsFillArrowUpCircleFill className="hover:cursor-pointer" />
-              </span>
-            </span>
+            <UpArrow />
           </div>
         </motion.div>
       ) : (
@@ -80,6 +65,26 @@ const NotificationPanel = ({ children }) => {
           <HiOutlineMenuAlt1 />
         </div>
       )}
+    </>
+  );
+};
+
+const UpArrow = () => {
+  const scrollToTheTop = () => {
+    document.getElementById('notification').scrollIntoView({
+      behavior: 'smooth',
+      block: 'end',
+      inline: 'nearest',
+    });
+  };
+
+  return (
+    <>
+      <span id="last" className="flex justify-center mt-2 text-4xl text-black">
+        <span onClick={scrollToTheTop}>
+          <BsFillArrowUpCircleFill className="hover:cursor-pointer" />
+        </span>
+      </span>
     </>
   );
 };
