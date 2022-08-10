@@ -10,21 +10,18 @@ export const validateShipLocation = ({
   shipSize,
   isOccupied,
   cells,
-  pc,
 }) => {
   //test the parameters is right
   row = 1 * row;
   col = col * 1;
-  console.log('**************', cells);
   if (isOccupied) return false;
   else if (placingPosition === 'H') {
     if (col - 1 + shipSize > ROW_SIZE) return false;
 
     for (let newCol = col; newCol < col + shipSize; newCol++) {
       const cellId = generateCellId(row, newCol);
-      const allCells = pc ? cells.botCells : cells.playerCells;
-      console.log(pc, allCells[cellId]);
-      const isCellOccupied = allCells[cellId]?.occupy.isOccupied;
+      // const allCells = pc ? cells.botCells : cells.playerCells;
+      const isCellOccupied = cells[cellId]?.occupy.isOccupied;
       if (isCellOccupied) return false;
     }
   } else if (placingPosition === 'V') {
@@ -32,8 +29,8 @@ export const validateShipLocation = ({
 
     for (let newRow = row; newRow < row + shipSize; newRow++) {
       const cellId = generateCellId(newRow, col);
-      const allCells = pc ? cells.botCells : cells.playerCells;
-      const isCellOccupied = allCells[cellId]?.occupy.isOccupied;
+      // const allCells = pc ? cells.botCells : cells.playerCells;
+      const isCellOccupied = cells[cellId]?.occupy.isOccupied;
       if (isCellOccupied) return false;
     }
   }

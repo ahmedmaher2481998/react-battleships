@@ -121,8 +121,7 @@ const GridBoard = ({ pc }) => {
             isOccupied:
               cellsState[generateCellId(randomRow, randomCol)].occupy
                 .isOccupied,
-            cells: cellsState,
-            pc,
+            cells: botCellStates,
           })
         ) {
           //while ship location is not valid randomize another cell coordination

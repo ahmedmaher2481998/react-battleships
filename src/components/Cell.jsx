@@ -68,7 +68,7 @@ const Cell = ({ col, row, pc }) => {
   const isHit = useSelector((s) =>
     pc ? getIsHitBot(s, cellId) : getIsHit(s, cellId)
   );
-  const cells = useSelector((s) => s.cells);
+  const cells = useSelector((s) => s.cells.playerCells);
   const state = useSelector((s) => s);
 
   const playerTurn = useSelector(getPlayerTurn);
@@ -89,7 +89,6 @@ const Cell = ({ col, row, pc }) => {
           shipSize: getShipSize(selectedShip),
           isOccupied,
           cells,
-          pc,
         })
       ) {
         dispatch(
