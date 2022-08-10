@@ -1,35 +1,21 @@
 import React from 'react';
 
-const Card = ({ title, body }) => {
+const Card = ({ resultObj }) => {
   return (
     <>
-      <div>
-        <div className="flex  p-8 w-full bg-gray-200 shadow-md rounded-lg overflow-hidden mx-auto">
-          <div
-            className="relative flex flex-col items-center justify-around p-4 mr-4 w-80 h-80 rounded-2xl "
-            style={{ transform: 'translate(0px, 0px)', opacity: 1 }}
-          >
-            <div
-              className="absolute z-0 w-full h-full text-white transform scale-x-105 scale-y-95 bg-purple-300 rounded-xl -rotate-2 "
-              style={{ zIndex: -1 }}
-            />
-            <div
-              className="absolute z-0 w-full h-full text-white transform scale-x-105 scale-y-95 bg-purple-400 rounded-xl rotate-2 "
-              style={{ zIndex: -1 }}
-            />
-            <div
-              className="absolute z-0 w-full h-full transform scale-x-105 scale-y-95 bg-white rounded-xl "
-              style={{ zIndex: -1 }}
-            />
-            <h3 className="z-10 p-2 text-2xl font-semibold text-purple-900">
-              {title}
-            </h3>
-            <div className="z-10 p-2 text-purple-900">
-              {/* {image or something } */}
-            </div>
-            <div className="z-10 p-2 text-sm text-center text-gray-500 ">
-              {body}
-            </div>
+      <div className="lg:w-1/3 sm:w-1/2 p-4">
+        <div className="flex relative">
+          <div className="px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-100 hover:">
+            <h2 className="tracking-widest text-sm title-font font-medium text-indigo-500 mb-1">
+              Ahmed Vs bot
+            </h2>
+            <h1 className="title-font text-lg font-medium text-gray-900 mb-3">
+              ahmed is victorious
+            </h1>
+            <p className="leading-relaxed">
+              here goes the body of the text .here goes the body of the text
+              .here goes the body of the text .
+            </p>
           </div>
         </div>
       </div>
