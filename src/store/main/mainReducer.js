@@ -65,9 +65,6 @@ export const mainReducer = (state = initState, action) => {
 
     case CHANGE_BOT_TURN:
       newState.battle.isBotTurn = payload;
-      newState.headMessage = `Now it's ${
-        payload ? 'bot' : newState.player.name.split(' ')[0]
-      } turn ...`;
       return newState;
 
     case CHANGE_PLAYER_TURN:

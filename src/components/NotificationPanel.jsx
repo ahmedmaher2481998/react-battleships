@@ -16,12 +16,12 @@ const NotificationPanel = ({ children }) => {
             opacity: 0,
             transition: { duration: 0.3, ease: 'easeInOut' },
           }}
-          className="w-full absolute h-full overflow-x-hidden transform translate-x-0 transition ease-in-out duration-700 border-2 border-pink-500"
+          className="w-full absolute shadow-2xl shadow-black  h-full overflow-x-hidden transform translate-x-0 transition ease-in-out duration-700 border-2 border-zinc-400 border-t-0"
           id="notification"
         >
-          <div className=" bg-mainred bg-opacity-50  h-screen overflow-y-auto p-8 absolute right-0">
+          <div className=" bg-rose-500 bg-opacity-50  h-screen overflow-y-auto p-2 absolute right-0">
             <div className="flex items-center justify-between">
-              <p className="text-2xl font-semibold leading-6 text-gray-800">
+              <p className="text-2xl p-4 font-semibold leading-6 text-gray-800">
                 Notification bar
               </p>
               <div className="cursor-pointer" onClick={() => setOpen(false)}>
@@ -34,14 +34,14 @@ const NotificationPanel = ({ children }) => {
                 >
                   <path
                     d="M18 6L6 18"
-                    stroke="#4B5563"
+                    stroke="#000000"
                     strokeWidth="1.25"
                     strokeLinecap="round"
                     strokeLinejoin="round"
                   />
                   <path
                     d="M6 6L18 18"
-                    stroke="#4B5563"
+                    stroke="#000000"
                     strokeWidth="1.25"
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -49,6 +49,7 @@ const NotificationPanel = ({ children }) => {
                 </svg>
               </div>
             </div>
+            <hr className="my-2" />
             {children}
           </div>
         </motion.div>

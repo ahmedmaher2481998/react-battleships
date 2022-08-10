@@ -178,10 +178,10 @@ const Cell = ({ col, row, pc }) => {
     //hit the new cellId
     dispatch(hitPlayerCell(cellId));
 
-    if (getIsOccupiedByBot({ s: state, cellId })) {
+    if (getIsOccupied({ s: state, cellId })) {
       dispatch(
         notify({
-          body: `The Bot shot cell ${cellId} and ${getOccupierByBot({
+          body: `The Bot shot cell ${cellId} and ${getOccupier({
             s: state,
             cellId,
           })} was destroyed, it's a HIt`,

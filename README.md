@@ -56,3 +56,4 @@ the layout on the battle page
 the winner page img and background
 the number of cell by the slider on the start
 the head message on the battle page
+upon hitting a cell display this VscError bg-pink/rose-300,, GiSpikyExplosion bg-green-500

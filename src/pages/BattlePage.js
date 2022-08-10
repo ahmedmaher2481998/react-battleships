@@ -23,7 +23,11 @@ const BattlePage = () => {
   const [botWon, setBotWon] = useState(false);
 
   useEffect(() => {
-    dispatch(ChangeHeadMessage(`it's ${name.split(' ')[0]} turn ..`));
+    dispatch(
+      ChangeHeadMessage(
+        `${name.split(' ')[0]} the battle has started ... go hit the enemy`
+      )
+    );
     //eslint-disable-next-line
   }, []);
 
@@ -39,6 +43,15 @@ const BattlePage = () => {
     console.log(
       `%c ${botResult}, ${playerResult}`,
       'color:blue;font-size:50px;'
+    );
+    dispatch(
+      ChangeHeadMessage(
+        <span className="bg-rose-200  text-black text-3xl font-semibold p-2 rounded-md">
+          {`${name.split(' ')[0]} score: ${playerResult} / 15`}
+          <br />
+          {`bot score: ${botResult} / 15`}
+        </span>
+      )
     );
     //wining cases
     if (playerResult === 15) {
@@ -92,6 +105,7 @@ const BattlePage = () => {
         localStorage.setItem('results', JSON.stringify(results));
       }
     }
+
     if (time) return clearTimeout(time);
     //will call only if someone won ..
     //eslint-disable-next-line
