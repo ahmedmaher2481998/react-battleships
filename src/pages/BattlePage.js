@@ -115,15 +115,13 @@ const BattlePage = () => {
     <div
       className=" bg-mainred text-center  md:h-[var(--contentHeight)]
     
-    grid grid-rows-9 grid-cols-5 gap-2 relative
+    relative
     "
     >
       <Notification />
       <Head title="BattleShip | Battle" />
-      <div className="col-span-5 row-start-1 flex flex-wrap justify-center items-center row-span-1">
-        <span className="font-serif text-3xl text-green-300">
-          {headMessage}
-        </span>
+      <div className="flex flex-wrap justify-center items-center ">
+        <span className="font-serif text-xl lg:text-3xl ">{headMessage}</span>
       </div>
 
       {/* <div className="flex p-2 h-4/5 justify-center gap-2 items-center flex-col xl:flex-row row-span-7 col-span-5 row-start-2 bg-sky-400"> */}
@@ -139,9 +137,10 @@ const BattlePage = () => {
           <div className="w-20 h-20 border-4 border-blue-600 rounded-full loader"></div>
         </div>
       ) : (
-        <>
+        <div className="flex flex-col lg:flex-row justify-center mt-8 gap-2 w-4/5 p-2">
           <AnimatePresence>
             <motion.div
+              className="border-2 border-black rounded-xl bg-neutral-400 "
               key={'playerGrid'}
               initial={{ y: 100, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
@@ -152,12 +151,12 @@ const BattlePage = () => {
                 transition: { duration: 0.2, ease: 'easeInOut' },
               }}
               transition={{ duration: 0.3, ease: 'easeIn' }}
-              className="border-2 border-gray bg-neutral-100 "
             >
               <GridBoard />
             </motion.div>
 
             <motion.div
+              className=" border-2 border-black rounded-xl bg-slate-600 "
               key={'botGrid'}
               initial={{ y: 100, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
@@ -167,12 +166,11 @@ const BattlePage = () => {
                 transition: { duration: 0.2, ease: 'easeInOut' },
               }}
               transition={{ duration: 0.3, ease: 'easeIn' }}
-              className=" border-2 border-black bg-slate-700 "
             >
               <GridBoard pc={true} />
             </motion.div>
           </AnimatePresence>
-        </>
+        </div>
       )}
       {/* </div> */}
     </div>

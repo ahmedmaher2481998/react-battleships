@@ -1,8 +1,17 @@
 import { useState } from 'react';
 import { HiOutlineMenuAlt1 } from 'react-icons/hi/index';
 import { motion } from 'framer-motion';
+import { BsFillArrowUpCircleFill } from 'react-icons/bs/index';
 const NotificationPanel = ({ children }) => {
   const [open, setOpen] = useState(true);
+  const scrollToTheTop = () => {
+    console.log('upppp');
+    document.getElementById('notification').scrollIntoView({
+      behavior: 'smooth',
+      block: 'end',
+      inline: 'nearest',
+    });
+  };
   return (
     <>
       {open ? (
@@ -17,11 +26,13 @@ const NotificationPanel = ({ children }) => {
             transition: { duration: 0.3, ease: 'easeInOut' },
           }}
           className="w-full hidden lg:inline-block absolute shadow-2xl shadow-black  h-full overflow-x-hidden transform translate-x-0 transition ease-in-out duration-700 border-2 border-zinc-400 border-t-0"
-          id="notification"
         >
           <div className=" bg-rose-500 bg-opacity-50  h-screen overflow-y-auto p-2 absolute right-0">
             <div className="flex items-center justify-between">
-              <p className="text-2xl p-4 font-semibold leading-6 text-gray-800">
+              <p
+                id="notification"
+                className="text-2xl p-4 font-semibold leading-6 text-gray-800"
+              >
                 Notification bar
               </p>
               <div className="cursor-pointer" onClick={() => setOpen(false)}>
@@ -51,6 +62,14 @@ const NotificationPanel = ({ children }) => {
             </div>
             <hr className="my-2" />
             {children}
+            <span
+              id="last"
+              className="flex justify-center  bg-white mt-2 text-4xl text-black"
+            >
+              <span onClick={scrollToTheTop}>
+                <BsFillArrowUpCircleFill className="hover:cursor-pointer" />
+              </span>
+            </span>
           </div>
         </motion.div>
       ) : (

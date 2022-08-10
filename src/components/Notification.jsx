@@ -35,7 +35,8 @@ export const Notification = () => {
                 notification &&
                 (index === notifications.length - 1 ? (
                   <div
-                    id="last"
+                    // id="last"
+                    className="mb-8"
                     key={notification.cellId * Math.random()}
                     ref={containerRef}
                   >
