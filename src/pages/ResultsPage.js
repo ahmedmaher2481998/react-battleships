@@ -5,7 +5,6 @@ import { motion } from 'framer-motion';
 
 const ResultsPage = () => {
   const results = JSON.parse(localStorage.getItem('results'));
-  console.log(results);
   return (
     <>
       <Head title={'BattleShip | Results'} />
@@ -25,7 +24,7 @@ const ResultsPage = () => {
           {results ? (
             <ResultBody>
               {results.map((result, index) => {
-                <Card key={index} result={result} />;
+                return <Card key={index} result={result} />;
               })}
             </ResultBody>
           ) : (

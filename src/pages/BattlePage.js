@@ -40,10 +40,6 @@ const BattlePage = () => {
 
   useEffect(() => {
     let time;
-    console.log(
-      `%c ${botResult}, ${playerResult}`,
-      'color:blue;font-size:50px;'
-    );
     dispatch(
       ChangeHeadMessage(
         <span className="bg-rose-200  text-black text-3xl font-semibold p-2 rounded-md">
@@ -55,9 +51,7 @@ const BattlePage = () => {
     );
     //wining cases
     if (playerResult === 15) {
-      console.log('******', playerResult);
       time = setTimeout(() => {
-        console.log('%c first', 'color:black;font-size:60px;');
         Navigate(`/winner/${name.split(' ')[0]}`);
       }, 3000);
     } else if (botResult === 15) {
@@ -66,9 +60,7 @@ const BattlePage = () => {
       }, 3000);
     }
     //the game ended and there's a winner
-    console.log('debug', playerWon, botWon, playerWon || botWon);
     if (playerWon || botWon) {
-      console.log('Winner winner chicken dinner ');
       dispatch(
         ChangeHeadMessage(
           <span className="text-white bg-green-500 p-2 rounded-md">
@@ -80,6 +72,7 @@ const BattlePage = () => {
       //constructing the result object to store in local Storage
       const result = {
         winner: playerWon ? name : 'Bot',
+        playerName: name,
         startTime,
         playerScore: `${playerResult}`,
         botScore: `${botResult}`,
@@ -93,8 +86,6 @@ const BattlePage = () => {
         durationOfGame: `${getDurationInMinutes(startTime)} min`,
       };
 
-      console.log('***************************', result);
-
       //checking if there's a results array
       if (!localStorage.getItem('results')) {
         const results = [];
@@ -102,7 +93,7 @@ const BattlePage = () => {
         localStorage.setItem('results', JSON.stringify(results));
       } else if (localStorage.getItem('results')) {
         const results = JSON.parse(localStorage.getItem('results'));
-        result.push(result);
+        results.push(result);
         localStorage.setItem('results', JSON.stringify(results));
       }
     }

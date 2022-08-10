@@ -13,7 +13,7 @@ export const botReducer = (state = {}, { type, payload }) => {
   let newState = { ...state };
   switch (type) {
     case INIT_BOT_CELLS:
-      newState = { botCells: { ...payload }, playerResult: 15 };
+      newState = { botCells: { ...payload }, playerResult: 0 };
       return newState;
 
     case BOT_CELL_HIT:
@@ -41,6 +41,9 @@ export const botReducer = (state = {}, { type, payload }) => {
         }
       }
       return newState;
+
+    case 'CLEAR_BOT':
+      return {};
     default:
       return state;
   }

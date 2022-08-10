@@ -24,7 +24,6 @@ export const cellReducer = (state = {}, { type, payload }) => {
 
     case HIT_CELL:
       const { cellId } = payload;
-      console.log(cellId);
       if (!newState.playerCells[cellId].hit)
         newState.playerCells[cellId].hit = true;
       if (newState.playerCells[cellId].occupy.isOccupied) {
@@ -48,8 +47,10 @@ export const cellReducer = (state = {}, { type, payload }) => {
           newState.playerCells[cellId].occupy.occupier = ship;
         }
       }
-      console.log('###', ship);
       return newState;
+
+    case 'CLEAR_CELLS':
+      return {};
     default:
       return state;
   }

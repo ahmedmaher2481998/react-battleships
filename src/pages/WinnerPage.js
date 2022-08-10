@@ -1,10 +1,11 @@
 import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { FaSmileBeam, FaRegSadTear } from 'react-icons/fa/index';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getBotResult, getName, getPlayerResult } from '../store';
 import { victory } from '../assets';
 import { getDurationInMinutes } from '../helpers';
+import { useEffect } from 'react';
 const WinnerPage = () => {
   const navigate = useNavigate();
   const { winnerName } = useParams();
@@ -22,7 +23,15 @@ const WinnerPage = () => {
     day: 'numeric',
   })} , at :
           ${startTime.toLocaleTimeString('en-US')}`;
-
+  const dispatch = useDispatch();
+  useEffect(() => {
+    return () => {
+      console.log('um mount...');
+      dispatch({ type: 'CLEAR_BOT' });
+      dispatch({ type: 'CLEAR_MAIN' });
+      dispatch({ type: 'CLEAR_CELLS' });
+    };
+  }, []);
   return (
     <>
       <div

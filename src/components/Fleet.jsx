@@ -103,7 +103,6 @@ const Fleet = () => {
             onClick={(e) => {
               e.preventDefault();
               navigate('/battle');
-              console.log(playerCells);
             }}
             className=" relative -top-5  md:top-40 md:left-0 left-40 btn w-[100%] mx-auto my-auto"
           >

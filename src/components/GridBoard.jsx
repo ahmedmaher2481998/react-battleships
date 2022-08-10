@@ -57,7 +57,6 @@ const GridBoard = ({ pc }) => {
     if (!pc && pathname === '/placing') {
       dispatch(initCells(cellsState));
     } else {
-      console.log('changing players turn');
       dispatch(initBotCells(cellsState));
       dispatch(changePlayerTurn(true));
     }
