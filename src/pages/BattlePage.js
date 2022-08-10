@@ -14,17 +14,12 @@ import {
 
 const BattlePage = () => {
   const Navigate = useNavigate();
-
   const dispatch = useDispatch();
-
   const name = useSelector(getName);
-
   const playerResult = useSelector(getPlayerResult);
   const botResult = useSelector(getBotResult);
   const headMessage = useSelector(getHeadMessage);
-
   const [playerWon, setPlayerWon] = useState(false);
-
   const [botWon, setBotWon] = useState(false);
 
   useEffect(() => {
@@ -45,6 +40,7 @@ const BattlePage = () => {
       `%c ${botResult}, ${playerResult}`,
       'color:blue;font-size:50px;'
     );
+    //wining cases
     if (playerResult === 15) {
       setPlayerWon(true);
       time = setTimeout(() => {
@@ -95,9 +91,10 @@ const BattlePage = () => {
         result.push(result);
         localStorage.setItem('results', JSON.stringify(results));
       }
-      if (time) return clearTimeout(time);
     }
+    if (time) return clearTimeout(time);
     //will call only if someone won ..
+    //eslint-disable-next-line
   }, [playerResult, botResult]);
 
   return (

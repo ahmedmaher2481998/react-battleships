@@ -27,13 +27,14 @@ const Fleet = () => {
       dispatch(
         ChangeHeadMessage(
           <p className="bg-green-400 text-black font-bold p-1 text-xl rounded-lg">
-            Let's start the battle
+            Let&apos;s start the battle
           </p>
         )
       );
     }
   }, [fleet, placingStatus, dispatch]);
 
+  const playerCells = useSelector((s) => s.cells.playerCells);
   return (
     <>
       <div className={placingStatus === 'end' ? 'hidden' : ''}>
@@ -102,10 +103,11 @@ const Fleet = () => {
             onClick={(e) => {
               e.preventDefault();
               navigate('/battle');
+              console.log(playerCells);
             }}
             className=" relative -top-5  md:top-40 md:left-0 left-40 btn w-[100%] mx-auto my-auto"
           >
-            tart Battle
+            Start Battle
           </button>
         </div>
       ) : null}

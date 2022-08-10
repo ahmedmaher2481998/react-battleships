@@ -54,7 +54,7 @@ const GridBoard = ({ pc }) => {
   const { rows, cellsState } = createGrid(ROW_SIZE, pc);
 
   useEffect(() => {
-    if (!pc) {
+    if (!pc && pathname === '/placing') {
       dispatch(initCells(cellsState));
     } else {
       console.log('changing players turn');
