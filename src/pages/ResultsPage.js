@@ -1,10 +1,18 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { Head, Card } from '../components';
-import { motion } from 'framer-motion';
+import { useDispatch, useSelector } from 'react-redux';
 
 const ResultsPage = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const results = JSON.parse(localStorage.getItem('results'));
+
+  useEffect(() => {
+    dispatch({ type: 'CLEAR_BOT' });
+    dispatch({ type: 'CLEAR_MAIN' });
+    dispatch({ type: 'CLEAR_CELLS' });
+  }, []);
   return (
     <>
       <Head title={'BattleShip | Results'} />

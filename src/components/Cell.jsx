@@ -89,6 +89,7 @@ const Cell = ({ col, row, pc }) => {
           shipSize: getShipSize(selectedShip),
           isOccupied,
           cells,
+          pc,
         })
       ) {
         dispatch(

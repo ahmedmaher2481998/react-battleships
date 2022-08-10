@@ -23,14 +23,8 @@ const WinnerPage = () => {
     day: 'numeric',
   })} , at :
           ${startTime.toLocaleTimeString('en-US')}`;
-  const dispatch = useDispatch();
   useEffect(() => {
-    return () => {
-      console.log('um mount...');
-      dispatch({ type: 'CLEAR_BOT' });
-      dispatch({ type: 'CLEAR_MAIN' });
-      dispatch({ type: 'CLEAR_CELLS' });
-    };
+    if (name === '') navigate('/');
   }, []);
   return (
     <>
