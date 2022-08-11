@@ -1,6 +1,5 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import Cell from './Cell';
-import Row from './Row';
 import {
   generateCellId,
   getRandom,
@@ -36,7 +35,11 @@ export const createGrid = (size, pc = false) => {
         <Cell key={generateCellId(row, col)} row={row} col={col} pc={pc} />
       );
     }
-    rows.push(<Row key={row} cells={cells} />);
+    rows.push(
+      <div key={row} className=" min-h-[9%] w-full flex justify-between">
+        {cells}
+      </div>
+    );
   }
   return { cellsState, rows };
 };
@@ -66,7 +69,7 @@ const GridBoard = ({ pc }) => {
 
   const botCellStates = useSelector((s) => s.bot?.botCells);
 
-  function pC(pc, botCellStates) {
+  function populateBotGrid(pc, botCellStates) {
     //the pc is the on generating the grid
     if (pc && botCellStates) {
       //get random cell row,or col number
@@ -145,7 +148,7 @@ const GridBoard = ({ pc }) => {
     }
   }
   useEffect(() => {
-    if (pc && botCellStates) pC(pc, botCellStates);
+    if (pc && botCellStates) populateBotGrid(pc, botCellStates);
     //eslint-disable-next-line
   }, [Boolean(botCellStates)]);
 
