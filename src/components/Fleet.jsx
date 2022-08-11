@@ -14,6 +14,7 @@ import {
 import { boat, battlesShip, submarine, ship, carrier } from '../assets';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
+
 const Fleet = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -34,12 +35,11 @@ const Fleet = () => {
     }
   }, [fleet, placingStatus, dispatch]);
 
-  const playerCells = useSelector((s) => s.cells.playerCells);
   return (
     <>
       <div className={placingStatus === 'end' ? 'hidden' : ''}>
         <div className=" absolute   ">
-          <div className="relative   left-0 top-0" id="fleet">
+          <div className="relative   left-5 -top-28" id="fleet">
             <div className="-mt-8 mb-2 sm:max-w-[8rem]  max-w-[4rem] ">
               <select
                 id="placingPosition"
@@ -50,7 +50,7 @@ const Fleet = () => {
                   dispatch(changePlacingPosition(placingPosition));
                   toast.success(`Ship position now Is  ${placingPosition}`);
                 }}
-                className="mt-1 block w-full py-2 px-3 border text-3xl  text-white border-black-300 bg-mainmeduimblue rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-sm"
+                className="mt-1 block w-full py-2 px-3 border   text-white border-black-300 bg-mainmeduimblue rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-sm"
               >
                 <option value="v">Vertical</option>
                 <option value="h">Horizontal</option>

@@ -9,7 +9,7 @@ function Footer() {
         id="footer"
         className={`${
           pathname === '/battle' ? 'bg-mainred' : 'bg-mainblue'
-        } w-[100vw]  text-bage selection:text-xl flex flex-wrap : ;
+        } w-screen  text-bage selection:text-xl flex flex-wrap : ;
 				flex-row items-center justify-center`}
       >
         <div className="h-24 p-2 gap-6 max-w-[80%] flex flex-wrap flex-row items-center justify-between">

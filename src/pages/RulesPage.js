@@ -50,29 +50,32 @@ const RulesPage = () => {
   return (
     <>
       <Head title={'BattleShip | Rules'} />
-      <div className="p-4 felx h-full md:h-[var(--contentHeight)] flex-col items-center  justify-start flex bg-mainmeduimblue  w-screen ">
-        <div className=" mb-2 text-mainheavyblue text-6xl hover:text-bage ">
+      <div
+        className=" h-full min-h-[var(--contentHeight)] md:h-fit w-screen flex-col
+       items-center  justify-start flex bg-mainmeduimblue"
+      >
+        <div className=" mb-2 text-mainheavyblue text-4xl  hover:text-bage ">
           Welcome {name}.
         </div>
-        <div className="text-3xl  text-bage">
+        <div className="text-xl  text-bage">
           Please read the rules if you don&apos;t know it .
         </div>
 
-        <div className=" w-5/6 bg-bage mx-6 p-2 mb-2 border-2 my-2 border-mainheavyblue rounded">
+        <div className="w-[60vw] rounded-2xl  text-center bg-bage mx-6 p-2 mb-2 border-2 my-2 border-mainheavyblue ">
           <span className="text-xl font-bold">
             Rules for BattleShip (a Milton Bradley Game)
           </span>
-          <hr className=" w-5/12 mx-auto mb-2 mt-2 border-x border-lightblue " />
-          <div className="rule-title"> Game Objective</div>
-          <p className="">{gameObjectives}</p>
-          <div className="rule-title">Starting a New Game</div>
-          <p className="rule-content">{startingNewGame}</p>
-          <div className="rule-title">Playing the Game</div>
-          <p className="rule-content">{playingGame}</p>
+          <hr className=" mx-auto  mt-2 border-t-4 rounded-full max-w-md border-lightblue " />
+          <div className="rule-title "> Game Objective</div>
+          <p className="rule-content hover:bg-stone-400">{gameObjectives}</p>
+          <div className="rule-title ">Starting a New Game</div>
+          <p className="rule-content hover:bg-stone-400">{startingNewGame}</p>
+          <div className="rule-title ">Playing the Game</div>
+          <p className="rule-content hover:bg-stone-400">{playingGame}</p>
         </div>
         <button
           onClick={startGame}
-          className="btn w-2/6 h-20 text-4xl font-bold"
+          className="btn w-40 lg:w-80 h-15 text-lg lg:text-4xl mb-4 font-bold"
         >
           Start
         </button>
