@@ -81,6 +81,7 @@ const Cell = ({ col, row, pc }) => {
 
   //When a cell is clicked this will run ...
   const handleCellClick = () => {
+    console.log('object');
     //handle placing ship
     if (placingStatus.split(' ')[0] === 'placing') {
       if (
@@ -208,19 +209,19 @@ const Cell = ({ col, row, pc }) => {
   const getIconAfterHit = (pc, isOccupied) => {
     if (isOccupied && pc) {
       return (
-        <span className="text-red">
+        <span className="text-white">
           <Hit />
         </span>
       );
     } else if (isOccupied && !pc) {
       return (
-        <span className="text-green-500">
+        <span className="text-white">
           <Hit />
         </span>
       );
     } else {
       return (
-        <span className="text-white">
+        <span className="text-black">
           <Missed />
         </span>
       );
@@ -242,7 +243,8 @@ const Cell = ({ col, row, pc }) => {
           lg:w-20
           lg:h-12
          lg:mx-2
-         md:mx-[.25rem]
+     md:my-[3px]
+     lg:my-[4px]
          sm:mx-[2px]
           
        

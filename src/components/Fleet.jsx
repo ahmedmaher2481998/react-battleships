@@ -43,7 +43,7 @@ const Fleet = () => {
     <>
       <div className={placingStatus === 'end' ? 'hidden' : ''}>
         <div className=" absolute   ">
-          <div className="relative   left-5 lg:-top-28" id="fleet">
+          <div className="relative   left-5 md:top-8 lg:-top-28" id="fleet">
             <div className="-mt-8 mb-2 sm:max-w-max  flex max-w-min ">
               <label htmlFor="placingPosition">placing Type : </label>
               <select
