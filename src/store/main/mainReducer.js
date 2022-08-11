@@ -80,7 +80,27 @@ export const mainReducer = (state = initState, action) => {
       return newState;
 
     case 'CLEAR_MAIN':
-      return {};
+      return {
+        headMessage: 'Welcome To BattleShip',
+        // startTime: null,
+        player: {
+          name: '',
+        },
+        placing: {
+          selectedShip: '',
+          placingStatus: 'start', //start select placed end
+          placingPosition: 'H',
+        },
+        battle: {
+          start: false,
+          isPlayerTurn: false,
+          isBotTurn: false,
+
+          end: false,
+        },
+        notification: [],
+        startTime: Date.now(),
+      };
     default:
       return newState;
   }

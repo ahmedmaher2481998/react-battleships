@@ -51,7 +51,7 @@ const RulesPage = () => {
     <>
       <Head title={'BattleShip | Rules'} />
       <div
-        className=" h-full min-h-[var(--contentHeight)] md:h-fit w-screen flex-col
+        className=" h-full min-h-[var(--contentHeight)] md:h-fit w-[100vw] p-[2px] flex-col
        items-center  justify-start flex bg-mainmeduimblue"
       >
         <div className=" mb-2 text-mainheavyblue text-4xl  hover:text-bage ">
@@ -61,11 +61,11 @@ const RulesPage = () => {
           Please read the rules if you don&apos;t know it .
         </div>
 
-        <div className="w-[60vw] rounded-2xl  text-center bg-bage mx-6 p-2 mb-2 border-2 my-2 border-mainheavyblue ">
+        <div className="md:w-[60vw] rounded-2xl  text-center bg-bage md:mx-6 p-2 mb-2 border-2 my-2 border-mainheavyblue ">
           <span className="text-xl font-bold">
             Rules for BattleShip (a Milton Bradley Game)
           </span>
-          <hr className=" mx-auto  mt-2 border-t-4 rounded-full max-w-md border-lightblue " />
+          <hr className=" mx-auto  mt-2 border-t-4 rounded-full w-full md:max-w-md border-lightblue " />
           <div className="rule-title "> Game Objective</div>
           <p className="rule-content hover:bg-stone-400">{gameObjectives}</p>
           <div className="rule-title ">Starting a New Game</div>

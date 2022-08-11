@@ -50,7 +50,7 @@ export const cellReducer = (state = {}, { type, payload }) => {
       return newState;
 
     case 'CLEAR_CELLS':
-      return {};
+      return { playerCells: {}, botResult: 0 };
     default:
       return state;
   }

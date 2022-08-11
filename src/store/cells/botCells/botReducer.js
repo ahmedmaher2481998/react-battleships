@@ -43,7 +43,7 @@ export const botReducer = (state = {}, { type, payload }) => {
       return newState;
 
     case 'CLEAR_BOT':
-      return {};
+      return { botCells: {}, playerResult: 0 };
     default:
       return state;
   }

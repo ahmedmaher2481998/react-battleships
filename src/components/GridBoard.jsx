@@ -160,7 +160,8 @@ const GridBoard = ({ pc }) => {
           : 'bg-opacity-40 bg-purple-900'
       }
       flex flex-col justify-between items-center
-	min-h-max
+	min-h-min
+  lg:-mt-20
   max-w-max
 
   sm:w-screen

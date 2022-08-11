@@ -26,24 +26,26 @@ const PlacingPage = () => {
       <div
         className="
 				grid grid-cols-5 grid-rows-5
-				gap-4 p-2 bg-mainblue text-bage max-h-[var(--contentHeight)] 
+				gap-4  bg-mainblue text-bage max-h-[var(--contentHeight)] 
 "
       >
         <ToastContainer />
         <div
           className="
-				row-start-1 row-span-1
+				row-start-1 row-span-1 absolute
 				w-screen text-center p-2"
         >
-          <h1 className="text-2xl text-black mx-auto font-bold">{headMsg}</h1>
+          <h1 className="text-2xl lg:h-full lg:py-6 text-black  font-bold">
+            {headMsg}
+          </h1>
         </div>
 
-        <div className="col-start-1  row-start-1">
+        <div className="col-start-1  mt-4 row-start-1">
           <Fleet />
         </div>
         <div
           className=" 
-				md:col-span-5 md:mt-8 md:col-start-2  row-start-2 row-span-3
+				md:col-span-5 md:mt-0 md:col-start-2  row-start-2 row-span-3
 				"
         >
           <GridBoard />

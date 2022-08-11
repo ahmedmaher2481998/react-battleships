@@ -42,11 +42,17 @@ const Fleet = () => {
   return (
     <>
       <div className={placingStatus === 'end' ? 'hidden' : ''}>
-        <div className=" absolute   ">
-          <div className="relative   left-5 md:top-8 lg:-top-28" id="fleet">
-            <div className="-mt-8 mb-2 sm:max-w-max  flex max-w-min ">
-              <label htmlFor="placingPosition">placing Type : </label>
+        <div className=" absolute">
+          <div className="relative   left-5 md:top-8 " id="fleet">
+            <div className="-mt-8 mb-2 sm:max-w-max  flex lg:w-80 gap-2 max-w-min ">
+              <label className="text-sm" htmlFor="placingPosition">
+                placing Type :{' '}
+              </label>
               <select
+                className="mt-1 block w-full  border  
+                 text-white border-black-300 bg-mainmeduimblue 
+                 rounded-md shadow-sm focus:outline-none
+                  focus:ring-indigo-500 focus:border-indigo-500 text-sm"
                 id="placingPosition"
                 name="placingPosition"
                 value={placingPosition}
@@ -54,16 +60,12 @@ const Fleet = () => {
                   flushSync(() => setPlacingPosition(() => e.target.value));
                   dispatch(changePlacingPosition(placingPosition));
                 }}
-                className="mt-1 block w-full py-2 px-3 border  
-                 text-white border-black-300 bg-mainmeduimblue 
-                 rounded-md shadow-sm focus:outline-none
-                  focus:ring-indigo-500 focus:border-indigo-500 text-sm"
               >
                 <option value="v">Vertical</option>
                 <option value="h">Horizontal</option>
               </select>
             </div>
-            <div className="flex lg:flex-col text-center">
+            <div className="flex lg:flex-col">
               <FleetShip
                 setFleet={setFleet}
                 fleet={fleet}
@@ -111,7 +113,11 @@ const Fleet = () => {
               e.preventDefault();
               navigate('/battle');
             }}
-            className=" relative -top-5  md:top-40 md:left-0 left-40 btn w-[100%] mx-auto my-auto"
+            className=" 
+            relative top-0 lg:left-6 lg:top-96 lg:px-14 lg:text-3xl
+            hover:text-mainblue 
+            rounded-full  btn bg-rose-500 text-black hover:bg-rose-300 
+            "
           >
             Start Battle
           </button>
