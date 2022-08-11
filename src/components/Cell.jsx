@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { battlesShip, ship, submarine, boat, carrier } from '../assets';
+import { useLocation } from 'react-router-dom';
 import { VscError as Missed } from 'react-icons/vsc/index';
 import { GiSpikyExplosion as Hit } from 'react-icons/gi/index';
 import {
@@ -21,7 +22,6 @@ import {
   getOccupierByBot,
   changePlayerTurn,
   changeBotTurn,
-  // getBotTurn,
   getPlayerTurn,
   getStartBattle,
   hitBotCell,
@@ -52,7 +52,7 @@ const getOccupierImageSrc = (shipName) => {
 
 const Cell = ({ col, row, pc }) => {
   pc = pc || false;
-
+  const { pathname } = useLocation();
   const dispatch = useDispatch();
   const cellId = generateCellId(row, col);
   const placingPosition = useSelector(getPlacingPosition);
@@ -81,9 +81,7 @@ const Cell = ({ col, row, pc }) => {
 
   //When a cell is clicked this will run ...
   const handleCellClick = () => {
-    console.log('object');
     //handle placing ship
-    console.log(placingStatus.split(' ')[0]);
     if (placingStatus.split(' ')[0] === 'placing') {
       if (
         validateShipLocation({
@@ -95,7 +93,6 @@ const Cell = ({ col, row, pc }) => {
           cells,
         })
       ) {
-        console.log(cellId);
         dispatch(
           occupyCell({
             row,
@@ -202,7 +199,6 @@ const Cell = ({ col, row, pc }) => {
 
   const getBgColor = ({ pc, isHit, isOccupied }) => {
     if (!pc && isOccupied && !isHit) return 'bg-gray-400';
-    else if (pc && isOccupied && !isHit) return 'bg-sky-400';
     else if (isHit && isOccupied) return 'bg-pink-800';
     else if (isHit && !isOccupied) return 'bg-white';
     else return 'bg-gray-800';
@@ -211,19 +207,19 @@ const Cell = ({ col, row, pc }) => {
   const getIconAfterHit = (pc, isOccupied) => {
     if (isOccupied && pc) {
       return (
-        <span className="text-white">
+        <span className="text-white text-xl">
           <Hit />
         </span>
       );
     } else if (isOccupied && !pc) {
       return (
-        <span className="text-white">
+        <span className="text-white text-xl">
           <Hit />
         </span>
       );
     } else {
       return (
-        <span className="text-black">
+        <span className="text-red  text-xl">
           <Missed />
         </span>
       );
@@ -244,14 +240,18 @@ const Cell = ({ col, row, pc }) => {
           md:w-20
           md:h-10
           
-          xl:w-24
-          xl:h-12
-         xl:mx-2
-     md:my-[3px]
-     lg:my-[4px]
+        
+     
+     
          sm:mx-[2px]
           
-       
+       ${
+         pathname === '/battle'
+           ? `lg:w-20 lg:h-15 `
+           : `   xl:w-24
+          xl:h-12
+         xl:mx-2 lg:my-[4px] md:my-[3px] `
+       } 
           
           ${getBgColor({ pc, isHit, isOccupied })} `}
         onClick={handleCellClick}

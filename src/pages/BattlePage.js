@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { GridBoard, Head, Notification } from '../components';
@@ -98,7 +98,7 @@ const BattlePage = () => {
       }
     }
 
-    // return clearTimeout(time);
+    return () => clearTimeout(time);
     //will call only if someone won ..
     //eslint-disable-next-line
   }, [playerResult, botResult]);
@@ -129,10 +129,10 @@ const BattlePage = () => {
           <div className="w-20 h-20 border-4 border-blue-600 rounded-full loader"></div>
         </div>
       ) : (
-        <div className="flex flex-col lg:flex-row justify-center mt-8 gap-2 w-4/5 p-2">
+        <div className="flex flex-col md:flex-row justify-center mt-8 gap-2 w-[70%] bg-gray-500 p-2">
           <AnimatePresence>
             <motion.div
-              className="border-2 border-black rounded-xl bg-neutral-400 "
+              className="border-2 border-black rounded-xl bg-neutral-400 lg:w-[45%]"
               key={'playerGrid'}
               initial={{ y: 100, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
@@ -148,7 +148,7 @@ const BattlePage = () => {
             </motion.div>
 
             <motion.div
-              className=" border-2 border-black rounded-xl bg-slate-600 "
+              className=" border-2 border-black rounded-xl bg-slate-600 lg:w-[45%]"
               key={'botGrid'}
               initial={{ y: 100, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
