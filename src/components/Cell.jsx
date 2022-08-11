@@ -235,14 +235,16 @@ const Cell = ({ col, row, pc }) => {
         className={` 
            rounded-full flex items-center justify-center
           hover:bg-slate-300 
-         sm:h-5 
-          sm:w-10
+          h-8 w-10 m-[2px]
+
+         sm:h-8 
+          sm:w-15
           sm:m-4
 
-          md:w-15
+          md:w-20
           md:h-10
           
-          lg:w-20
+          lg:w-24
           lg:h-12
          lg:mx-2
      md:my-[3px]

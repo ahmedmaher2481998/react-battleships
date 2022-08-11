@@ -64,7 +64,8 @@ the head message on the battle page when hit a hit cell
 <!-- the result object -->
 <!-- submarine over occupy a cell -->
 
-the vertical position
+<!-- the vertical position -->
+
 make responsiveness for placing page mg sm
 make responsiveness for battle page /results page lg/md/sm
 make rest to restart the game again

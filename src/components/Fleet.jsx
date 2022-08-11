@@ -47,13 +47,19 @@ const Fleet = () => {
     <>
       <div className={placingStatus === 'end' ? 'hidden' : ''}>
         <div className=" absolute">
-          <div className="relative   left-5 md:top-8 " id="fleet">
+          <div
+            className="relative 
+          top-16 left-0
+          lg:left-5 lg:top-8 "
+            id="fleet"
+          >
             <div className="-mt-8 mb-2 sm:max-w-max  flex lg:w-80 gap-2 max-w-min ">
               <label className="text-sm" htmlFor="placingPosition">
                 placing Type :{' '}
               </label>
               <select
-                className="mt-1 block w-full  border  
+                className="md:mt-1 block w-full  border  
+
                  text-white border-black-300 bg-mainmeduimblue 
                  rounded-md shadow-sm focus:outline-none
                   focus:ring-indigo-500 focus:border-indigo-500 text-sm"
@@ -117,7 +123,8 @@ const Fleet = () => {
               navigate('/battle');
             }}
             className=" 
-            relative top-0 lg:left-6 lg:top-96 lg:px-14 lg:text-3xl
+            relative  lg:left-6 lg:top-96 lg:px-14 lg:text-3xl
+            top-20 left-52
             hover:text-mainblue 
             rounded-full  btn bg-rose-500 text-black hover:bg-rose-300 
             "
