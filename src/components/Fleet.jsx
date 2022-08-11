@@ -20,9 +20,12 @@ const Fleet = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const placingStatus = useSelector((s) => getPlacingStatus(s));
-  const [placingPosition, setPlacingPosition] = useState('v');
+  const [placingPosition, setPlacingPosition] = useState('V');
   const [fleet, setFleet] = useState([]);
-
+  console.log(
+    '*****',
+    useSelector((s) => s.main.placing.placingPosition)
+  );
   useEffect(() => {
     if (fleet.length === 5 && placingStatus === 'done') {
       dispatch(changePlacingStatus('end'));
@@ -38,6 +41,7 @@ const Fleet = () => {
   useEffect(() => {
     const placingType = placingPosition === 'v' ? 'Vertical' : 'Horizontal';
     toast.success(`Ship position now Is  ${placingType}`);
+    dispatch(changePlacingPosition(placingPosition));
   }, [placingPosition]);
   return (
     <>
@@ -58,11 +62,10 @@ const Fleet = () => {
                 value={placingPosition}
                 onChange={(e) => {
                   flushSync(() => setPlacingPosition(() => e.target.value));
-                  dispatch(changePlacingPosition(placingPosition));
                 }}
               >
-                <option value="v">Vertical</option>
-                <option value="h">Horizontal</option>
+                <option value="V">Vertical</option>
+                <option value="H">Horizontal</option>
               </select>
             </div>
             <div className="flex lg:flex-col">

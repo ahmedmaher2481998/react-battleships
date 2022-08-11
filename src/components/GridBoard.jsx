@@ -161,7 +161,7 @@ const GridBoard = ({ pc }) => {
       }
       flex flex-col justify-between items-center
 	min-h-min
-  lg:-mt-20
+  ${pathname === '/placing' && 'lg:-mt-20'}
   max-w-max
 
   sm:w-screen

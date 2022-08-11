@@ -49,16 +49,28 @@
 * use the main message to notify the player id it's his turn
 * show results and store then in local storage
 
-// VscError bg-pink/rose-300,, GiSpikyExplosion bg-green-500
+<!-- // VscError bg-pink/rose-300,, GiSpikyExplosion bg-green-500 -->
+
 bugs to be fixed
 
 <!-- weird notifications from bot //done -->
 <!-- the layout on the battle page //done -->
 
-the winner page img and background
+<!-- the winner page img and background -->
+
 the number of cell by the slider on the start
 the head message on the battle page when hit a hit cell
-the result object
-submarine over occupy a cell
 
-upon hitting a cell display this VscError bg-pink/rose-300,, GiSpikyExplosion bg-green-500
+<!-- the result object -->
+<!-- submarine over occupy a cell -->
+
+the vertical position
+make responsiveness for placing page mg sm
+make responsiveness for battle page /results page lg/md/sm
+make rest to restart the game again
+write readme for this game / add it to the portfolio and also add the sloth e commerce
+complete your c.v and linked in
+make a wazzaf/indeed /stackoverflow's / any other platform
+apply for your first job tomorrow
+
+<!-- upon hitting a cell display this VscError bg-pink/rose-300,, GiSpikyExplosion bg-green-500 -->

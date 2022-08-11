@@ -83,6 +83,7 @@ const Cell = ({ col, row, pc }) => {
   const handleCellClick = () => {
     console.log('object');
     //handle placing ship
+    console.log(placingStatus.split(' ')[0]);
     if (placingStatus.split(' ')[0] === 'placing') {
       if (
         validateShipLocation({
@@ -94,6 +95,7 @@ const Cell = ({ col, row, pc }) => {
           cells,
         })
       ) {
+        console.log(cellId);
         dispatch(
           occupyCell({
             row,

@@ -33,18 +33,19 @@ export const cellReducer = (state = {}, { type, payload }) => {
 
     case OCCUPY_CELL:
       const { row, col, placingPosition, shipSize, ship } = payload;
-
+      const hitCell = ({ row, col, newState }) => {
+        console.log(placingPosition);
+        const cellId = generateCellId(row, col);
+        newState.playerCells[cellId].occupy.isOccupied = true;
+        newState.playerCells[cellId].occupy.occupier = ship;
+      };
       if (placingPosition === 'H') {
         for (let newCol = col; newCol < col + shipSize; newCol++) {
-          const cellId = generateCellId(row, newCol);
-          newState.playerCells[cellId].occupy.isOccupied = true;
-          newState.playerCells[cellId].occupy.occupier = ship;
+          hitCell({ row: row, col: newCol, newState });
         }
       } else if (placingPosition === 'V') {
         for (let newRow = row; newRow < row + shipSize; newRow++) {
-          const cellId = generateCellId(newRow, col);
-          newState.playerCells[cellId].occupy.isOccupied = true;
-          newState.playerCells[cellId].occupy.occupier = ship;
+          hitCell({ row: newRow, col, newState });
         }
       }
       return newState;
