@@ -1,11 +1,13 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { battlesShip, ship, submarine, boat, carrier } from '../assets';
+import { VscError as Missed } from 'react-icons/vsc/index';
+import { GiSpikyExplosion as Hit } from 'react-icons/gi/index';
 import {
   generateCellId,
   validateShipLocation,
   getShipSize,
   getRandom,
 } from '../helpers/';
-import { battlesShip, ship, submarine, boat, carrier } from '../assets';
 import {
   getPlacingStatus,
   getSelectedShip,
@@ -19,7 +21,7 @@ import {
   getOccupierByBot,
   changePlayerTurn,
   changeBotTurn,
-  getBotTurn,
+  // getBotTurn,
   getPlayerTurn,
   getStartBattle,
   hitBotCell,
@@ -75,7 +77,7 @@ const Cell = ({ col, row, pc }) => {
 
   const battleStarted = useSelector(getStartBattle);
   //bot Variables
-  const botTurn = useSelector(getBotTurn);
+  // const botTurn = useSelector(getBotTurn);
 
   //When a cell is clicked this will run ...
   const handleCellClick = () => {
@@ -202,17 +204,52 @@ const Cell = ({ col, row, pc }) => {
     else if (isHit && !isOccupied) return 'bg-white';
     else return 'bg-gray-800';
   };
+
+  const getIconAfterHit = (pc, isOccupied) => {
+    if (isOccupied && pc) {
+      return (
+        <span className="text-red">
+          <Hit />
+        </span>
+      );
+    } else if (isOccupied && !pc) {
+      return (
+        <span className="text-green-500">
+          <Hit />
+        </span>
+      );
+    } else {
+      return (
+        <span className="text-white">
+          <Missed />
+        </span>
+      );
+    }
+  };
   return (
     <>
       <div
-        className={` w-[9%] h-8 md:h-[100%]  rounded-full flex items-center justify-center hover:bg-slate-300 ${getBgColor(
-          { pc, isHit, isOccupied }
-        )} `}
+        className={` overflow-hidden
+           rounded-full flex items-center justify-center
+          hover:bg-slate-300 
+         sm:h-5 
+          sm:w-10
+          md:w-15
+          md:h-10
+          lg:w-20
+          lg:h-12
+         lg:mx-2
+         md:mx-[.25rem]
+         sm:mx-[2px]
+          
+       
+          
+          ${getBgColor({ pc, isHit, isOccupied })} `}
         onClick={handleCellClick}
       >
         {/* showing img for both  */}
         {/*&& !pc*/}
-        {isOccupied ? (
+        {isOccupied && !pc && !isHit ? (
           <>
             <img
               src={getOccupierImageSrc(occupier)}
@@ -221,6 +258,8 @@ const Cell = ({ col, row, pc }) => {
             />
           </>
         ) : null}
+
+        {isHit ? getIconAfterHit(pc, isOccupied) : null}
       </div>
     </>
   );

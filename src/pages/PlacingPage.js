@@ -28,7 +28,7 @@ const PlacingPage = () => {
         <h1
           className="text-2xl text-black mx-auto font-bol
 				
-				"
+				d"
         >
           {headMsg}
         </h1>

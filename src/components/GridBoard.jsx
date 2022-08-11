@@ -11,8 +11,6 @@ import {
   initCells,
   initBotCells,
   occupyBotCell,
-  ChangeHeadMessage,
-  // getPlayerTurn,
   changePlayerTurn,
 } from '../store';
 import { useDispatch, useSelector } from 'react-redux';
@@ -36,7 +34,10 @@ export const createGrid = (size, pc = false) => {
       );
     }
     rows.push(
-      <div key={row} className=" min-h-[9%] w-full flex justify-between">
+      <div
+        key={row}
+        className="hover:bg-slate-400 rounded-lg lg:my-2 md:my-[.25rem] sm:my-[2px] hover:bg-opacity-25 min-h-[9%] min-w-max flex justify-between"
+      >
         {cells}
       </div>
     );
@@ -46,15 +47,10 @@ export const createGrid = (size, pc = false) => {
 
 const GridBoard = ({ pc }) => {
   pc = pc || false;
-
   const dispatch = useDispatch();
-
   const { pathname } = useLocation();
-  // const selectedShip = useSelector((s) => getSelectedShip(s));
-
-  // const placingStatus = useSelector((s) => getPlacingStatus(s));
-
   const { rows, cellsState } = createGrid(ROW_SIZE, pc);
+  const botCellStates = useSelector((s) => s.bot?.botCells);
 
   useEffect(() => {
     if (!pc && pathname === '/placing') {
@@ -66,8 +62,6 @@ const GridBoard = ({ pc }) => {
 
     // eslint-disable-next-line
   }, []);
-
-  const botCellStates = useSelector((s) => s.bot?.botCells);
 
   function populateBotGrid(pc, botCellStates) {
     //the pc is the on generating the grid
@@ -147,6 +141,7 @@ const GridBoard = ({ pc }) => {
       });
     }
   }
+
   useEffect(() => {
     if (pc && botCellStates) populateBotGrid(pc, botCellStates);
     //eslint-disable-next-line
@@ -159,9 +154,12 @@ const GridBoard = ({ pc }) => {
           ? 'bg-transparent'
           : 'bg-opacity-40 bg-purple-900'
       }
-		md:h-full
+	min-h-max
+  max-w-max
 		flex flex-col justify-between items-center
-		rounded-lg p-2 lg:p-4 xl:p-6 
+		rounded-lg 
+    p-2
+
 		`}
     >
       {rows}

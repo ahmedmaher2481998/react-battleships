@@ -39,7 +39,7 @@ const Fleet = () => {
     <>
       <div className={placingStatus === 'end' ? 'hidden' : ''}>
         <div className=" absolute   ">
-          <div className="relative   left-5 -top-28" id="fleet">
+          <div className="relative   left-5 lg:-top-28" id="fleet">
             <div className="-mt-8 mb-2 sm:max-w-[8rem]  max-w-[4rem] ">
               <select
                 id="placingPosition"
@@ -56,7 +56,7 @@ const Fleet = () => {
                 <option value="h">Horizontal</option>
               </select>
             </div>
-            <div className="flex md:flex-col text-center">
+            <div className="flex lg:flex-col text-center">
               <FleetShip
                 setFleet={setFleet}
                 fleet={fleet}
