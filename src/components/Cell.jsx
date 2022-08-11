@@ -229,13 +229,16 @@ const Cell = ({ col, row, pc }) => {
   return (
     <>
       <div
-        className={` overflow-hidden
+        className={` 
            rounded-full flex items-center justify-center
           hover:bg-slate-300 
          sm:h-5 
           sm:w-10
+          sm:m-4
+
           md:w-15
           md:h-10
+          
           lg:w-20
           lg:h-12
          lg:mx-2

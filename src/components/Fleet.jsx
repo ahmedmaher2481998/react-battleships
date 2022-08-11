@@ -14,6 +14,7 @@ import {
 import { boat, battlesShip, submarine, ship, carrier } from '../assets';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
+import { flushSync } from 'react-dom';
 
 const Fleet = () => {
   const dispatch = useDispatch();
@@ -34,23 +35,29 @@ const Fleet = () => {
       );
     }
   }, [fleet, placingStatus, dispatch]);
-
+  useEffect(() => {
+    const placingType = placingPosition === 'v' ? 'Vertical' : 'Horizontal';
+    toast.success(`Ship position now Is  ${placingType}`);
+  }, [placingPosition]);
   return (
     <>
       <div className={placingStatus === 'end' ? 'hidden' : ''}>
         <div className=" absolute   ">
           <div className="relative   left-5 lg:-top-28" id="fleet">
-            <div className="-mt-8 mb-2 sm:max-w-[8rem]  max-w-[4rem] ">
+            <div className="-mt-8 mb-2 sm:max-w-max  flex max-w-min ">
+              <label htmlFor="placingPosition">placing Type : </label>
               <select
                 id="placingPosition"
                 name="placingPosition"
                 value={placingPosition}
                 onChange={(e) => {
-                  setPlacingPosition(() => e.target.value);
+                  flushSync(() => setPlacingPosition(() => e.target.value));
                   dispatch(changePlacingPosition(placingPosition));
-                  toast.success(`Ship position now Is  ${placingPosition}`);
                 }}
-                className="mt-1 block w-full py-2 px-3 border   text-white border-black-300 bg-mainmeduimblue rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-sm"
+                className="mt-1 block w-full py-2 px-3 border  
+                 text-white border-black-300 bg-mainmeduimblue 
+                 rounded-md shadow-sm focus:outline-none
+                  focus:ring-indigo-500 focus:border-indigo-500 text-sm"
               >
                 <option value="v">Vertical</option>
                 <option value="h">Horizontal</option>

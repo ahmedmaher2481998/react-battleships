@@ -36,7 +36,12 @@ export const createGrid = (size, pc = false) => {
     rows.push(
       <div
         key={row}
-        className="hover:bg-slate-400 rounded-lg lg:my-2 md:my-[.25rem] sm:my-[2px] hover:bg-opacity-25 min-h-[9%] min-w-max flex justify-between"
+        className="hover:bg-slate-400 
+        rounded-lg
+        lg:my-2 md:my-[.25rem] sm:my-[2px]
+      h-15
+
+        hover:bg-opacity-25 min-h-min min-w-max flex justify-between"
       >
         {cells}
       </div>
@@ -154,11 +159,12 @@ const GridBoard = ({ pc }) => {
           ? 'bg-transparent'
           : 'bg-opacity-40 bg-purple-900'
       }
+      flex flex-col justify-between items-center
 	min-h-max
   max-w-max
-		flex flex-col justify-between items-center
+  sm:w-screen
 		rounded-lg 
-    p-2
+    
 
 		`}
     >
