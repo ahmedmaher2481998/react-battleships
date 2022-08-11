@@ -244,9 +244,9 @@ const Cell = ({ col, row, pc }) => {
           md:w-20
           md:h-10
           
-          lg:w-24
-          lg:h-12
-         lg:mx-2
+          xl:w-24
+          xl:h-12
+         xl:mx-2
      md:my-[3px]
      lg:my-[4px]
          sm:mx-[2px]

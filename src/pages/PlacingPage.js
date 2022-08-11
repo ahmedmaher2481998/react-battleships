@@ -25,17 +25,18 @@ const PlacingPage = () => {
       <Head title={'BattleShip | Placing ships'} />
       <div
         className="
-				grid grid-cols-5 grid-rows-5
-				gap-4  bg-mainblue text-bage min-h-[var(--contentHeight)] 
+				grid grid-cols-5 grid-rows-5 
+				md:gap-2 lg:gap-3  bg-mainblue text-bage sm:h-[100vh] md:min-h-[var(--contentHeight)] 
 "
       >
         <ToastContainer />
         <div
           className="
-				row-start-1 row-span-1 absolute
-				w-screen text-center p-2"
+				row-start-1 row-span-1 absolute mx-8
+				md:mx-20 lg:w-4/5
+        text-center p-2"
         >
-          <h1 className="text-2xl lg:h-full lg:py-6 text-black  font-bold">
+          <h1 className="md:text-2xl text-xl lg:h-full lg:py-6 text-black  font-bold">
             {headMsg}
           </h1>
         </div>
@@ -45,8 +46,10 @@ const PlacingPage = () => {
         </div>
         <div
           className=" 
-				md:col-span-5 md:mt-0 md:col-start-2  row-start-2 row-span-3
-        w-[100vw] mt-16 
+          md:inline-block
+				md:col-span-5 md:col-start-2  row-start-2 row-span-3
+sm:absolute sm:top-36 sm:right-24  mt-16 
+lg:mt-2
       
 				"
         >

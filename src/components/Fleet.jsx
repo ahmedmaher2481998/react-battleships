@@ -49,6 +49,7 @@ const Fleet = () => {
         <div className=" absolute">
           <div
             className="relative 
+            w-full
           top-16 left-0
           lg:left-5 lg:top-8 "
             id="fleet"
@@ -58,8 +59,7 @@ const Fleet = () => {
                 placing Type :{' '}
               </label>
               <select
-                className="md:mt-1 block w-full  border  
-
+                className="md:mt-1 block lg:w-80 w-40  border  
                  text-white border-black-300 bg-mainmeduimblue 
                  rounded-md shadow-sm focus:outline-none
                   focus:ring-indigo-500 focus:border-indigo-500 text-sm"
@@ -123,8 +123,9 @@ const Fleet = () => {
               navigate('/battle');
             }}
             className=" 
-            relative  lg:left-6 lg:top-96 lg:px-14 lg:text-3xl
+            relative 
             top-20 left-52
+            lg:left-6 lg:top-96 lg:px-14 lg:text-3xl
             hover:text-mainblue 
             rounded-full  btn bg-rose-500 text-black hover:bg-rose-300 
             "
