@@ -3,13 +3,15 @@ import { FaFacebook, FaTwitter, FaReddit, FaGithub } from 'react-icons/fa';
 import { useLocation } from 'react-router-dom';
 function Footer() {
   const { pathname } = useLocation();
+
   return (
     <>
       <div
         id="footer"
         className={`${
           pathname === '/battle' ? 'bg-mainred' : 'bg-mainblue'
-        } max-w-screen min-w-fit text-bage selection:text-xl flex flex-wrap : ;
+        }'text-bage'
+        max-w-screen min-w-fit  selection:text-xl flex flex-wrap : ;
 				flex-row items-center justify-center`}
       >
         <div className="h-24 p-2 gap-6 max-w-[80%] flex flex-wrap flex-row items-center justify-between">
