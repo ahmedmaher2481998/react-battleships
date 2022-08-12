@@ -1,5 +1,6 @@
 import { generateCellId } from '../../../helpers';
 import { BOT_CELL_HIT, BOT_CELL_OCCUPY, INIT_BOT_CELLS } from './actions';
+//cell object model
 // cell Obj
 // "56": {col, row, occupy: {
 //     isOccupied: false,

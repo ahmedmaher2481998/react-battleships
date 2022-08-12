@@ -16,8 +16,6 @@ const WinnerPage = () => {
   );
   const name = useSelector(getName);
   const startTime = useSelector((s) => new Date(s.main.startTime));
-  // const botResult = useSelector(getBotResult);
-  // const playerResult = useSelector(getPlayerResult);
   const timePlayed = `${startTime.toLocaleDateString('en-us', {
     weekday: 'long',
     year: 'numeric',
@@ -33,9 +31,7 @@ const WinnerPage = () => {
     <div className="relative flex items-center justify-center min-h-[var(--contentHeight)] glass">
       <div
         style={{ backgroundImage: `url(${victory})` }}
-        className="
-        top-0 left-0 
-        h-screen w-screen bg-cover bg-center object-contain -z-10 absolute "
+        className="top-0 left-0 h-screen w-screen bg-cover bg-center object-contain -z-10 absolute "
       ></div>
       <div className=" z-10  h-full">
         <div className="glass shadow-2xl p-6 rounded-2xl border-2 border-gray-200">
@@ -77,9 +73,7 @@ const WinnerPage = () => {
                 onClick={() => {
                   navigate('/results');
                 }}
-                className="border border-teal-500 bg-teal-500 text-white rounded-md px-3 py-2 m-2 
-                  transition duration-500 ease select-none hover:bg-teal-600 focus:outline-none
-                  focus:shadow-outline"
+                className="border border-teal-500 bg-teal-500 text-white rounded-md px-3 py-2 m-2 transition duration-500 ease select-none hover:bg-teal-600 focus:outline-none focus:shadow-outline"
               >
                 Go to Results board
               </button>

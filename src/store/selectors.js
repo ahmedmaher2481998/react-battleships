@@ -1,5 +1,3 @@
-import { generateCellId } from '../helpers';
-
 //selectors
 export const getName = (state) => {
   let name = state.main.player.name;

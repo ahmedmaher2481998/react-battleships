@@ -1,11 +1,7 @@
-import Portal from './Portal';
-import NotificationMessage from './NotificationMessage';
-import NotificationPanel from './NotificationPanel';
-import { AnimatePresence } from 'framer-motion';
+import { Portal, NotificationPanel, NotificationMessage } from '../components';
 import { useSelector } from 'react-redux';
 import { getNotification } from '../store/';
 import { useState, useRef, useEffect } from 'react';
-import { flushSync } from 'react-dom';
 
 export const Notification = () => {
   const [notifications, setNotifications] = useState(
@@ -24,6 +20,7 @@ export const Notification = () => {
   useEffect(() => {
     setNotifications(getNotification(state));
     scrollToView();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [notifications.length]);
   return (
     <>

@@ -1,8 +1,8 @@
 import { useState } from 'react';
-
 import { AiOutlineCloseCircle } from 'react-icons/ai/index';
 
 const NotificationMessage = ({ body, isHit, cellId }) => {
+  //open state for closing the panel
   const [open, setOpen] = useState(true);
   const bg = isHit ? 'green-400' : 'rose-400';
 

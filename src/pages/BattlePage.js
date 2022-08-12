@@ -102,19 +102,12 @@ const BattlePage = () => {
   }, [playerResult, botResult]);
 
   return (
-    <div
-      className=" bg-mainred text-center max-h-max min-h-[var(--contentHeight)]
-    
-    
-    "
-    >
+    <div className=" bg-mainred text-center max-h-max min-h-[var(--contentHeight)] ">
       <Notification />
       <Head title="BattleShip | Battle" />
       <div className="flex flex-wrap justify-center items-center mt-12 md:mt-0">
         <span className="font-serif text-xl lg:text-3xl ">{headMessage}</span>
       </div>
-
-      {/* <div className="flex p-2 h-4/5 justify-center gap-2 items-center flex-col xl:flex-row row-span-7 col-span-5 row-start-2 bg-sky-400"> */}
       {playerWon || botWon ? (
         <div className="bg-transparent w-screen  flex justify-center items-center">
           <style
@@ -127,14 +120,10 @@ const BattlePage = () => {
           <div className="w-20 h-20 border-4 border-blue-600 rounded-full loader"></div>
         </div>
       ) : (
-        <div
-          className="flex flex-col xl:flex-row justify-start  lg:p-8 p-4
-        lg:mt-4 gap-2 "
-        >
+        <div className="flex flex-col xl:flex-row justify-start  lg:p-8 p-4 lg:mt-4 gap-2 ">
           <AnimatePresence>
             <motion.div
-              className="w-min
-              border-2 border-black rounded-xl bg-teal-800 "
+              className="w-min border-2 border-black rounded-xl bg-teal-800 "
               key={'playerGrid'}
               initial={{ y: 100, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
@@ -150,9 +139,7 @@ const BattlePage = () => {
             </motion.div>
 
             <motion.div
-              className=" w-min
-           
-              border-2 border-black rounded-xl bg-amber-600 "
+              className=" w-min border-2 border-black rounded-xl bg-amber-600 "
               key={'botGrid'}
               initial={{ y: 100, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}

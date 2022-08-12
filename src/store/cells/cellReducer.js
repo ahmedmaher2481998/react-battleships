@@ -34,7 +34,6 @@ export const cellReducer = (state = {}, { type, payload }) => {
     case OCCUPY_CELL:
       const { row, col, placingPosition, shipSize, ship } = payload;
       const hitCell = ({ row, col, newState }) => {
-        console.log(placingPosition);
         const cellId = generateCellId(row, col);
         newState.playerCells[cellId].occupy.isOccupied = true;
         newState.playerCells[cellId].occupy.occupier = ship;

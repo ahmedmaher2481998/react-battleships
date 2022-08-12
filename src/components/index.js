@@ -8,6 +8,23 @@ import GridBoard from './GridBoard';
 import Head from './Head';
 import Card from './ResultCard';
 import Notification from './Notification';
+import FleetShip from './FleetShip';
+import Portal from './Portal';
+import NotificationMessage from './NotificationMessage';
+import NotificationPanel from './NotificationPanel';
 
 //exporting components
-export { Head, Notification, MainHero, Footer, Card, Fleet, GridBoard, Cell };
+export {
+  Head,
+  Notification,
+  FleetShip,
+  MainHero,
+  Footer,
+  NotificationMessage,
+  NotificationPanel,
+  Card,
+  Fleet,
+  GridBoard,
+  Cell,
+  Portal,
+};

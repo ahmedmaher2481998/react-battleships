@@ -1,15 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import FleetShip from './FleetShip';
+import { FleetShip } from '../components';
 import {
-  // placeShip,
-  // getSelectedShip,
   getPlacingStatus,
-  // ChangeHeadMessage,
   changePlacingPosition,
   changePlacingStatus,
   ChangeHeadMessage,
-  // changePlacingStatus,
 } from '../store';
 import { boat, battlesShip, submarine, ship, carrier } from '../assets';
 import { toast } from 'react-toastify';
@@ -22,10 +18,6 @@ const Fleet = () => {
   const placingStatus = useSelector((s) => getPlacingStatus(s));
   const [placingPosition, setPlacingPosition] = useState('V');
   const [fleet, setFleet] = useState([]);
-  console.log(
-    '*****',
-    useSelector((s) => s.main.placing.placingPosition)
-  );
   useEffect(() => {
     if (fleet.length === 5 && placingStatus === 'done') {
       dispatch(changePlacingStatus('end'));
@@ -42,6 +34,7 @@ const Fleet = () => {
     const placingType = placingPosition === 'v' ? 'Vertical' : 'Horizontal';
     toast.success(`Ship position now Is  ${placingType}`);
     dispatch(changePlacingPosition(placingPosition));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [placingPosition]);
   return (
     <>

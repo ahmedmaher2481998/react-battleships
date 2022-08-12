@@ -13,7 +13,7 @@ const RulesPage = () => {
   };
   useEffect(() => {
     if (name === '') Navigate('/');
-  }, []);
+  }, [name, Navigate]);
 
   const gameObjectives = `	The object of Battleship is to try and sink all of the
 						other player's before they sink all of your ships. All

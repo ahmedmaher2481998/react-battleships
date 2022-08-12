@@ -1,7 +1,7 @@
 const INIT_BOT_CELLS = 'battle/initBotCells';
 const BOT_CELL_OCCUPY = 'battle/occupyBotCell';
 const BOT_CELL_HIT = 'battle/hitBotCell';
-// const
+//action generators
 const initBotCells = (cells) => {
   return {
     type: INIT_BOT_CELLS,
@@ -15,7 +15,6 @@ const occupyBotCell = (payload) => {
   };
 };
 
-//needs modifications
 const hitBotCell = (cellId) => {
   return { type: BOT_CELL_HIT, payload: { cellId } };
 };

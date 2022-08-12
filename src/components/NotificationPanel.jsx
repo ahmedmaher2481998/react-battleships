@@ -4,8 +4,6 @@ import { motion } from 'framer-motion';
 import { BsFillArrowUpCircleFill } from 'react-icons/bs/index';
 const NotificationPanel = ({ children }) => {
   const [open, setOpen] = useState(true);
-  // const lastOne =
-  // console.log(lastOne);
   return (
     <>
       {open ? (

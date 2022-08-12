@@ -1,18 +1,17 @@
-import { ChangeHeadMessage, selectShip, changePlacingStatus } from '../store';
+import {
+  ChangeHeadMessage,
+  selectShip,
+  getSelectedShip,
+  getPlacingStatus,
+  changePlacingStatus,
+} from '../store';
 import { useSelector, useDispatch } from 'react-redux';
-import { getSelectedShip, getPlacingStatus } from '../store';
-// import { useState } from "react";
 import { getName } from '../store/selectors';
 const FleetShip = ({ img, name, cells, setFleet, fleet }) => {
   const selectedShip = useSelector(getSelectedShip);
   const placingStatus = useSelector(getPlacingStatus);
-  // const [selectedShip, setSelectedShip] = useState(selectedShip);
   const dispatch = useDispatch();
   const playerName = useSelector(getName);
-  // const selected = (nameOfShip) => {
-  // 	dispatch(placeShip(nameOfShip));
-  // 	setFleet([...fleet, name]);
-  // };
 
   return (
     <>
