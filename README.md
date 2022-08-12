@@ -68,7 +68,9 @@ the head message on the battle page when hit a hit cell
 
 <!-- make responsiveness for placing page mg sm -->
 
-make responsiveness for battle page /results page lg/md/sm
+<!-- make responsiveness for battle page -->
+
+results page lg/md/sm
 make rest to restart the game again
 write readme for this game / add it to the portfolio and also add the sloth e commerce
 complete your c.v and linked in

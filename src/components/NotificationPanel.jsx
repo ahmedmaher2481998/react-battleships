@@ -12,7 +12,7 @@ const NotificationPanel = ({ children }) => {
         <>
           <div
             className=" w-screen  h-20
-          absolute top-0 mb-8 right-0 my-auto
+          absolute top-0  right-0 my-auto
            bg-red glass inline-block md:hidden"
           >
             {children.props.children[children.props.children.length - 1]}

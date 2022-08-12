@@ -26,7 +26,7 @@ const PlacingPage = () => {
       <div
         className="
 				grid grid-cols-5 grid-rows-5 
-				md:gap-2 lg:gap-3  bg-mainblue text-bage sm:h-[100vh] md:min-h-[var(--contentHeight)] 
+				md:gap-2 lg:gap-3  bg-mainblue text-bage h-[100vh] md:min-h-[var(--contentHeight)] 
 "
       >
         <ToastContainer />
@@ -46,9 +46,11 @@ const PlacingPage = () => {
         </div>
         <div
           className=" 
+          
           md:inline-block
-				md:col-span-5 md:col-start-2  row-start-2 row-span-3
-sm:absolute sm:top-36 sm:right-24  mt-16 
+				md:col-span-4 md:col-start-2 
+         row-start-2 row-span-3 
+absolute top-36 right-10  mt-16 
 lg:mt-2
       
 				"

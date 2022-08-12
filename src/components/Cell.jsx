@@ -241,13 +241,13 @@ const Cell = ({ col, row, pc }) => {
            `
            : `   xl:w-24
           xl:h-12    h-8 w-10 
-          sm:h-8 
-          sm:w-15
-          sm:m-4
+          sm:h-10
+          sm:w-12
+          sm:m-[2px]
           md:w-20
           md:h-10
           sm:mx-[2px]
-         xl:mx-2 lg:my-[4px] md:my-[3px] m-[2px] `
+         xl:mx-2 lg:my-[4px] md:my-[3px] `
        } 
           
           ${getBgColor({ pc, isHit, isOccupied })} `}
