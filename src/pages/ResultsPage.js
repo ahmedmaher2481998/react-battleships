@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Head, Card } from '../components';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 const ResultsPage = () => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const results = JSON.parse(localStorage.getItem('results'));
 
@@ -18,11 +17,11 @@ const ResultsPage = () => {
     <>
       <Head title={'BattleShip | Results'} />
       <>
-        <section className="text-gray-600 body-font w-screen h-[var(--contentHeight)] bg-mainblue">
+        <section className="text-gray-600 body-font min-w-max max-h-max min-h-[var(--contentHeight)] bg-mainblue">
           <div
             className="text-green 
-          hover:underline-offset-8 transition-all duration-1000 ease-in-out hover:underline
-          w-screen flex justify-center "
+          hover:underline-offset-8 transition-all  ease-in-out hover:underline
+          w-full flex justify-center "
           >
             <Link to={'/'}>
               <p className="text-3xl p-4 text-slate-400 hover:text-white">
