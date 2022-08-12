@@ -4,59 +4,70 @@ import { motion } from 'framer-motion';
 import { BsFillArrowUpCircleFill } from 'react-icons/bs/index';
 const NotificationPanel = ({ children }) => {
   const [open, setOpen] = useState(true);
+  // const lastOne =
+  // console.log(lastOne);
   return (
     <>
       {open ? (
-        <motion.div
-          key={'Notification-panel'}
-          initial={{ y: 0, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.3, ease: 'easeInOut' }}
-          exit={{
-            X: 0,
-            opacity: 0,
-            transition: { duration: 0.3, ease: 'easeInOut' },
-          }}
-          className="w-full hidden lg:inline-block absolute shadow-2xl shadow-black  h-full overflow-x-hidden transform translate-x-0 transition ease-in-out duration-700 border-2 border-zinc-400 border-t-0"
-        >
-          <div className=" bg-rose-500 bg-opacity-50  h-screen overflow-y-auto p-2 absolute right-0">
-            <div className="flex items-center justify-between">
-              <p
-                id="notification"
-                className="text-2xl p-4 font-semibold leading-6 text-gray-800"
-              >
-                Notification bar
-              </p>
-              <div className="cursor-pointer" onClick={() => setOpen(false)}>
-                <svg
-                  width={24}
-                  height={24}
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M18 6L6 18"
-                    stroke="#000000"
-                    strokeWidth="1.25"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M6 6L18 18"
-                    stroke="#000000"
-                    strokeWidth="1.25"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </div>
-            </div>
-            <hr className="my-2" />
-            {children}
-            <UpArrow />
+        <>
+          <div
+            className=" w-screen  h-20
+          absolute top-0 mb-8 right-0 my-auto
+           bg-red glass inline-block md:hidden"
+          >
+            {children.props.children[children.props.children.length - 1]}
           </div>
-        </motion.div>
+          <motion.div
+            key={'Notification-panel'}
+            initial={{ y: 0, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+            exit={{
+              X: 0,
+              opacity: 0,
+              transition: { duration: 0.3, ease: 'easeInOut' },
+            }}
+            className="w-full hidden md:inline-block absolute shadow-2xl shadow-black  h-full overflow-x-hidden transform translate-x-0 transition ease-in-out duration-700 border-2 border-zinc-400 border-t-0"
+          >
+            <div className=" bg-rose-500 bg-opacity-50  h-screen overflow-y-auto p-2 absolute right-0">
+              <div className="flex items-center justify-between">
+                <p
+                  id="notification"
+                  className="text-2xl p-4 font-semibold leading-6 text-gray-800"
+                >
+                  Notification bar
+                </p>
+                <div className="cursor-pointer" onClick={() => setOpen(false)}>
+                  <svg
+                    width={24}
+                    height={24}
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M18 6L6 18"
+                      stroke="#000000"
+                      strokeWidth="1.25"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                    <path
+                      d="M6 6L18 18"
+                      stroke="#000000"
+                      strokeWidth="1.25"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <hr className="my-2" />
+              {children}
+              <UpArrow />
+            </div>
+          </motion.div>
+        </>
       ) : (
         <div
           onClick={() => setOpen(true)}

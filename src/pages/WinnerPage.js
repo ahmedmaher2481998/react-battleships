@@ -10,7 +10,7 @@ const WinnerPage = () => {
   const navigate = useNavigate();
   const { winnerName } = useParams();
   const getWinnerScore = useSelector((s) =>
-    winnerName === 'bot' ? getBotResult : getPlayerResult
+    winnerName === 'bot' ? getBotResult(s) : getPlayerResult(s)
   );
   const name = useSelector(getName);
   const startTime = useSelector((s) => new Date(s.main.startTime));
@@ -33,10 +33,10 @@ const WinnerPage = () => {
         className=" mx-auto h-screen w-screen bg-cover bg-center"
       >
         <div className="flex items-center justify-center h-full">
-          <div className="bg-mainblue shadow-2xl p-6 rounded-2xl border-2 border-gray-50">
+          <div className="glass shadow-2xl p-6 rounded-2xl border-2 border-gray-200">
             <div className="flex flex-col">
               <div>
-                <h2 className="font-bold text-gray-300 text-center">
+                <h2 className="font-bold text-gray-500 text-center">
                   The Winner Is {winnerName}
                 </h2>
               </div>
@@ -46,8 +46,8 @@ const WinnerPage = () => {
                     <span
                       className={`${
                         winnerName === 'bot'
-                          ? 'text-rose-500'
-                          : 'text-green-500'
+                          ? 'text-rose-400'
+                          : 'text-green-400'
                       } text-4xl`}
                     >
                       {winnerName === 'bot' ? (

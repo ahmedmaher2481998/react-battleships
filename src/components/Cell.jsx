@@ -230,27 +230,24 @@ const Cell = ({ col, row, pc }) => {
       <div
         className={` 
            rounded-full flex items-center justify-center
-          hover:bg-slate-300 
-          h-8 w-10 m-[2px]
-
-         sm:h-8 
-          sm:w-15
-          sm:m-4
-
-          md:w-20
-          md:h-10
-          
-        
-     
-     
-         sm:mx-[2px]
-          
+          hover:bg-stone-600 
+       
        ${
          pathname === '/battle'
-           ? `lg:w-20 lg:h-15 `
+           ? `
+           h-8 w-10  
+           sm:w-12 sm:h-10  sm:m-[2px]
+           
+           `
            : `   xl:w-24
-          xl:h-12
-         xl:mx-2 lg:my-[4px] md:my-[3px] `
+          xl:h-12    h-8 w-10 
+          sm:h-8 
+          sm:w-15
+          sm:m-4
+          md:w-20
+          md:h-10
+          sm:mx-[2px]
+         xl:mx-2 lg:my-[4px] md:my-[3px] m-[2px] `
        } 
           
           ${getBgColor({ pc, isHit, isOccupied })} `}
