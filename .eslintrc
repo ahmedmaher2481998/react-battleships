@@ -1,6 +1,15 @@
 {
   "root": true,
   "plugins": ["react-redux"],
+
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
+  },
+
   "extends": [
     "react-app",
     "eslint:recommended",
