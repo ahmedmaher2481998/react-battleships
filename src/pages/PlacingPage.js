@@ -17,7 +17,7 @@ const PlacingPage = () => {
   }, [dispatch, name]);
   useEffect(() => {
     if (name === '') Navigate('/');
-    //eslint-disable-next-line
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

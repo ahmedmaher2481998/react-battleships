@@ -12,6 +12,7 @@ const ResultsPage = () => {
     dispatch({ type: 'CLEAR_BOT' });
     dispatch({ type: 'CLEAR_MAIN' });
     dispatch({ type: 'CLEAR_CELLS' });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <>

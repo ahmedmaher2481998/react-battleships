@@ -23,19 +23,16 @@ const BattlePage = () => {
   const botWon = botResult === 15;
 
   useEffect(() => {
+    if (name === '') Navigate('/');
+    dispatch(startBattle());
     dispatch(
       ChangeHeadMessage(
         `${name.split(' ')[0]} the battle has started ... go hit the enemy`
       )
     );
-    //eslint-disable-next-line
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  useEffect(() => {
-    if (name === '') Navigate('/');
-    dispatch(startBattle());
-    //eslint-disable-next-line
-  }, []);
   const startTime = useSelector((s) => new Date(s.main?.startTime));
 
   useEffect(() => {

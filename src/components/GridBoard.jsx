@@ -65,7 +65,7 @@ const GridBoard = ({ pc }) => {
       dispatch(changePlayerTurn(true));
     }
 
-    // eslint-disable-next-line
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   function populateBotGrid(pc, botCellStates) {
@@ -149,7 +149,7 @@ const GridBoard = ({ pc }) => {
 
   useEffect(() => {
     if (pc && botCellStates) populateBotGrid(pc, botCellStates);
-    //eslint-disable-next-line
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [Boolean(botCellStates)]);
 
   return (

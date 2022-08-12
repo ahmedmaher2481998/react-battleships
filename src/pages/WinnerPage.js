@@ -27,7 +27,7 @@ const WinnerPage = () => {
           ${startTime.toLocaleTimeString('en-US')}`;
   useEffect(() => {
     if (name === '') navigate('/');
-    //eslint-disable-next-line
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <div className="relative flex items-center justify-center min-h-[var(--contentHeight)] glass">
