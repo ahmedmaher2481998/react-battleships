@@ -15,9 +15,8 @@ const initState = {
   headMessage: 'Welcome To BattleShip',
   // startTime: null,
   player: {
-    // name: "",
+    name: '',
     // just for development
-    name: 'ahmed maher ',
   },
   placing: {
     selectedShip: '',

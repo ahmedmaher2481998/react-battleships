@@ -109,7 +109,7 @@ const BattlePage = () => {
         <span className="font-serif text-xl lg:text-3xl ">{headMessage}</span>
       </div>
       {playerWon || botWon ? (
-        <div className="bg-transparent w-screen  flex justify-center items-center">
+        <div className="w-lg min-h-[var(--contentHeight)] max-h-screen flex justify-center items-center glass">
           <style
             dangerouslySetInnerHTML={{
               __html:
@@ -117,7 +117,7 @@ const BattlePage = () => {
             }}
           />
 
-          <div className="w-20 h-20 border-4 border-blue-600 rounded-full loader"></div>
+          <div className="w-40 h-40 border-8 border-mainblue rounded-full loader"></div>
         </div>
       ) : (
         <div className="flex flex-col xl:flex-row justify-start  lg:p-8 p-4 lg:mt-4 gap-2 ">
