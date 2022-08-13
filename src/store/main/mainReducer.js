@@ -15,7 +15,7 @@ const initState = {
   headMessage: 'Welcome To BattleShip',
   // startTime: null,
   player: {
-    name: '',
+    name: localStorage.getItem('playerName') || '',
     // just for development
   },
   placing: {

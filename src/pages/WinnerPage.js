@@ -38,7 +38,10 @@ const WinnerPage = () => {
           <div className="flex flex-col">
             <div>
               <h2 className="font-bold text-gray-800 text-center">
-                The Winner Is {winnerName}
+                The Winner Is{' '}
+                <span className="text-xl text-slate-900 font-black capitalize">
+                  {winnerName}
+                </span>
               </h2>
             </div>
             <div className="my-6">

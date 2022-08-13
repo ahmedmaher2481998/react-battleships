@@ -9,8 +9,11 @@ const MainHero = () => {
   const [name, changeName] = useState('');
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [remember, setRemember] = useState(false);
   const setName = (e, isStart) => {
     e.preventDefault();
+    //set playerName in the local storage
+    if (remember) localStorage.setItem('playerName', name);
     dispatch(setPlayerName(name));
 
     name === ''
@@ -61,6 +64,35 @@ const MainHero = () => {
               if (e.key === 'Enter') setName(e, false);
             }}
           />
+        </div>
+
+        <div className="flex mt-4">
+          <div className="flex items-center h-5">
+            <input
+              id="helper-checkbox"
+              aria-describedby="helper-checkbox-text"
+              type="checkbox"
+              checked={remember}
+              onChange={(e) => {
+                setRemember((pre) => e.target.checked);
+              }}
+              className="w-4 h-4 text-blue-600  bg-gray-100 rounded  border-gray-600 focus:ring-rose-500  focus:ring-2"
+            />
+          </div>
+          <div className="ml-2 text-sm">
+            <label
+              htmlFor="helper-checkbox"
+              className="font-medium text-gray-300 "
+            >
+              Remember Me.
+            </label>
+            <p
+              id="helper-checkbox-text"
+              className="text-xs font-normal text-gray-300 "
+            >
+              You enter yor name only once and the game will remember it .
+            </p>
+          </div>
         </div>
         <span className="flex flex-col lg:flex-row justify-center mt-2 lg:mt-6 items-center ">
           <button
