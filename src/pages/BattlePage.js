@@ -36,7 +36,6 @@ const BattlePage = () => {
   const startTime = useSelector((s) => new Date(s.main?.startTime));
 
   useEffect(() => {
-    let time;
     dispatch(
       ChangeHeadMessage(
         <span className="min-w-max text-black text-3xl font-semibold p-2 ">
@@ -49,11 +48,13 @@ const BattlePage = () => {
     );
     //wining cases
     if (playerResult === 15) {
-      time = setTimeout(() => {
+      const timeOut1 = setTimeout(() => {
+        clearTimeout(timeOut1);
         Navigate(`/winner/${name.split(' ')[0]}`);
       }, 3000);
     } else if (botResult === 15) {
-      time = setTimeout(() => {
+      const timeOut2 = setTimeout(() => {
+        clearTimeout(timeOut2);
         Navigate(`/winner/bot`);
       }, 3000);
     }
@@ -96,7 +97,6 @@ const BattlePage = () => {
       }
     }
 
-    return () => clearTimeout(time);
     //will call only if someone won ..
     //eslint-disable-next-line
   }, [playerResult, botResult]);
