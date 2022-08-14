@@ -29,6 +29,41 @@ this is a fully responsive **BattleShip** game made in **react/redux** and other
 - react-icons
   <hr>
 
+## how it works
+
+<br>
+
+### how the game work
+
+- if there's no name redirect tot welcome page get players name and remember it if chooses
+- rules if needed else go to placing page
+- place ship in H/V mode and after placing a ship it disappears from the fleet
+- battle when your turn hit other player map and show hit or miss
+- when it's bot turn randomly hit a cell and switch turns
+- use the main message to notify the player the result / guides
+- when there's a winner wait 4 sec then redirect to the winner page
+- the results page get the stored results from the local storage and add the new one to them
+
+### placing the ship
+
+> - if select a ship can't select ship before place the selected ship
+> - upon click while a ship is selected and removed from the fleet , then as a player place the ship and change the cells status to occupied by the ship
+
+### battle start
+
+> - generating the newCell for bot and then placing all ships in
+> - placing all ships in the bot grid up on mounting
+> - start the turn with the player he hit the bot's grid in cell that cell is dispatching hit action on it
+> - when mounting the battle page component we set player turn to true
+> - when the player hit a cell we notify him using portal (notification panel component) about hit or mis
+> - then we set the bot turn to true and randomly hit a cell (will add difficult mode in the future )
+> - after bot hit a cell we add new notifier to the portal and keeps going
+> - when a hit for the bot / player we inc their score by 1
+> - after that when any of the bot / player collect 15 point it means he won cuz theirs 15 occupied cell
+> - 1 boat + 2 ship + 3 submarine + 4 battleship + 5 carrier = 15 points
+> - calc game time save score / name / time of game / duration in local storage
+> - on small screen hide the notification panel and show one notification only for each hit
+
 ## _File structure_
 
 ```bash
@@ -54,208 +89,23 @@ this is a fully responsive **BattleShip** game made in **react/redux** and other
 
 ## images from the game
 
-<div style='display:flex; flex-directions:column;gap:5px; height:100vh;'>
-   
-   <div ></div>
-    <img
-        style="
-          border-radius: 20px;
-          width: auto;
-          height: auto;
-          max-width: 25%;
-          max-height: 150px;
-        "
-        src="src/assets/readme-images/welcome-xl.png"
-        alt="welcome page in xl screen"
-      />
-      <img
-        src="src/assets/readme-images/welcome-md.png"
-        alt=""
-        style="
-          border-radius: 20px;
-          width: auto;
-          height: auto;
-          max-width: 25%;
-          max-height: 150px;
-        "
-      />
-      <img
-        src="src/assets/readme-images/welcome-sm.png"
-        alt=""
-        style="
-          border-radius: 20px;
-          width: auto;
-          height: auto;
-          max-width: 25%;
-          max-height: 150px;
-        "
-      />
+![all view from the game im many sizes ][all]
 
-  </div>
-   <div ></div>
-      <img
-        src="src/assets/readme-images/winner.png"
-        alt=""
-        style="
-          border-radius: 20px;
-          width: auto;
-          height: auto;
-          max-width: 25%;
-          max-height: 150px;
-        "
-      />
-      <img
-        src="src/assets/readme-images/results-board.png"
-        alt=""
-        style="
-          border-radius: 20px;
-          width: auto;
-          height: auto;
-          max-width: 25%;
-          max-height: 150px;
-        "
-      />
+<hr/>
 
-</div>
- <div ></div>
-      <img
-        src="src/assets/readme-images/battle-3.png"
-        alt=""
-        style="
-          border-radius: 20px;
-          width: auto;
-          height: auto;
-          max-width: 25%;
-          max-height: 150px;
-        "
-      />
-      <img
-        src="src/assets/readme-images/battle-1.png"
-        alt=""
-        style="
-          border-radius: 20px;
-          width: auto;
-          height: auto;
-          max-width: 25%;
-          max-height: 150px;
-        "
-      />
-      <img
-        src="src/assets/readme-images/battle1.png"
-        alt=""
-        style="
-          border-radius: 20px;
-          width: auto;
-          height: auto;
-          max-width: 25%;
-          max-height: 150px;
-        "
-      />
-</div>
- <div ></div>
-      <img
-        src="src/assets/readme-images/placing-done.png"
-        alt=""
-        style="
-          border-radius: 20px;
-          width: auto;
-          height: auto;
-          max-width: 25%;
-          max-height: 150px;
-        "
-      />
-      <img
-        src="src/assets/readme-images/placing-md.png"
-        alt=""
-        style="
-          border-radius: 20px;
-          width: auto;
-          height: auto;
-          max-width: 25%;
-          max-height: 150px;
-        "
-      />
-      <img
-        src="src/assets/readme-images/placing-sm.png"
-        alt=""
-        style="
-          border-radius: 20px;
-          width: auto;
-          height: auto;
-          max-width: 25%;
-          max-height: 150px;
-        "
-      />
-      <img
-        src="src/assets/readme-images/placing-xl.png"
-        alt=""
-        style="
-          border-radius: 20px;
-          width: auto;
-          height: auto;
-          max-width: 25%;
-          max-height: 150px;
-        "
-      />
-</div>
- <div ></div>
-      <img
-        src="src/assets/readme-images/rules-xl.png"
-        alt=""
-        style="
-          border-radius: 20px;
-          width: auto;
-          height: auto;
-          max-width: 25%;
-          max-height: 150px;
-        "
-      />
-      <img
-        src="src/assets/readme-images/rules-sm.png"
-        alt=""
-        style="
-          border-radius: 20px;
-          width: auto;
-          height: auto;
-          max-width: 25%;
-          max-height: 150px;
-        "
-      />
-      <img
-        src="src/assets/readme-images/rules-sm.png"
-        alt=""
-        style="
-          border-radius: 20px;
-          width: auto;
-          height: auto;
-          max-width: 25%;
-          max-height: 150px;
-        "
-      />
-</div>
+## Acknowledgements
 
-</div>
+Great thanks to:
 
-- What was your motivation?
-- Why did you build this project?
-- What problem does it solve?
-- What did you learn?
-- design design and why you made them
-- What makes your project stand out?
-- If your project has a lot of features, consider adding a "Features" section and listing them here.
+1. [The odin project](https://www.theodinproject.com)
+<br>
+<hr >
+<br>
 
-## What to include im my readme
+## License
 
-1. Project's Title / open in vs code
-2. Project Description
-3. Table of Contents (Optional)/file structure
-4. How to Install and Run the Project
-5. How to Use the Project
-6. Include Credits
-7. Add a License
-8. Badges
-9. How to Contribute to the Project
-10. Include Tests
+[MIT](./LICENSE.md)
 
 [repo]: https://github.com/ahmedmaher2481998/react-battleships
 [live]: https://battleship-react-amaher938.netlify.app/
+[all]: src/assets//all.png
