@@ -3,9 +3,10 @@
 this is a fully responsive **BattleShip** game made in **react/redux** and other tools , the game is 5 pages and has 3 reducers to mange actions & state ,it optimizes DRY concept and other react best practices , the rules of the game is explained in it ,you can start playing it [here][live] ,the game routes is protected by the name , it won't work unless you provide your name ,and you can choose to make the game remember that so you don't need to enter it again, and there's a dashboard for all the results where you can see all the other games result and other information.
 
 <br>
+### [Live] [live]
 <hr>
 
-## run it locally !
+## runit on your machine !
 
 #### install dependencies
 
