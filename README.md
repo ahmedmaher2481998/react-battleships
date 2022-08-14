@@ -54,9 +54,9 @@ this is a fully responsive **BattleShip** game made in **react/redux** and other
 
 ## images from the game
 
-<div style='display:flex; flex-directions:column;gap:2px;'>
+<div style='display:flex; flex-directions:column;gap:5px; height:100vh;'>
    
-   <div style="height: auto; width: 100vw"></div>
+   <div ></div>
     <img
         style="
           border-radius: 20px;
@@ -92,7 +92,7 @@ this is a fully responsive **BattleShip** game made in **react/redux** and other
       />
 
   </div>
-   <div style="height: auto; width: 100vw"></div>
+   <div ></div>
       <img
         src="src/assets/readme-images/winner.png"
         alt=""
@@ -117,7 +117,7 @@ this is a fully responsive **BattleShip** game made in **react/redux** and other
       />
 
 </div>
- <div style="height: auto; width: 100vw"></div>
+ <div ></div>
       <img
         src="src/assets/readme-images/battle-3.png"
         alt=""
@@ -152,7 +152,7 @@ this is a fully responsive **BattleShip** game made in **react/redux** and other
         "
       />
 </div>
- <div style="height: auto; width: 100vw"></div>
+ <div ></div>
       <img
         src="src/assets/readme-images/placing-done.png"
         alt=""
@@ -198,7 +198,7 @@ this is a fully responsive **BattleShip** game made in **react/redux** and other
         "
       />
 </div>
- <div style="height: auto; width: 100vw"></div>
+ <div ></div>
       <img
         src="src/assets/readme-images/rules-xl.png"
         alt=""
