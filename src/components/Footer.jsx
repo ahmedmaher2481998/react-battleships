@@ -1,44 +1,46 @@
 import React from 'react';
-import { FaFacebook, FaTwitter, FaReddit, FaGithub } from 'react-icons/fa';
+import { FaTwitter, FaReddit, FaGithub } from 'react-icons/fa';
 import { useLocation } from 'react-router-dom';
 function Footer() {
   const { pathname } = useLocation();
   return (
     <>
-      <div
-        id="footer"
-        className={`${
-          pathname === '/battle' ? 'bg-mainred' : 'bg-mainblue'
-        } max-w-screen min-w-fit text-bage selection:text-xl flex flex-wrap : ;
-				flex-row items-center justify-center`}
+      <footer
+        className={`p-4
+      ${
+        pathname === '/battle' ? 'bg-mainred' : 'bg-mainblue'
+      }      bg-white  shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800`}
       >
-        <div className="h-24 p-2 gap-6 max-w-[80%] flex flex-wrap flex-row items-center justify-between">
-          <span>Copyrights are reserved &copy;2022</span>
-          <ul id="footer-links" className="flex  gap-6 flex-row ">
-            <li>
-              <a href="https://www.facebook.com/fighterx938">
-                <FaFacebook />
-              </a>
-            </li>
-            <li>
-              <a href="https://twitter.com/A_maher_938">
-                <FaTwitter />
-              </a>
-            </li>
-            <li>
-              <a href="https://www.reddit.com/user/ahmedmaher2481998">
-                <FaReddit />
-              </a>
-            </li>
-            <li>
-              <a href="https://github.com/ahmedmaher2481998">
-                <FaGithub />
-              </a>
-            </li>
-          </ul>
+        <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
+          <br className="inline-block " />
+          <span className="hover:underline">
+            Copyrights are reserved &copy;2022
+          </span>
+          <br className="inline-block " />
           <span> Coded by Ahmed Maher</span>
-        </div>
-      </div>
+        </span>
+
+        <ul
+          id="footer-links"
+          className="flex flex-wrap gap-4 items-center mt-3 text-sm text-gray-500 dark:text-gray-400 sm:mt-2 "
+        >
+          <li>
+            <a href="https://twitter.com/A_maher_938">
+              <FaTwitter />
+            </a>
+          </li>
+          <li>
+            <a href="https://www.reddit.com/user/ahmedmaher2481998">
+              <FaReddit />
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/ahmedmaher2481998">
+              <FaGithub />
+            </a>
+          </li>
+        </ul>
+      </footer>
     </>
   );
 }

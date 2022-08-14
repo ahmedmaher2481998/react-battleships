@@ -99,7 +99,7 @@ const Fleet = () => {
               <FleetShip
                 setFleet={setFleet}
                 fleet={fleet}
-                cells={4}
+                cells={5}
                 img={carrier}
                 name={'carrier'}
               />
