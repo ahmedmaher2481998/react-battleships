@@ -110,5 +110,5 @@ Great thanks to:
 [MIT](./LICENSE.md)
 
 [repo]: https://github.com/ahmedmaher2481998/react-battleships
-[live]: https://battleship-react-amaher938.netlify.app/
+[live]: https://react-battleships.vercel.app
 [all]: src/assets//all.png
