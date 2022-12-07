@@ -39,7 +39,7 @@ const PlacingPage = () => {
         <div className="col-start-1  mt-4 row-start-1">
           <Fleet />
         </div>
-        <div className=" md:inline-block md:col-span-4 md:col-start-2 row-start-2 row-span-3 absolute top-36 right-10  mt-16 lg:mt-2 ">
+        <div className=" md:inline-block md:col-span-4 md:col-start-2 row-start-2 row-span-3 absolute top-36 right-0  mt-16 lg:mt-2 ">
           <GridBoard />
         </div>
       </div>

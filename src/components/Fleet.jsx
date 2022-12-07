@@ -108,7 +108,7 @@ const Fleet = () => {
         </div>
       </div>
       {placingStatus === 'end' ? (
-        <div className=" absolute">
+        <div className=" absolute w-[100vw] -600">
           <button
             type="button"
             onClick={(e) => {
@@ -117,7 +117,8 @@ const Fleet = () => {
             }}
             className=" 
             relative 
-            top-20 left-52
+            w-32
+            top-20 left-[40%]
             lg:left-6 lg:top-96 lg:px-14 lg:text-3xl
             hover:text-mainblue 
             rounded-full  btn bg-rose-500 text-black hover:bg-rose-300 
